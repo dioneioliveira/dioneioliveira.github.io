@@ -1,0 +1,254 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>DYOLIVEIRAYT</title>
+<meta name="description" content="Canal DYOLIVEIRAYT: velocross, corridas, camping, trilhas e aventuras ao ar livre em família.">
+<meta name="theme-color" content="#070707">
+<link rel="icon" href="assets/avatar.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,600;0,700;1,700;1,800;1,900&family=Barlow:wght@400;500;600;700&family=DM+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<!--BUNDLE:BODY-START-->
+<a class="skip" href="#temporada">Pular para o conteúdo</a>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <a class="brand" href="#topo" aria-label="DYOLIVEIRAYT, início">
+      <img src="assets/logo-wordmark-strip.jpg" alt="DYOLIVEIRAYT" width="900" height="165">
+    </a>
+    <nav class="nav" aria-label="Seções">
+      <a href="#temporada">Temporada</a>
+      <a href="#videos">Vídeos</a>
+      <a href="#series">Séries</a>
+      <a href="#fotos">Fotos</a>
+      <a href="#campings">Campings</a>
+      <a href="#garagem">Garagem</a>
+      <a href="#blog">Blog</a>
+    </nav>
+    <a class="top-sub" id="topSub" href="#" target="_blank" rel="noopener">Inscrever-se</a>
+  </div>
+  <div class="track" aria-hidden="true">
+    <div class="track-line"></div>
+    <div class="track-bike" id="trackBike">
+      <svg viewBox="0 0 48 30"><circle cx="9" cy="22" r="6.5" fill="none" stroke="currentColor" stroke-width="3"/><circle cx="39" cy="22" r="6.5" fill="none" stroke="currentColor" stroke-width="3"/><path d="M9 22 L19 12 L31 12 L39 22 M19 12 L24 20 L31 12 M30 8 L35 9 L39 22" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/><circle cx="24" cy="5" r="3.6" fill="#E10613"/></svg>
+    </div>
+  </div>
+</header>
+
+<main id="topo">
+  <!-- HERO -->
+  <section class="hero" aria-label="Apresentação">
+    <canvas class="hero-canvas" id="heroCanvas" aria-hidden="true"></canvas>
+    <div class="wrap hero-grid">
+      <div class="hero-text">
+        <p class="hero-kicker" id="heroKicker">Aventuras <i></i> Velocross <i></i> Camping</p>
+        <h1 class="hero-title"><span class="r">DY</span>OLIVEIRA<span class="r">YT</span></h1>
+        <p class="hero-sub" id="heroSub"></p>
+        <div class="hero-cta">
+          <a class="btn btn-red" id="subBtn" href="#" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M23 7.2a3 3 0 0 0-2.1-2.1C19 4.6 12 4.6 12 4.6s-7 0-8.9.5A3 3 0 0 0 1 7.2 31 31 0 0 0 .5 12 31 31 0 0 0 1 16.8a3 3 0 0 0 2.1 2.1c1.9.5 8.9.5 8.9.5s7 0 8.9-.5a3 3 0 0 0 2.1-2.1 31 31 0 0 0 .5-4.8 31 31 0 0 0-.5-4.8ZM9.7 15.1V8.9l5.8 3.1Z" fill="currentColor"/></svg>
+            Inscreva-se no canal
+          </a>
+          <a class="btn btn-ghost" id="igBtn" href="#" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+            <span id="igHandle">@dyoliveirayt</span>
+          </a>
+        </div>
+      </div>
+      <div class="hero-logo">
+        <img src="assets/logo-neon.jpg" alt="Logo DYOLIVEIRAYT: piloto de velocross saltando ao lado de uma barraca com fogueira" width="900" height="541">
+      </div>
+    </div>
+
+    <div class="wrap stats">
+      <div class="counter" id="counter" aria-live="polite">
+        <div class="counter-head">
+          <span class="label">Inscritos no canal</span>
+          <span class="counter-status" id="counterStatus">registro</span>
+        </div>
+        <div class="odometer" id="odometer" aria-label="Número de inscritos"></div>
+        <div class="milestone">
+          <div class="milestone-row"><span id="msFrom">0</span><span>Próxima meta: <strong id="msGoal">10 mil</strong></span></div>
+          <div class="milestone-bar"><div class="milestone-fill" id="msFill"></div><button type="button" class="milestone-flag" id="msFlag" aria-label="Bandeirada"></button></div>
+          <p class="milestone-note" id="msNote"></p>
+        </div>
+      </div>
+      <div class="stat-tiles" id="statTiles"></div>
+    </div>
+  </section>
+
+  <!-- FAMÍLIA -->
+  <section class="section" id="familia">
+    <div class="wrap">
+      <header class="sec-head">
+        <p class="tag"><span>A equipe</span></p>
+        <h2>Quem <em>acelera</em> com a gente</h2>
+      </header>
+      <div class="crew" id="crew"></div>
+    </div>
+  </section>
+
+  <!-- TEMPORADA -->
+  <section class="section section-race" id="temporada">
+    <div class="wrap">
+      <header class="sec-head">
+        <p class="tag"><span>Série em destaque</span></p>
+        <h2 id="seasonTitle">Rumo ao <em>Pódio</em></h2>
+        <p class="sec-lead" id="seasonLead"></p>
+      </header>
+      <div class="season">
+        <div class="season-feature" id="seasonFeature"></div>
+        <div class="season-side">
+          <div class="next-race" id="nextRace"></div>
+          <div class="partners" id="partners"></div>
+        </div>
+      </div>
+      <div class="timeline-wrap">
+        <div class="timeline-head">
+          <h3>Diário da temporada</h3>
+          <span class="hint">Do vídeo mais antigo ao mais recente. Arraste para o lado.</span>
+        </div>
+        <ol class="timeline" id="timeline"></ol>
+      </div>
+    </div>
+  </section>
+
+  <!-- VÍDEOS -->
+  <section class="section" id="videos">
+    <div class="wrap">
+      <header class="sec-head sec-head-row">
+        <div>
+          <p class="tag"><span>Vídeos</span></p>
+          <h2>Saiu do <em>forno</em></h2>
+        </div>
+        <div class="chips" id="videoFilters" role="group" aria-label="Filtrar vídeos"></div>
+      </header>
+      <div id="videoFeature"></div>
+      <div class="video-grid" id="videoGrid"></div>
+      <p class="more"><a class="btn btn-ghost" id="allVideos" href="#" target="_blank" rel="noopener">Ver todos os vídeos no YouTube</a></p>
+    </div>
+  </section>
+
+  <!-- SÉRIES / PLAYLISTS -->
+  <section class="section section-alt" id="series">
+    <div class="wrap">
+      <header class="sec-head">
+        <p class="tag"><span>Séries e playlists</span></p>
+        <h2>Escolha a sua <em>aventura</em></h2>
+        <p class="sec-lead">Cada playlist é um tipo de rolê. Toque para abrir no YouTube.</p>
+      </header>
+      <div class="playlists" id="playlists"></div>
+    </div>
+  </section>
+
+  <!-- FOTOS -->
+  <section class="section" id="fotos">
+    <div class="wrap">
+      <header class="sec-head">
+        <p class="tag"><span>Fotos</span></p>
+        <h2>Álbum de <em>bastidores</em></h2>
+        <p class="sec-lead">Pista, trilha, lama e camping. Toque numa foto para ampliar.</p>
+      </header>
+      <div class="gallery" id="gallery"></div>
+    </div>
+  </section>
+
+  <!-- CAMPINGS -->
+  <section class="section section-alt" id="campings">
+    <div class="wrap">
+      <header class="sec-head">
+        <p class="tag"><span>Indicações de camping</span></p>
+        <h2>Onde a gente <em>acampou</em></h2>
+        <p class="sec-lead">Lugares que aparecem nos vídeos do canal, com o caminho no mapa e os episódios gravados lá.</p>
+      </header>
+      <div class="camp-grid" id="campGrid"></div>
+
+      <div class="checklist" id="checklist">
+        <div class="checklist-head">
+          <div>
+            <h3>Checklist do camping</h3>
+            <p>Marque o que já está no carro antes de sair. Fica salvo neste navegador.</p>
+          </div>
+          <div class="checklist-meter">
+            <span id="checkCount">0/0</span>
+            <div class="checklist-bar"><div id="checkFill"></div></div>
+            <button type="button" class="link-btn" id="checkReset">Limpar marcações</button>
+          </div>
+        </div>
+        <div class="checklist-cols" id="checkCols"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GARAGEM -->
+  <section class="section" id="garagem">
+    <div class="wrap">
+      <header class="sec-head">
+        <p class="tag"><span>Garagem e equipamentos</span></p>
+        <h2>O que a gente <em>usa</em></h2>
+        <p class="sec-lead">Máquinas e equipamentos que aparecem nos vídeos. Cada um tem o episódio onde a gente mostra como foi.</p>
+      </header>
+      <div class="prod-grid" id="prodGrid"></div>
+    </div>
+  </section>
+
+  <!-- BLOG -->
+  <section class="section section-alt" id="blog">
+    <div class="wrap">
+      <header class="sec-head">
+        <p class="tag"><span>Blog</span></p>
+        <h2>Diário de <em>bordo</em></h2>
+      </header>
+      <div class="blog-grid" id="blogGrid"></div>
+    </div>
+  </section>
+
+  <!-- CONTATO -->
+  <section class="section contact" id="contato">
+    <div class="wrap contact-inner">
+      <div class="contact-text">
+        <p class="tag"><span>Parcerias</span></p>
+        <h2>Bora <em>acelerar</em> junto?</h2>
+        <p class="sec-lead">Marcas de moto, camping, equipamentos e turismo: chama no Instagram para conversar sobre parceria.</p>
+      </div>
+      <div class="contact-card">
+        <span class="label">Fale com a gente</span>
+        <div class="copy-row">
+          <code id="contactText">@dyoliveirayt</code>
+          <button type="button" class="btn btn-small" id="copyContact">Copiar</button>
+        </div>
+        <p class="copy-msg" id="copyMsg" role="status"></p>
+        <div class="socials" id="socials"></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="wrap footer-inner">
+    <img src="assets/banner-pilotos.jpg" alt="Banner DYOLIVEIRAYT com os pilotos 07 Vinicius e 12 Gustavo" class="footer-banner" width="1600" height="533" loading="lazy">
+    <div class="footer-row">
+      <p><strong>DYOLIVEIRAYT</strong> · velocross, camping e aventuras ao ar livre.</p>
+      <p class="footer-small"><span id="year"></span> · Digite <kbd>vrum</kbd> para uma surpresa.</p>
+    </div>
+  </div>
+</footer>
+
+<div class="modal" id="modal" hidden>
+  <div class="modal-backdrop" data-close></div>
+  <div class="modal-box" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <button type="button" class="modal-close" data-close aria-label="Fechar">×</button>
+    <div id="modalBody"></div>
+  </div>
+</div>
+<!--BUNDLE:BODY-END-->
+
+<script src="js/config.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
