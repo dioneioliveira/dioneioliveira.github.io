@@ -42,5 +42,5 @@ window.AUTO = {
   "inscritos": 8660,
   "inscritosData": "07/10/2026",
   "videosPublicados": 832,
-  "atualizadoEm": "2026-10-07T06:07:01-03:00"
+  "atualizadoEm": "2026-10-07T06:08:12-03:00"
 };
