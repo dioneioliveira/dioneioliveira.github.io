@@ -43,6 +43,25 @@
   function playlistUrl(id) { return "https://www.youtube.com/playlist?list=" + encodeURIComponent(id); }
 
   var videos = (S.videos || []).slice();
+
+  // Dados da atualização automática semanal (js/auto.js) por cima do config.js
+  var AUTO = window.AUTO || {};
+  if (AUTO.inscritos) { C.inscritos = AUTO.inscritos; C.inscritosData = AUTO.inscritosData || C.inscritosData; }
+  if (AUTO.videosPublicados) C.videosPublicados = AUTO.videosPublicados;
+  if (AUTO.videos && AUTO.videos.length) {
+    var doConfig = {};
+    videos.forEach(function (v) { doConfig[v.id] = v; });
+    var recentes = AUTO.videos.map(function (a) {
+      var base = doConfig[a.id];
+      // Vídeo já cadastrado no config mantém título e categoria escolhidos; o resto vem do YouTube
+      return base
+        ? Object.assign({}, base, { data: a.data || base.data, views: a.views != null ? a.views : base.views })
+        : { id: a.id, titulo: a.titulo, categoria: guessCategory(a.titulo), data: a.data, views: a.views };
+    });
+    var vistos = {};
+    recentes.forEach(function (v) { vistos[v.id] = true; });
+    videos = recentes.concat(videos.filter(function (v) { return !vistos[v.id]; }));
+  }
   function findVideo(id) {
     for (var i = 0; i < videos.length; i++) if (videos[i].id === id) return videos[i];
     for (var j = 0; j < (S.videos || []).length; j++) if (S.videos[j].id === id) return S.videos[j];
