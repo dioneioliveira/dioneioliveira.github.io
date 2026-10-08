@@ -186,6 +186,32 @@ window.SITE = {
        shopee / mercadolivre: o link de compra (pode ter um ou os dois) */
   loja: {
     afiliado: true, // todos os links são de afiliado: mostra o aviso embaixo da loja
+
+    /* VITRINE DA SHOPEE (automática)
+       Toda segunda a atualização semanal puxa os produtos desta vitrine, com link
+       de afiliado, foto e preço. Produto novo na vitrine aparece sozinho no site;
+       produto removido ou esgotado some sozinho. */
+    vitrineShopee: "https://collshp.com/dyoliveirayt?view=storefront",
+
+    /* Ajustes opcionais dos produtos da vitrine, pelo código do produto na Shopee.
+       Sem ajuste, o site usa o título da Shopee e escolhe a categoria pelo nome.
+       Campos: nome, categoria, porque, video, mercadolivre (link extra), ocultar: true */
+    ajustes: {
+      "22899169696": { nome: "Camisa de motocross MTC 13A", categoria: "Moto", porque: "Para motocross, velocross e trilha, com tamanhos adulto e infantil." },
+      "40222242951": { nome: "Colchão inflável King com bomba embutida", categoria: "Camping", porque: "Tamanho King (206 x 187 x 44 cm) com bomba de bateria embutida e removível." },
+      "11123675699": { nome: "Protetor de guidão", categoria: "Moto", porque: "Almofada de 198 mm para guidão de pit bike, motocross e quadriciclo." },
+      "22893667749": { nome: "Impermeabilizante de tecidos Ultra Lub", categoria: "Camping", porque: "Kit de 325 ml para impermeabilizar tecidos." },
+      "22798668045": { nome: "Mesa dobrável de camping 120 x 60 cm", categoria: "Camping", porque: "Ajustável e portátil, para camping, praia e churrasco." },
+      "43668802381": { nome: "Kit 2 lampiões LED com USB", categoria: "Camping", porque: "Iluminação para acampamento e pescaria." },
+      "58256286551": { nome: "Colchão inflável MODOFO com bomba elétrica", categoria: "Camping", porque: "Bomba elétrica recarregável. Tem versão solteiro, casal, queen e king." },
+      "23793406757": { nome: "Conjunto camiseta + short tactel", categoria: "Roupas", porque: "Conjunto masculino estilo country." },
+      "25793214593": { nome: "Barraca automática 3 a 4 pessoas", categoria: "Camping", porque: "Montagem automática, 215 x 215 x 145 cm." },
+      "40415433093": { nome: "Barraca automática 2 a 3 pessoas", categoria: "Camping", porque: "Montagem automática, para 2 a 3 pessoas." }
+    },
+
+    /* Produtos manuais (por exemplo, do Mercado Livre). Campos:
+       nome, categoria, imagem ("assets/loja/arquivo.jpg" ou link da foto), porque,
+       preco (texto livre), video, shopee, mercadolivre */
     produtos: []
   },
 

@@ -2,7 +2,8 @@
 
 Busca no YouTube, sem chave de API:
   - os vídeos mais recentes do canal (feed RSS público), sem os Shorts;
-  - o número de inscritos e o total de vídeos (página pública do canal).
+  - o número de inscritos e o total de vídeos (página pública do canal);
+  - os produtos da vitrine de afiliado da Shopee, com link, foto e preço.
 
 Grava tudo em js/auto.js, que o site lê por cima do js/config.js.
 Se alguma busca falhar, mantém o valor da semana anterior.
@@ -16,10 +17,12 @@ import re
 import sys
 import urllib.error
 import urllib.request
+import uuid
 from datetime import datetime, timedelta, timezone
 
 CHANNEL_ID = "UCo5GGyce2Z4DC0usGcQ3qkA"
 HANDLE = "dyoliveirayt"
+VITRINE_SHOPEE = "dyoliveirayt"  # collshp.com/dyoliveirayt
 RAIZ = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DESTINO = os.path.join(RAIZ, "js", "auto.js")
 UA = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0 Safari/537.36"
@@ -100,6 +103,64 @@ def estatisticas():
             numero_br(videos.group(1)) if videos else None)
 
 
+QUERY_VITRINE = (
+    "query StorefrontProductListQuery($urlSuffix: String, $page: LinktreelandingpagePaginationInput, "
+    "$sortType: SortType, $cid: String, $language: String, $uuId: String, $deviceId: String) { "
+    "storefrontProductList(urlSuffix: $urlSuffix, page: $page, sortType: $sortType, cid: $cid, "
+    "language: $language, uuId: $uuId, deviceId: $deviceId) { "
+    "itemList { linkId link linkName image linkType itemId itemCard } "
+    "pagination { offset limit hasMore totalCount } } }"
+)
+
+
+def vitrine_shopee():
+    """Produtos da vitrine de afiliado (sem repetidos e sem esgotados)."""
+    itens, vistos, offset = [], set(), 0
+    while True:
+        corpo = json.dumps({
+            "operationName": "StorefrontProductListQuery",
+            "query": QUERY_VITRINE,
+            "variables": {
+                "urlSuffix": VITRINE_SHOPEE, "cid": "br", "language": "pt-BR",
+                "page": {"offset": str(offset), "limit": "50"}, "sortType": "ITEM_CREATE_LATEST",
+                "uuId": str(uuid.uuid4()), "deviceId": uuid.uuid4().hex.upper(),
+            },
+        }).encode()
+        req = urllib.request.Request(
+            "https://collshp.com/api/v3/gql/graphql?q=StorefrontProductListQuery", data=corpo,
+            headers={"content-type": "application/json;charset=UTF-8", "accept": "application/json",
+                     "referer": "https://collshp.com/%s?view=storefront" % VITRINE_SHOPEE, "user-agent": UA})
+        with urllib.request.urlopen(req, timeout=30) as r:
+            resposta = json.loads(r.read())
+        if resposta.get("errors"):
+            raise RuntimeError(resposta["errors"][0].get("message"))
+        lista = resposta["data"]["storefrontProductList"]
+        for it in lista.get("itemList") or []:
+            card = it.get("itemCard") or {}
+            dado = card.get("itemData") or {}
+            chave = it.get("itemId") or it.get("link")
+            if chave in vistos or dado.get("isSoldOut") or dado.get("itemStatus") not in (None, "normal"):
+                continue
+            if not str(it.get("link", "")).startswith("https://"):
+                continue
+            vistos.add(chave)
+            preco = (dado.get("itemCardDisplayPrice") or {})
+            imagem = re.sub(r"\.\w+$", "", (it.get("image") or "").rsplit("/", 1)[-1])
+            itens.append({
+                "id": str(it.get("itemId") or ""),
+                "nome": (it.get("linkName") or "").strip(),
+                "link": it["link"],
+                "imagem": "https://down-br.img.susercontent.com/file/%s_tn" % imagem if imagem else "",
+                "preco": round(int(preco.get("price") or 0) / 100000, 2) or None,
+                "precoOriginal": round(int(preco.get("originalPrice") or 0) / 100000, 2) or None,
+            })
+        pag = lista.get("pagination") or {}
+        if not pag.get("hasMore"):
+            break
+        offset += 50
+    return itens
+
+
 def main():
     antes = anterior()
     dados = dict(antes)
@@ -123,6 +184,13 @@ def main():
     except Exception as e:  # noqa: BLE001
         erros.append("estatísticas: %s" % e)
 
+    try:
+        produtos = vitrine_shopee()
+        if produtos:
+            dados["shopee"] = {"atualizado": agora.strftime("%d/%m/%Y"), "itens": produtos}
+    except Exception as e:  # noqa: BLE001
+        erros.append("vitrine Shopee: %s" % e)
+
     dados["atualizadoEm"] = agora.strftime("%Y-%m-%dT%H:%M:%S-03:00")
 
     conteudo = (
@@ -134,7 +202,8 @@ def main():
         f.write(conteudo)
 
     print("Inscritos:", dados.get("inscritos"), "| Vídeos publicados:", dados.get("videosPublicados"),
-          "| Vídeos no feed (sem Shorts):", len(dados.get("videos", [])))
+          "| Vídeos no feed (sem Shorts):", len(dados.get("videos", [])),
+          "| Produtos na vitrine:", len((dados.get("shopee") or {}).get("itens", [])))
     for e in erros:
         print("AVISO:", e, file=sys.stderr)
     if erros and not antes and "videos" not in dados:

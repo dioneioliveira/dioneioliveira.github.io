@@ -518,8 +518,32 @@
     mercadolivre: { nome: "Mercado Livre", classe: "buy-ml", rotulo: "Comprar no Mercado Livre" }
   };
   var loja = S.loja || {};
-  var shopItems = (loja.produtos || []).filter(function (p) { return p.nome && (safeUrl(p.shopee) || safeUrl(p.mercadolivre)); });
   function safeUrl(u) { return typeof u === "string" && /^https:\/\//i.test(u.trim()) ? u.trim() : ""; }
+  function fmtPreco(n) { return n ? "R$ " + Number(n).toLocaleString("pt-BR", { minimumFractionDigits: 2, maximumFractionDigits: 2 }) : ""; }
+  function categoriaPeloNome(t) {
+    t = (t || "").toLowerCase();
+    if (/barraca|colch|camping|acamp|lampi|lanterna|mesa|cadeira|fogareiro|imperme|saco de dormir/.test(t)) return "Camping";
+    if (/moto|velocross|trilha|enduro|guid|capacete|luva|bota|óculos|oculos/.test(t)) return "Moto";
+    if (/camis|short|bermuda|cal[cç]a|jaqueta|bon[eé]/.test(t)) return "Roupas";
+    return "Outros";
+  }
+  function nomeCurto(t) {
+    t = (t || "").replace(/\s+/g, " ").trim();
+    if (t.length <= 60) return t;
+    return t.slice(0, 60).replace(/\s+\S*$/, "") + "…";
+  }
+  // Vitrine da Shopee (atualizada toda semana em js/auto.js) + ajustes do config
+  var ajustes = loja.ajustes || {};
+  var daVitrine = ((AUTO.shopee && AUTO.shopee.itens) || []).map(function (it) {
+    var a = ajustes[it.id] || {};
+    if (a.ocultar) return null;
+    return {
+      nome: a.nome || nomeCurto(it.nome), categoria: a.categoria || categoriaPeloNome(it.nome),
+      porque: a.porque || "", imagem: a.imagem || it.imagem, video: a.video || "",
+      preco: a.preco || fmtPreco(it.preco), shopee: it.link, mercadolivre: a.mercadolivre || ""
+    };
+  }).filter(Boolean);
+  var shopItems = (loja.produtos || []).concat(daVitrine).filter(function (p) { return p.nome && (safeUrl(p.shopee) || safeUrl(p.mercadolivre)); });
   if (shopItems.length) {
     $("#loja").hidden = false;
     $("#navLoja").hidden = false;
@@ -557,9 +581,11 @@
     $("#shopCats").addEventListener("click", function (e) { var b = e.target.closest("[data-cat]"); if (b) { shopCat = b.dataset.cat; renderShop(); } });
     $("#shopStores").addEventListener("click", function (e) { var b = e.target.closest("[data-store]"); if (b) { shopStore = b.dataset.store; renderShop(); } });
     renderShop();
-    $("#shopNote").textContent = loja.afiliado
-      ? "Todos os links desta loja são de afiliado: você paga o mesmo preço e o canal ganha uma pequena comissão, que ajuda a manter os vídeos. Preços e estoque podem mudar na loja."
-      : "Preços e estoque podem mudar na loja.";
+    var precoData = AUTO.shopee && AUTO.shopee.atualizado ? "Preços conferidos em " + AUTO.shopee.atualizado + " e podem mudar na loja." : "Preços e estoque podem mudar na loja.";
+    $("#shopNote").innerHTML = esc(loja.afiliado
+      ? "Todos os links desta loja são de afiliado: você paga o mesmo preço e o canal ganha uma pequena comissão, que ajuda a manter os vídeos. " + precoData
+      : precoData) +
+      (safeUrl(loja.vitrineShopee) ? ' <a class="shop-all" href="' + esc(safeUrl(loja.vitrineShopee)) + '" target="_blank" rel="noopener sponsored">Ver a vitrine completa na Shopee →</a>' : "");
   }
 
   /* ------------------------------------------------------------------ */
