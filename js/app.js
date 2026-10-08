@@ -511,6 +511,58 @@
   }).join("");
 
   /* ------------------------------------------------------------------ */
+  /* Loja da família: links da Shopee e do Mercado Livre                   */
+  /* ------------------------------------------------------------------ */
+  var LOJAS = {
+    shopee: { nome: "Shopee", classe: "buy-shopee", rotulo: "Comprar na Shopee" },
+    mercadolivre: { nome: "Mercado Livre", classe: "buy-ml", rotulo: "Comprar no Mercado Livre" }
+  };
+  var loja = S.loja || {};
+  var shopItems = (loja.produtos || []).filter(function (p) { return p.nome && (safeUrl(p.shopee) || safeUrl(p.mercadolivre)); });
+  function safeUrl(u) { return typeof u === "string" && /^https:\/\//i.test(u.trim()) ? u.trim() : ""; }
+  if (shopItems.length) {
+    $("#loja").hidden = false;
+    $("#navLoja").hidden = false;
+    var shopCat = "Todos", shopStore = "todas";
+    var cats = ["Todos"];
+    shopItems.forEach(function (p) { if (p.categoria && cats.indexOf(p.categoria) < 0) cats.push(p.categoria); });
+    var stores = Object.keys(LOJAS).filter(function (k) { return shopItems.some(function (p) { return safeUrl(p[k]); }); });
+
+    var renderShop = function () {
+      $("#shopCats").innerHTML = cats.length > 2 ? cats.map(function (c) {
+        return '<button type="button" class="chip" aria-pressed="' + (c === shopCat) + '" data-cat="' + esc(c) + '">' + esc(c) + "</button>";
+      }).join("") : "";
+      $("#shopStores").innerHTML = stores.length > 1 ? ["todas"].concat(stores).map(function (k) {
+        return '<button type="button" class="chip chip-store' + (k !== "todas" ? " " + LOJAS[k].classe : "") + '" aria-pressed="' + (k === shopStore) + '" data-store="' + k + '">' +
+          (k === "todas" ? "Todas as lojas" : LOJAS[k].nome) + "</button>";
+      }).join("") : "";
+      var list = shopItems.filter(function (p) {
+        return (shopCat === "Todos" || p.categoria === shopCat) && (shopStore === "todas" || safeUrl(p[shopStore]));
+      });
+      $("#shopGrid").innerHTML = list.map(function (p) {
+        var img = p.imagem ? '<div class="shop-img"><img src="' + esc(asset(p.imagem)) + '" alt="' + esc(p.nome) + '" loading="lazy"></div>'
+          : p.video ? thumbHTML(p.video) : '<div class="shop-img shop-img-empty"><span>' + esc(p.nome) + "</span></div>";
+        var botoes = Object.keys(LOJAS).filter(function (k) { return safeUrl(p[k]); }).map(function (k) {
+          return '<a class="buy ' + LOJAS[k].classe + '" href="' + esc(safeUrl(p[k])) + '" target="_blank" rel="noopener sponsored">' + LOJAS[k].rotulo + "</a>";
+        }).join("");
+        return '<article class="shop-card">' + img + '<div class="shop-body">' +
+          (p.categoria ? '<span class="prod-cat">' + esc(p.categoria) + "</span>" : "") +
+          "<h3>" + esc(p.nome) + "</h3>" + (p.porque ? "<p>" + esc(p.porque) + "</p>" : "") +
+          (p.preco ? '<span class="shop-price">' + esc(p.preco) + "</span>" : "") +
+          '<div class="shop-buy">' + botoes + "</div>" +
+          (p.video ? '<button type="button" class="link-btn" data-video="' + esc(p.video) + '">Ver no vídeo</button>' : "") +
+          "</div></article>";
+      }).join("") || '<p class="sec-lead">Nenhum produto nesse filtro.</p>';
+    };
+    $("#shopCats").addEventListener("click", function (e) { var b = e.target.closest("[data-cat]"); if (b) { shopCat = b.dataset.cat; renderShop(); } });
+    $("#shopStores").addEventListener("click", function (e) { var b = e.target.closest("[data-store]"); if (b) { shopStore = b.dataset.store; renderShop(); } });
+    renderShop();
+    $("#shopNote").textContent = loja.afiliado
+      ? "Alguns links são de afiliado: você paga o mesmo preço e o canal ganha uma pequena comissão. Preços e estoque podem mudar na loja."
+      : "Preços e estoque podem mudar na loja.";
+  }
+
+  /* ------------------------------------------------------------------ */
   /* Blog                                                                  */
   /* ------------------------------------------------------------------ */
   var posts = S.blog || [];

@@ -174,6 +174,21 @@ window.SITE = {
     { nome: "Trike drift", categoria: "Aventura", video: "Q8lZJXE_eio", texto: "Três rodas, ladeira e muita curva de lado.", link: "" }
   ],
 
+  /* LOJA DA FAMÍLIA: produtos que vocês indicam.
+     A seção só aparece no site quando tiver pelo menos um produto.
+     Para cada produto:
+       nome:      nome curto do produto
+       categoria: "Camping", "Moto", "Trilha", "Kids"... (vira filtro)
+       imagem:    "assets/loja/arquivo.jpg" (foto do produto)
+       porque:    uma frase dizendo por que vocês recomendam
+       preco:     opcional, ex.: "a partir de R$ 89" (preço muda, por isso "a partir de")
+       video:     opcional, código do vídeo do YouTube onde o produto aparece
+       shopee / mercadolivre: o link de compra (pode ter um ou os dois) */
+  loja: {
+    afiliado: true, // true mostra o aviso "links de afiliado" embaixo da loja
+    produtos: []
+  },
+
   blog: [
     {
       titulo: "Rumo ao Pódio 2026: a temporada até aqui",
