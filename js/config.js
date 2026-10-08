@@ -185,7 +185,7 @@ window.SITE = {
        video:     opcional, código do vídeo do YouTube onde o produto aparece
        shopee / mercadolivre: o link de compra (pode ter um ou os dois) */
   loja: {
-    afiliado: true, // true mostra o aviso "links de afiliado" embaixo da loja
+    afiliado: true, // todos os links são de afiliado: mostra o aviso embaixo da loja
     produtos: []
   },
 

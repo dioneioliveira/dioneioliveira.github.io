@@ -558,7 +558,7 @@
     $("#shopStores").addEventListener("click", function (e) { var b = e.target.closest("[data-store]"); if (b) { shopStore = b.dataset.store; renderShop(); } });
     renderShop();
     $("#shopNote").textContent = loja.afiliado
-      ? "Alguns links são de afiliado: você paga o mesmo preço e o canal ganha uma pequena comissão. Preços e estoque podem mudar na loja."
+      ? "Todos os links desta loja são de afiliado: você paga o mesmo preço e o canal ganha uma pequena comissão, que ajuda a manter os vídeos. Preços e estoque podem mudar na loja."
       : "Preços e estoque podem mudar na loja.";
   }
 
