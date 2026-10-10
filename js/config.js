@@ -40,8 +40,8 @@ window.SITE = {
   equipe: [
     { nome: "Dionei Oliveira", papel: "Criador do canal, câmera e piloto", numero: "", foto: "assets/equipe/dionei.jpg" },
     { nome: "Heidi", papel: "Parceira de trilha e de camping", numero: "", foto: "assets/equipe/heidi.jpg" },
-    { nome: "Vinicius", apelido: "Vini", papel: "Piloto de velocross", numero: "07", foto: "" },
-    { nome: "Gustavo", papel: "Piloto de velocross", numero: "12", foto: "" }
+    { nome: "Vinicius", apelido: "Vini", papel: "Piloto de velocross", numero: "07", foto: "assets/equipe/vinicius.jpg" },
+    { nome: "Gustavo", papel: "Piloto de velocross", numero: "12", foto: "assets/equipe/gustavo.jpg" }
   ],
 
   temporada: {
@@ -118,17 +118,17 @@ window.SITE = {
     { nome: "Vlog", id: "PLiUWjZvr3mm9XHR2GX0Dj2taa_edx3pyB" }
   ],
 
-  /* src: foto própria. Ou "video" + "quadro" (1, 2 ou 3): um quadro do vídeo. */
+  /* ÁLBUM: fotos da família. Coloque o arquivo em assets/fotos/ e adicione uma linha.
+     As fotos aparecem lado a lado, em cascata, no formato original (em pé ou deitada). */
   fotos: [
-    { src: "assets/fotos/corrida-15.jpg", legenda: "Dia de corrida de velocross", formato: "larga" },
-    { src: "assets/fotos/vini-gustavo-trilha.jpg", legenda: "Vini e Gustavo no meio da trilha", formato: "alta" },
-    { video: "gfPrpZT-598", quadro: 2, legenda: "Camping com cachoeira", formato: "quadrada" },
-    { src: "assets/fotos/lama-trilha.jpg", legenda: "Lama na trilha de pinheiros", formato: "alta" },
-    { video: "m0pPSKNPGBY", quadro: 1, legenda: "Acampamento na pista antes da corrida", formato: "quadrada" },
-    { src: "assets/fotos/casal-camping.jpg", legenda: "Pausa no camping", formato: "alta" },
-    { video: "h5oAkfEVEg0", quadro: 3, legenda: "Rio na Fazenda Evaristo", formato: "larga" },
-    { video: "gfPrpZT-598", quadro: 1, legenda: "Capacete na cabeça e moto ligada", formato: "quadrada" },
-    { video: "jzGLFC8rMXQ", quadro: 3, legenda: "Trilha com a TR4", formato: "larga" }
+    { src: "assets/fotos/familia-na-cachoeira.jpg", legenda: "A família reunida na cachoeira" },
+    { src: "assets/fotos/tiro-com-arco.jpg", legenda: "Tiro com arco no meio da mata" },
+    { src: "assets/fotos/barraca-e-fogueira.jpg", legenda: "Barraca montada e fogueira acesa" },
+    { src: "assets/fotos/vini-gustavo-trilha.jpg", legenda: "Vini e Gustavo no meio da trilha" },
+    { src: "assets/fotos/rampa-do-bugio.jpg", legenda: "Rampa do Bugio, Campo Alegre (SC), a 1.100 m" },
+    { src: "assets/fotos/lama-trilha.jpg", legenda: "Lama na trilha de pinheiros" },
+    { src: "assets/fotos/trilha-atras-da-cachoeira.jpg", legenda: "Trilha por trás da cachoeira" },
+    { src: "assets/fotos/corrida-15.jpg", legenda: "Dia de corrida de velocross" }
   ],
 
   campings: [

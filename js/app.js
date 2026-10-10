@@ -446,9 +446,18 @@
   var fotos = S.fotos || [];
   function fotoSrc(f) { return f.src ? asset(f.src) : frameUrl(f.video, f.quadro || 1); }
   $("#gallery").innerHTML = fotos.map(function (f, i) {
-    return '<button type="button" class="photo" data-f="' + esc(f.formato || "quadrada") + '" data-i="' + i + '"><div class="ph"><img src="' + esc(fotoSrc(f)) +
+    return '<button type="button" class="photo" data-f="' + esc(f.formato || "natural") + '" data-i="' + i + '" style="--d:' + (i * 90) + 'ms"><div class="ph"><img src="' + esc(fotoSrc(f)) +
       '" alt="' + esc(f.legenda) + '" loading="lazy"></div><span class="cap">' + esc(f.legenda) + "</span></button>";
   }).join("");
+  // Efeito cascata: as fotos entram uma depois da outra quando o álbum aparece na tela
+  var gal = $("#gallery");
+  if (!reduceMotion && "IntersectionObserver" in window) {
+    gal.classList.add("cascade");
+    var abrirGaleria = function () { gal.classList.add("in"); };
+    var ioGal = new IntersectionObserver(function (es) { if (es[0].isIntersecting) { abrirGaleria(); ioGal.disconnect(); } }, { rootMargin: "0px 0px -10% 0px" });
+    ioGal.observe(gal);
+    setTimeout(abrirGaleria, 6000); // garantia: nunca deixa fotos escondidas
+  }
   $("#gallery").addEventListener("click", function (e) {
     var b = e.target.closest(".photo"); if (!b) return;
     var f = fotos[Number(b.dataset.i)];
