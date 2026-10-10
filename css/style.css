@@ -287,7 +287,7 @@ kbd { font: 500 .85em var(--f-mono); padding: 1px 6px; border: 1px solid var(--l
 .pl svg { width: 18px; height: 18px; flex-shrink: 0; color: var(--red-hot); }
 
 /* Galeria: lado a lado em cascata (colunas tipo mural), fotos no formato original */
-.gallery { columns: 4 200px; column-gap: 12px; }
+.gallery { columns: 5 180px; column-gap: 12px; }
 .photo { break-inside: avoid; margin: 0 0 12px; display: block; width: 100%; padding: 0; border: 0; background: none; color: inherit; cursor: zoom-in; position: relative; overflow: hidden; text-align: left; }
 .photo .ph { position: relative; overflow: hidden; background: #1A1A1A; }
 .photo .ph img { width: 100%; height: auto; display: block; transition: transform .5s; }

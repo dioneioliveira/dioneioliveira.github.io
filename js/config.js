@@ -38,9 +38,9 @@ window.SITE = {
   /* numero: placa de corrida (deixe "" para mostrar as iniciais) */
   /* foto: "assets/equipe/arquivo.jpg" (rosto em quadrado). Sem foto, aparece o número ou as iniciais. */
   equipe: [
-    { nome: "Dionei Oliveira", papel: "Criador do canal, câmera e piloto", numero: "", foto: "assets/equipe/dionei.jpg" },
+    { nome: "Dionei Oliveira", papel: "Criador do canal e apoiador de loucuras e aventuras", numero: "", foto: "assets/equipe/dionei.jpg" },
     { nome: "Heidi", papel: "Parceira de trilha e de camping", numero: "", foto: "assets/equipe/heidi.jpg" },
-    { nome: "Vinicius", apelido: "Vini", papel: "Piloto de velocross", numero: "07", foto: "assets/equipe/vinicius.jpg" },
+    { nome: "Vinicius", apelido: "Vini", papel: "Piloto de velocross", numero: "17", foto: "assets/equipe/vinicius.jpg" },
     { nome: "Gustavo", papel: "Piloto de velocross", numero: "12", foto: "assets/equipe/gustavo.jpg" }
   ],
 
@@ -122,6 +122,8 @@ window.SITE = {
      As fotos aparecem lado a lado, em cascata, no formato original (em pé ou deitada). */
   fotos: [
     { src: "assets/fotos/familia-na-cachoeira.jpg", legenda: "A família reunida na cachoeira" },
+    { src: "assets/fotos/sandboard-nas-dunas.jpg", legenda: "Sandboard nas dunas" },
+    { src: "assets/fotos/balanco-na-cachoeira.jpg", legenda: "Dionei e Heidi no balanço da cachoeira" },
     { src: "assets/fotos/tiro-com-arco.jpg", legenda: "Tiro com arco no meio da mata" },
     { src: "assets/fotos/barraca-e-fogueira.jpg", legenda: "Barraca montada e fogueira acesa" },
     { src: "assets/fotos/vini-gustavo-trilha.jpg", legenda: "Vini e Gustavo no meio da trilha" },
