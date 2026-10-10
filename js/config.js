@@ -122,7 +122,7 @@ window.SITE = {
      As fotos aparecem lado a lado, em cascata, no formato original (em pé ou deitada). */
   fotos: [
     { src: "assets/fotos/familia-na-cachoeira.jpg", legenda: "A família reunida na cachoeira" },
-    { src: "assets/fotos/sandboard-nas-dunas.jpg", legenda: "Sandboard nas dunas" },
+    { src: "assets/fotos/sandboard-nas-dunas.jpg", legenda: "Dionei, Vini e Gustavo no sandboard nas dunas" },
     { src: "assets/fotos/balanco-na-cachoeira.jpg", legenda: "Dionei e Heidi no balanço da cachoeira" },
     { src: "assets/fotos/tiro-com-arco.jpg", legenda: "Tiro com arco no meio da mata" },
     { src: "assets/fotos/barraca-e-fogueira.jpg", legenda: "Barraca montada e fogueira acesa" },
