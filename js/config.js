@@ -36,9 +36,10 @@ window.SITE = {
   ],
 
   /* numero: placa de corrida (deixe "" para mostrar as iniciais) */
+  /* foto: "assets/equipe/arquivo.jpg" (rosto em quadrado). Sem foto, aparece o número ou as iniciais. */
   equipe: [
-    { nome: "Dionei Oliveira", papel: "Criador do canal, câmera e piloto", numero: "", foto: "" },
-    { nome: "Heidi", papel: "Parceira de trilha e de camping", numero: "", foto: "" },
+    { nome: "Dionei Oliveira", papel: "Criador do canal, câmera e piloto", numero: "", foto: "assets/equipe/dionei.jpg" },
+    { nome: "Heidi", papel: "Parceira de trilha e de camping", numero: "", foto: "assets/equipe/heidi.jpg" },
     { nome: "Vinicius", apelido: "Vini", papel: "Piloto de velocross", numero: "07", foto: "" },
     { nome: "Gustavo", papel: "Piloto de velocross", numero: "12", foto: "" }
   ],

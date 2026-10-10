@@ -300,9 +300,12 @@
   /* ------------------------------------------------------------------ */
   $("#crew").innerHTML = (S.equipe || []).map(function (m) {
     var initials = m.nome.split(" ").map(function (w) { return w[0]; }).join("").slice(0, 2).toUpperCase();
-    var plate = m.numero ? '<span class="plate">' + esc(m.numero) + "</span>" : '<span class="plate initials">' + esc(initials) + "</span>";
-    return '<article class="member">' + plate + "<div><h3>" + esc(m.nome) +
-      (m.apelido ? ' <small style="color:var(--muted);font-size:.6em">“' + esc(m.apelido) + "”</small>" : "") +
+    var avatar = m.foto
+      ? '<span class="avatar"><img src="' + esc(asset(m.foto)) + '" alt="Foto de ' + esc(m.nome) + '" loading="lazy">' +
+        (m.numero ? '<b class="avatar-num">' + esc(m.numero) + "</b>" : "") + "</span>"
+      : m.numero ? '<span class="plate">' + esc(m.numero) + "</span>" : '<span class="plate initials">' + esc(initials) + "</span>";
+    return '<article class="member">' + avatar + '<div class="member-txt"><h3>' + esc(m.nome) +
+      (m.apelido ? ' <small>“' + esc(m.apelido) + "”</small>" : "") +
       "</h3><p>" + esc(m.papel) + "</p></div></article>";
   }).join("");
 
