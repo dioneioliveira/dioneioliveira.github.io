@@ -6,31 +6,31 @@ window.AUTO = {
       "id": "D6YO52AXLQA",
       "titulo": "Deu ruim! Fiz o PIOR Cavalete de Moto pro Vini",
       "data": "2026-08-22",
-      "views": 2130
+      "views": 2133
     },
     {
       "id": "VktrnwkYI6Y",
       "titulo": "Tentei Baixar de 1 Minuto e QUASE deu ruim!",
       "data": "2026-08-11",
-      "views": 53
+      "views": 56
     },
     {
       "id": "QOQNJqPerm4",
       "titulo": "Depois de uma Largada Ruim... Fomos Treinar no Gate! [Série \"rumo ao pódio - T2026 #EP7]",
       "data": "2026-08-07",
-      "views": 658
+      "views": 659
     },
     {
       "id": "V1_XdDOT1wc",
       "titulo": "O ERRO na Largada que Me Custou o PÓDIO no Velocross!",
       "data": "2026-07-30",
-      "views": 564
+      "views": 565
     },
     {
       "id": "m0pPSKNPGBY",
       "titulo": "ACAMPEI NA PISTA! Treino secreto pra Copa Serra Litoral de Velocross",
       "data": "2026-07-28",
-      "views": 190
+      "views": 195
     },
     {
       "id": "B96sCa0WyXM",
@@ -40,11 +40,11 @@ window.AUTO = {
     }
   ],
   "inscritos": 8660,
-  "inscritosData": "08/10/2026",
+  "inscritosData": "12/10/2026",
   "videosPublicados": 832,
-  "atualizadoEm": "2026-10-08T06:35:14-03:00",
+  "atualizadoEm": "2026-10-12T09:26:58-03:00",
   "shopee": {
-    "atualizado": "08/10/2026",
+    "atualizado": "12/10/2026",
     "itens": [
       {
         "id": "22899169696",
@@ -60,7 +60,7 @@ window.AUTO = {
         "link": "https://s.shopee.com.br/6ffmrr9lQM",
         "imagem": "https://down-br.img.susercontent.com/file/br-11134207-820m0-moqs50icnfuu53_tn",
         "preco": 284.05,
-        "precoOriginal": 999.0
+        "precoOriginal": 1299.0
       },
       {
         "id": "11123675699",
