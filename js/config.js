@@ -48,7 +48,7 @@ window.SITE = {
     titulo: "Rumo ao Pódio",
     subtitulo: "Temporada 2026",
     descricao: "A série acompanha a preparação para as corridas de velocross de 2026: treinos no CT, ajustes na moto, largadas e os dias de prova.",
-    destaque: "QOQNJqPerm4",
+    destaque: "QCZZIPjLC6s",
     playlist: "PLiUWjZvr3mm-7w-Ct2Dlx6cjW058Ggu1M",
     /* Próxima corrida: preencha nome, local e data (formato 2026-11-15T09:00:00-03:00)
        para ligar a contagem regressiva. Sem data, aparece "data a confirmar". */
@@ -59,12 +59,13 @@ window.SITE = {
       { nome: "CT Greipel", url: "" }
     ],
     /* Vídeos da temporada, do mais antigo para o mais recente */
-    diario: ["M3KMI-Bai-M", "Uc3p8jv_L3A", "R6h_hssdNek", "xTlM1BYaoPY", "OA6__N3MWa0", "qgXnTkbBZ0o", "chUw40WO0UE", "PEXYptIFkng", "RyWxLd-ojqE", "m0pPSKNPGBY", "V1_XdDOT1wc", "QOQNJqPerm4", "VktrnwkYI6Y", "D6YO52AXLQA"]
+    diario: ["M3KMI-Bai-M", "Uc3p8jv_L3A", "R6h_hssdNek", "xTlM1BYaoPY", "OA6__N3MWa0", "qgXnTkbBZ0o", "chUw40WO0UE", "PEXYptIFkng", "RyWxLd-ojqE", "m0pPSKNPGBY", "V1_XdDOT1wc", "QOQNJqPerm4", "VktrnwkYI6Y", "D6YO52AXLQA", "QCZZIPjLC6s"]
   },
 
   /* Do mais recente para o mais antigo.
      categoria: "Velocross", "Camping", "Aventura", "Trilha" ou "Vlog" */
   videos: [
+    { id: "QCZZIPjLC6s", titulo: "AINDA SEM MOTOR? Entregamos as últimas peças! (Rumo ao Pódio · EP8)", categoria: "Velocross", data: "2026-10-15" },
     { id: "D6YO52AXLQA", titulo: "Deu ruim! Fiz o PIOR Cavalete de Moto pro Vini", categoria: "Velocross", data: "2026-08-22", views: 2130 },
     { id: "VktrnwkYI6Y", titulo: "Tentei Baixar de 1 Minuto e QUASE deu ruim!", categoria: "Velocross", data: "2026-08-11", views: 53 },
     { id: "QOQNJqPerm4", titulo: "Depois de uma Largada Ruim... Fomos Treinar no Gate! (Rumo ao Pódio T2026 · EP7)", categoria: "Velocross", data: "2026-08-07", views: 658 },
@@ -209,6 +210,7 @@ window.SITE = {
       "58256286551": { nome: "Colchão inflável MODOFO com bomba elétrica", categoria: "Camping", porque: "Bomba elétrica recarregável. Tem versão solteiro, casal, queen e king." },
       "23793406757": { nome: "Conjunto camiseta + short tactel", categoria: "Roupas", porque: "Conjunto masculino estilo country." },
       "25793214593": { nome: "Barraca automática 3 a 4 pessoas", categoria: "Camping", porque: "Montagem automática, 215 x 215 x 145 cm." },
+      "22194698481": { nome: "Colchão inflável Queen elétrico bivolt", categoria: "Camping", porque: "Bomba elétrica bivolt, alto e resistente: suporta até 300 kg." },
       "40415433093": { nome: "Barraca automática 2 a 3 pessoas", categoria: "Camping", porque: "Montagem automática, para 2 a 3 pessoas." }
     },
 
@@ -221,15 +223,16 @@ window.SITE = {
   blog: [
     {
       titulo: "Rumo ao Pódio 2026: a temporada até aqui",
-      data: "2026-10-06",
+      data: "2026-10-15",
       categoria: "Velocross",
       autor: "Equipe DYOLIVEIRAYT",
       leitura: "3 min",
-      resumo: "Do primeiro treino com a moto nova até o treino de largada no gate.",
+      resumo: "Do primeiro treino com a moto nova até a entrega das últimas peças, no episódio 8.",
       texto: [
         "A série Rumo ao Pódio acompanha a nossa temporada 2026 de velocross: os treinos no CT Greipel, a moto nova, os tempos de volta e os dias de prova.",
         "Na Copa Serra Litoral a gente acampou na própria pista para treinar antes da corrida. Depois veio a prova em que um erro na largada custou o pódio.",
-        "O episódio 7 foi a resposta: um treino inteiro no gate para acertar a largada. Os episódios estão no canal, na playlist de motocross."
+        "O episódio 7 foi a resposta: um treino inteiro no gate para acertar a largada.",
+        "No episódio 8 a moto ainda estava sem motor, e entregamos as últimas peças que faltavam. Os episódios estão no canal, na playlist de motocross."
       ]
     },
     {
