@@ -6,45 +6,45 @@ window.AUTO = {
       "id": "QCZZIPjLC6s",
       "titulo": "AINDA SEM MOTOR? 🏁 Entregamos as Últimas Peças! | Rumo ao Pódio #8",
       "data": "2026-10-15",
-      "views": 0
+      "views": 195
     },
     {
       "id": "D6YO52AXLQA",
       "titulo": "Deu ruim! Fiz o PIOR Cavalete de Moto pro Vini",
       "data": "2026-08-22",
-      "views": 2134
+      "views": 2136
     },
     {
       "id": "VktrnwkYI6Y",
       "titulo": "Tentei Baixar de 1 Minuto e QUASE deu ruim!",
       "data": "2026-08-11",
-      "views": 58
+      "views": 59
     },
     {
       "id": "QOQNJqPerm4",
       "titulo": "Depois de uma Largada Ruim... Fomos Treinar no Gate! [Série \"rumo ao pódio - T2026 #EP7]",
       "data": "2026-08-07",
-      "views": 660
+      "views": 662
     },
     {
       "id": "V1_XdDOT1wc",
       "titulo": "O ERRO na Largada que Me Custou o PÓDIO no Velocross!",
       "data": "2026-07-30",
-      "views": 565
+      "views": 568
     },
     {
       "id": "m0pPSKNPGBY",
       "titulo": "ACAMPEI NA PISTA! Treino secreto pra Copa Serra Litoral de Velocross",
       "data": "2026-07-28",
-      "views": 196
+      "views": 203
     }
   ],
-  "inscritos": 8660,
-  "inscritosData": "15/10/2026",
+  "inscritos": 8670,
+  "inscritosData": "19/10/2026",
   "videosPublicados": 833,
-  "atualizadoEm": "2026-10-15T20:04:20-03:00",
+  "atualizadoEm": "2026-10-19T15:31:11-03:00",
   "shopee": {
-    "atualizado": "15/10/2026",
+    "atualizado": "19/10/2026",
     "itens": [
       {
         "id": "22899169696",
@@ -115,7 +115,7 @@ window.AUTO = {
         "nome": "Barraca Camping Automatica 3-4 Pessoas Acampamento 215*215*145cm JOYFOX FORESTDOG",
         "link": "https://s.shopee.com.br/3B10t52WVv",
         "imagem": "https://down-br.img.susercontent.com/file/br-11134207-7r98o-m7vojm6kydkydc_tn",
-        "preco": 179.55,
+        "preco": 180.5,
         "precoOriginal": 699.0
       },
       {
@@ -131,7 +131,7 @@ window.AUTO = {
         "nome": "Barraca Camping 2/3 Pessoas  Acampamento Automatica",
         "link": "https://s.shopee.com.br/W0FiKiEnJ",
         "imagem": "https://down-br.img.susercontent.com/file/br-11134207-81z1k-mhzzw6rlwhz55a_tn",
-        "preco": 170.05,
+        "preco": 160.55,
         "precoOriginal": 399.0
       }
     ]
