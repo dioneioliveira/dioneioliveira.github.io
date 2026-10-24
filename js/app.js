@@ -44,7 +44,7 @@
 
   var videos = (S.videos || []).slice();
 
-  // Dados da atualização automática semanal (js/auto.js) por cima do config.js
+  // Dados da atualização automática (js/auto.js, a cada 2 dias) por cima do config.js
   var AUTO = window.AUTO || {};
   if (AUTO.inscritos) { C.inscritos = AUTO.inscritos; C.inscritosData = AUTO.inscritosData || C.inscritosData; }
   if (AUTO.videosPublicados) C.videosPublicados = AUTO.videosPublicados;
@@ -544,7 +544,7 @@
     if (t.length <= 60) return t;
     return t.slice(0, 60).replace(/\s+\S*$/, "") + "…";
   }
-  // Vitrine da Shopee (atualizada toda semana em js/auto.js) + ajustes do config
+  // Vitrine da Shopee (atualizada a cada 2 dias em js/auto.js) + ajustes do config
   var ajustes = loja.ajustes || {};
   var daVitrine = ((AUTO.shopee && AUTO.shopee.itens) || []).map(function (it) {
     var a = ajustes[it.id] || {};

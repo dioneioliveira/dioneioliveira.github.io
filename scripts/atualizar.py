@@ -1,4 +1,4 @@
-"""Atualização automática semanal do site DYOLIVEIRAYT.
+"""Atualização automática do site DYOLIVEIRAYT (roda a cada 2 dias).
 
 Busca no YouTube, sem chave de API:
   - os vídeos mais recentes do canal (feed RSS público), sem os Shorts;
@@ -6,7 +6,7 @@ Busca no YouTube, sem chave de API:
   - os produtos da vitrine de afiliado da Shopee, com link, foto e preço.
 
 Grava tudo em js/auto.js, que o site lê por cima do js/config.js.
-Se alguma busca falhar, mantém o valor da semana anterior.
+Se alguma busca falhar, mantém o valor da atualização anterior.
 
 Uso: python3 scripts/atualizar.py
 """
@@ -194,7 +194,7 @@ def main():
     dados["atualizadoEm"] = agora.strftime("%Y-%m-%dT%H:%M:%S-03:00")
 
     conteudo = (
-        "/* Gerado automaticamente por scripts/atualizar.py toda semana.\n"
+        "/* Gerado automaticamente por scripts/atualizar.py a cada 2 dias.\n"
         "   Não edite à mão: o conteúdo fixo do site fica em js/config.js. */\n"
         "window.AUTO = " + json.dumps(dados, ensure_ascii=False, indent=2) + ";\n"
     )

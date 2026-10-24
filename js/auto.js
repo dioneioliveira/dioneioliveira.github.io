@@ -1,4 +1,4 @@
-/* Gerado automaticamente por scripts/atualizar.py toda semana.
+/* Gerado automaticamente por scripts/atualizar.py a cada 2 dias.
    Não edite à mão: o conteúdo fixo do site fica em js/config.js. */
 window.AUTO = {
   "videos": [

@@ -192,7 +192,7 @@ window.SITE = {
     afiliado: true, // todos os links são de afiliado: mostra o aviso embaixo da loja
 
     /* VITRINE DA SHOPEE (automática)
-       Toda segunda a atualização semanal puxa os produtos desta vitrine, com link
+       A cada 2 dias a atualização automática puxa os produtos desta vitrine, com link
        de afiliado, foto e preço. Produto novo na vitrine aparece sozinho no site;
        produto removido ou esgotado some sozinho. */
     vitrineShopee: "https://collshp.com/dyoliveirayt?view=storefront",
