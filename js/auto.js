@@ -6,7 +6,7 @@ window.AUTO = {
       "id": "QCZZIPjLC6s",
       "titulo": "AINDA SEM MOTOR? 🏁 Entregamos as Últimas Peças! | Rumo ao Pódio #8",
       "data": "2026-10-15",
-      "views": 195
+      "views": 206
     },
     {
       "id": "D6YO52AXLQA",
@@ -18,7 +18,7 @@ window.AUTO = {
       "id": "VktrnwkYI6Y",
       "titulo": "Tentei Baixar de 1 Minuto e QUASE deu ruim!",
       "data": "2026-08-11",
-      "views": 59
+      "views": 61
     },
     {
       "id": "QOQNJqPerm4",
@@ -36,15 +36,15 @@ window.AUTO = {
       "id": "m0pPSKNPGBY",
       "titulo": "ACAMPEI NA PISTA! Treino secreto pra Copa Serra Litoral de Velocross",
       "data": "2026-07-28",
-      "views": 203
+      "views": 207
     }
   ],
   "inscritos": 8670,
-  "inscritosData": "19/10/2026",
+  "inscritosData": "24/10/2026",
   "videosPublicados": 833,
-  "atualizadoEm": "2026-10-19T15:31:11-03:00",
+  "atualizadoEm": "2026-10-24T12:38:27-03:00",
   "shopee": {
-    "atualizado": "19/10/2026",
+    "atualizado": "24/10/2026",
     "itens": [
       {
         "id": "22899169696",
@@ -117,14 +117,6 @@ window.AUTO = {
         "imagem": "https://down-br.img.susercontent.com/file/br-11134207-7r98o-m7vojm6kydkydc_tn",
         "preco": 180.5,
         "precoOriginal": 699.0
-      },
-      {
-        "id": "22194698481",
-        "nome": "Colchão Inflavel Queen Eletrico Bivolt Alto Confortavel Resistente 300kg",
-        "link": "https://s.shopee.com.br/18mTSHgmX",
-        "imagem": "https://down-br.img.susercontent.com/file/br-11134207-81z1k-mgs95npwqy9z3b_tn",
-        "preco": 341.91,
-        "precoOriginal": 999.0
       },
       {
         "id": "40415433093",
