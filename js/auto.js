@@ -3,34 +3,40 @@
 window.AUTO = {
   "videos": [
     {
+      "id": "qAYhg_rZMl0",
+      "titulo": "A SURPRESA DO CANAL FICOU TOP! 🔥 Só Falta a Moto! 🏁",
+      "data": "2026-10-24",
+      "views": 135
+    },
+    {
       "id": "QCZZIPjLC6s",
       "titulo": "AINDA SEM MOTOR? 🏁 Entregamos as Últimas Peças! | Rumo ao Pódio #8",
       "data": "2026-10-15",
-      "views": 206
+      "views": 209
     },
     {
       "id": "D6YO52AXLQA",
       "titulo": "Deu ruim! Fiz o PIOR Cavalete de Moto pro Vini",
       "data": "2026-08-22",
-      "views": 2136
+      "views": 2138
     },
     {
       "id": "VktrnwkYI6Y",
       "titulo": "Tentei Baixar de 1 Minuto e QUASE deu ruim!",
       "data": "2026-08-11",
-      "views": 61
+      "views": 62
     },
     {
       "id": "QOQNJqPerm4",
       "titulo": "Depois de uma Largada Ruim... Fomos Treinar no Gate! [Série \"rumo ao pódio - T2026 #EP7]",
       "data": "2026-08-07",
-      "views": 662
+      "views": 665
     },
     {
       "id": "V1_XdDOT1wc",
       "titulo": "O ERRO na Largada que Me Custou o PÓDIO no Velocross!",
       "data": "2026-07-30",
-      "views": 568
+      "views": 571
     },
     {
       "id": "m0pPSKNPGBY",
@@ -39,12 +45,12 @@ window.AUTO = {
       "views": 207
     }
   ],
-  "inscritos": 8670,
-  "inscritosData": "24/10/2026",
-  "videosPublicados": 833,
-  "atualizadoEm": "2026-10-24T12:38:27-03:00",
+  "inscritos": 8680,
+  "inscritosData": "26/10/2026",
+  "videosPublicados": 834,
+  "atualizadoEm": "2026-10-26T15:18:24-03:00",
   "shopee": {
-    "atualizado": "24/10/2026",
+    "atualizado": "26/10/2026",
     "itens": [
       {
         "id": "22899169696",
@@ -123,7 +129,7 @@ window.AUTO = {
         "nome": "Barraca Camping 2/3 Pessoas  Acampamento Automatica",
         "link": "https://s.shopee.com.br/W0FiKiEnJ",
         "imagem": "https://down-br.img.susercontent.com/file/br-11134207-81z1k-mhzzw6rlwhz55a_tn",
-        "preco": 160.55,
+        "preco": 170.05,
         "precoOriginal": 399.0
       }
     ]
