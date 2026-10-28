@@ -6,37 +6,37 @@ window.AUTO = {
       "id": "qAYhg_rZMl0",
       "titulo": "A SURPRESA DO CANAL FICOU TOP! 🔥 Só Falta a Moto! 🏁",
       "data": "2026-10-24",
-      "views": 135
+      "views": 235
     },
     {
       "id": "QCZZIPjLC6s",
       "titulo": "AINDA SEM MOTOR? 🏁 Entregamos as Últimas Peças! | Rumo ao Pódio #8",
       "data": "2026-10-15",
-      "views": 209
+      "views": 212
     },
     {
       "id": "D6YO52AXLQA",
       "titulo": "Deu ruim! Fiz o PIOR Cavalete de Moto pro Vini",
       "data": "2026-08-22",
-      "views": 2138
+      "views": 2141
     },
     {
       "id": "VktrnwkYI6Y",
       "titulo": "Tentei Baixar de 1 Minuto e QUASE deu ruim!",
       "data": "2026-08-11",
-      "views": 62
+      "views": 63
     },
     {
       "id": "QOQNJqPerm4",
       "titulo": "Depois de uma Largada Ruim... Fomos Treinar no Gate! [Série \"rumo ao pódio - T2026 #EP7]",
       "data": "2026-08-07",
-      "views": 665
+      "views": 667
     },
     {
       "id": "V1_XdDOT1wc",
       "titulo": "O ERRO na Largada que Me Custou o PÓDIO no Velocross!",
       "data": "2026-07-30",
-      "views": 571
+      "views": 572
     },
     {
       "id": "m0pPSKNPGBY",
@@ -46,12 +46,100 @@ window.AUTO = {
     }
   ],
   "inscritos": 8680,
-  "inscritosData": "26/10/2026",
+  "inscritosData": "28/10/2026",
   "videosPublicados": 834,
-  "atualizadoEm": "2026-10-26T15:18:24-03:00",
+  "atualizadoEm": "2026-10-28T14:55:10-03:00",
   "shopee": {
-    "atualizado": "26/10/2026",
+    "atualizado": "28/10/2026",
     "itens": [
+      {
+        "id": "58265164148",
+        "nome": "Clip Button Prendedor de Número de Peito Corrida Maratona Kit 4, 8, 16 ou 32 Peças Reutilizável",
+        "link": "https://s.shopee.com.br/5AtaBdA030",
+        "imagem": "https://down-br.img.susercontent.com/file/sg-11134201-8258t-mr7qsfgxz8qvec_tn",
+        "preco": 6.9,
+        "precoOriginal": 12.9
+      },
+      {
+        "id": "20197982470",
+        "nome": "LIQUIDZ® - Eletrólitos Zero Açúcares - Sabor Limonada Tropical  - Kit 1 Caixa - 14 sachês",
+        "link": "https://s.shopee.com.br/2LZOo7xKK1",
+        "imagem": "https://down-br.img.susercontent.com/file/br-11134207-820m1-mn0dz89j4a9t0f_tn",
+        "preco": 99.65,
+        "precoOriginal": 159.0
+      },
+      {
+        "id": "23797388961",
+        "nome": "Isotônico Hydramaxi Display 25 Sachês Sudract Repositor Eletrólitos Corrida Cross Pedal Endurance",
+        "link": "https://s.shopee.com.br/2BFybmcq6C",
+        "imagem": "https://down-br.img.susercontent.com/file/sg-11134201-7rcdr-lsw07la7309bc0_tn",
+        "preco": 61.71,
+        "precoOriginal": 64.95
+      },
+      {
+        "id": "22398107827",
+        "nome": "Gel Carb Go Recovery Atlhetica Energia Endurance Cx 10x30g",
+        "link": "https://s.shopee.com.br/3qOCajDFrv",
+        "imagem": "https://down-br.img.susercontent.com/file/sg-11134201-7rfge-m462yym75hvs75_tn",
+        "preco": 32.34,
+        "precoOriginal": 36.33
+      },
+      {
+        "id": "58258827349",
+        "nome": "Kit 3 Óculos Polarizado UV400 Esportivo Masculino Feminino Corrida Ciclismo Praia Alta Proteção",
+        "link": "https://s.shopee.com.br/40hcmrhOTr",
+        "imagem": "https://down-br.img.susercontent.com/file/sg-11134201-81zvj-mn1soy7dh5oh88_tn",
+        "preco": 35.39,
+        "precoOriginal": 35.39
+      },
+      {
+        "id": "20498074322",
+        "nome": "Kit 3 pares de Manguito Segunda Pele - Proteção Solar Manguito corrida volei",
+        "link": "https://s.shopee.com.br/4qGjmMf6A9",
+        "imagem": "https://down-br.img.susercontent.com/file/br-11134207-7r98o-m75afsoebq7beb_tn",
+        "preco": 21.0,
+        "precoOriginal": 35.0
+      },
+      {
+        "id": "52669146767",
+        "nome": "Óculos De Sol Fotocromáticos Uv400 Para Ciclismo , Corrida , Direção , Esportes Ao Ar Livre",
+        "link": "https://s.shopee.com.br/8Kqbwf8wFX",
+        "imagem": "https://down-br.img.susercontent.com/file/sg-11134201-82594-mubs4frbjg8x4b_tn",
+        "preco": 22.46,
+        "precoOriginal": 28.0
+      },
+      {
+        "id": "58219538006",
+        "nome": "Kit 4/8/12 Bottons Número de Peito | Clip Corrida de Rua | Maratona | Boton de Corrida | Acessório |",
+        "link": "https://s.shopee.com.br/8AXBjXhRPp",
+        "imagem": "https://down-br.img.susercontent.com/file/br-11134207-820lr-mtslho23mm0w0d_tn",
+        "preco": 16.9,
+        "precoOriginal": 26.8
+      },
+      {
+        "id": "23198363091",
+        "nome": "Óculos de Sol Polarizado para Corrida: Conforto, Estilo e Proteção para Seus Treinos!",
+        "link": "https://s.shopee.com.br/9V2ZJk0Z6h",
+        "imagem": "https://down-br.img.susercontent.com/file/sg-11134201-7reph-m80vsgjxza8y84_tn",
+        "preco": 26.9,
+        "precoOriginal": 80.0
+      },
+      {
+        "id": "58269817779",
+        "nome": "Placa Decorativa \"Melhores Tempos\" Corrida  de rua - Modular e Atualizável",
+        "link": "https://s.shopee.com.br/9APiv3GupA",
+        "imagem": "https://down-br.img.susercontent.com/file/sg-11134201-82590-mtyoa88m9xjb11_tn",
+        "preco": 45.9,
+        "precoOriginal": 129.9
+      },
+      {
+        "id": "40376776620",
+        "nome": "Cinto De Corrida Da Maratona Número , Cintura Do Pacote De Pano Corrida Ciclismo Caminhada Ajustável",
+        "link": "https://s.shopee.com.br/2gCFB4BfcO",
+        "imagem": "https://down-br.img.susercontent.com/file/cn-11134207-820l4-mphnelmyjax7c4_tn",
+        "preco": 15.99,
+        "precoOriginal": 15.99
+      },
       {
         "id": "22899169696",
         "nome": "MTC 13A Camisa camiseta para Motocross, velocross, trilha, Enduro duas rodas em moto",
