@@ -6,7 +6,7 @@ window.AUTO = {
       "id": "qAYhg_rZMl0",
       "titulo": "A SURPRESA DO CANAL FICOU TOP! 🔥 Só Falta a Moto! 🏁",
       "data": "2026-10-24",
-      "views": 235
+      "views": 237
     },
     {
       "id": "QCZZIPjLC6s",
@@ -36,7 +36,7 @@ window.AUTO = {
       "id": "V1_XdDOT1wc",
       "titulo": "O ERRO na Largada que Me Custou o PÓDIO no Velocross!",
       "data": "2026-07-30",
-      "views": 572
+      "views": 573
     },
     {
       "id": "m0pPSKNPGBY",
@@ -46,18 +46,18 @@ window.AUTO = {
     }
   ],
   "inscritos": 8680,
-  "inscritosData": "28/10/2026",
+  "inscritosData": "30/10/2026",
   "videosPublicados": 834,
-  "atualizadoEm": "2026-10-28T14:55:10-03:00",
+  "atualizadoEm": "2026-10-30T14:44:58-03:00",
   "shopee": {
-    "atualizado": "28/10/2026",
+    "atualizado": "30/10/2026",
     "itens": [
       {
         "id": "58265164148",
         "nome": "Clip Button Prendedor de Número de Peito Corrida Maratona Kit 4, 8, 16 ou 32 Peças Reutilizável",
         "link": "https://s.shopee.com.br/5AtaBdA030",
         "imagem": "https://down-br.img.susercontent.com/file/sg-11134201-8258t-mr7qsfgxz8qvec_tn",
-        "preco": 6.9,
+        "preco": 6.75,
         "precoOriginal": 12.9
       },
       {
@@ -65,7 +65,7 @@ window.AUTO = {
         "nome": "LIQUIDZ® - Eletrólitos Zero Açúcares - Sabor Limonada Tropical  - Kit 1 Caixa - 14 sachês",
         "link": "https://s.shopee.com.br/2LZOo7xKK1",
         "imagem": "https://down-br.img.susercontent.com/file/br-11134207-820m1-mn0dz89j4a9t0f_tn",
-        "preco": 99.65,
+        "preco": 95.27,
         "precoOriginal": 159.0
       },
       {
@@ -105,7 +105,7 @@ window.AUTO = {
         "nome": "Óculos De Sol Fotocromáticos Uv400 Para Ciclismo , Corrida , Direção , Esportes Ao Ar Livre",
         "link": "https://s.shopee.com.br/8Kqbwf8wFX",
         "imagem": "https://down-br.img.susercontent.com/file/sg-11134201-82594-mubs4frbjg8x4b_tn",
-        "preco": 22.46,
+        "preco": 20.66,
         "precoOriginal": 28.0
       },
       {
@@ -201,7 +201,7 @@ window.AUTO = {
         "nome": "Camiseta + short Tactel masculino country texas promoção",
         "link": "https://s.shopee.com.br/30hs9lLxnT",
         "imagem": "https://down-br.img.susercontent.com/file/br-11134207-7r98o-m13gofeepq1qe4_tn",
-        "preco": 28.7,
+        "preco": 28.99,
         "precoOriginal": 28.99
       },
       {
