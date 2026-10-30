@@ -141,11 +141,14 @@
       ctx.fill(); ctx.stroke(); ctx.restore();
     }
     // Moto de velocross real (imagem com a placa 17); enquanto não carrega, usa o desenho em linhas
-    var motoImg = new Image(), motoOk = false;
-    motoImg.onload = function () { motoOk = true; };
-    motoImg.src = asset("assets/moto-velocross.png");
-    function bike(x, y, s, ang) {
-      if (motoOk) {
+    // Três imagens geradas no Higgsfield: 17 andando, 17 saltando e 12 (Gustavo)
+    var MOTOS = {};
+    [["p17", "assets/moto-velocross.png"], ["salto", "assets/moto-velocross-salto.png"], ["p12", "assets/moto-velocross-12.png"]].forEach(function (m) {
+      var im = new Image(); im.onload = function () { MOTOS[m[0]] = im; }; im.src = asset(m[1]);
+    });
+    function bike(x, y, s, ang, qual) {
+      var motoImg = MOTOS[qual] || MOTOS.p17;
+      if (motoImg) {
         var h = s * 2.1, w = h * motoImg.naturalWidth / motoImg.naturalHeight;
         ctx.save(); ctx.translate(x, y); ctx.rotate(ang);
         ctx.shadowColor = "rgba(255,26,26,.85)"; ctx.shadowBlur = 16;
@@ -231,7 +234,9 @@
           ctx.fillStyle = "rgba(190,120,70,.55)";
           for (var d = 0; d < 4; d++) { ctx.beginPath(); ctx.arc(bx * W - s * (1.35 + d * 0.35), fy(bx) - 3 - Math.random() * 8, 1.5 + Math.random() * 2.5, 0, 6.283); ctx.fill(); }
         }
-        bike(bx * W, fy(bx) - lift, s, ang);
+        // alterna os pilotos a cada passagem: 17 (com a imagem de salto na rampa) e 12
+        var volta = Math.floor(Math.max(0, (t || 0) - t0) / cycle) % 2;
+        bike(bx * W, fy(bx) - lift, s, ang, volta ? "p12" : (lift > 6 ? "salto" : "p17"));
       }
     }
     function loop(t) { if (!running) return; draw(t); requestAnimationFrame(loop); }

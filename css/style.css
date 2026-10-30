@@ -75,6 +75,9 @@ kbd { font: 500 .85em var(--f-mono); padding: 1px 6px; border: 1px solid var(--l
 }
 .track-bike img { display: block; width: 100%; height: auto; transform-origin: 18% 92%; transition: transform .25s ease;
   filter: drop-shadow(0 2px 2px rgba(0,0,0,.8)) drop-shadow(0 0 6px rgba(225,6,19,.45)); }
+.track-bike .m12 { display: none; }
+.track-bike.volta .m17 { display: none; }
+.track-bike.volta .m12 { display: block; }
 .track-bike.volta img { transform: scaleX(-1); }
 .track-bike.andando img { animation: motoTreme .12s linear infinite; }
 .track-bike.wheelie img { transform: rotate(-16deg); }
