@@ -1004,6 +1004,21 @@
     if (typed === "vrum") { hero.jump(); window.scrollTo({ top: 0, behavior: reduceMotion ? "auto" : "smooth" }); confetti(); }
   });
 
+  /* ------------------------------------------------------------------ */
+  /* App no celular: service worker e botão "Instalar app"                 */
+  /* ------------------------------------------------------------------ */
+  if ("serviceWorker" in navigator && location.protocol === "https:") {
+    navigator.serviceWorker.register("sw.js").catch(function () { /* sem app offline, tudo bem */ });
+  }
+  var pedidoInstalar = null, btnApp = $("#instalarApp");
+  window.addEventListener("beforeinstallprompt", function (e) { e.preventDefault(); pedidoInstalar = e; btnApp.hidden = false; });
+  btnApp.addEventListener("click", function () {
+    if (!pedidoInstalar) return;
+    pedidoInstalar.prompt();
+    pedidoInstalar.userChoice.then(function () { pedidoInstalar = null; btnApp.hidden = true; });
+  });
+  window.addEventListener("appinstalled", function () { btnApp.hidden = true; });
+
   hero.resize();
   hero.start();
 })();
