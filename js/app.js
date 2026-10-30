@@ -115,8 +115,12 @@
       W = heroCanvas.clientWidth; H = heroCanvas.clientHeight;
       heroCanvas.width = Math.round(W * dpr); heroCanvas.height = Math.round(H * dpr);
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      // a pista da moto fica na borda de cima dos quadros de inscritos, sempre visível
+      var st = document.querySelector(".stats");
+      trilhoY = st ? st.getBoundingClientRect().top - heroSection.getBoundingClientRect().top - 2 : H * 0.6;
       draw(performance.now());
     }
+    var trilhoY = 0;
     function line(fn, fill, stroke, glow) {
       ctx.beginPath(); ctx.moveTo(0, H);
       for (var x = 0; x <= W; x += 5) ctx.lineTo(x, fn(x / W) * H);
@@ -136,7 +140,19 @@
       }
       ctx.fill(); ctx.stroke(); ctx.restore();
     }
+    // Moto de velocross real (imagem com a placa 17); enquanto não carrega, usa o desenho em linhas
+    var motoImg = new Image(), motoOk = false;
+    motoImg.onload = function () { motoOk = true; };
+    motoImg.src = asset("assets/moto-velocross.png");
     function bike(x, y, s, ang) {
+      if (motoOk) {
+        var h = s * 2.1, w = h * motoImg.naturalWidth / motoImg.naturalHeight;
+        ctx.save(); ctx.translate(x, y); ctx.rotate(ang);
+        ctx.shadowColor = "rgba(255,26,26,.85)"; ctx.shadowBlur = 16;
+        ctx.drawImage(motoImg, -w / 2, -h, w, h);
+        ctx.restore();
+        return;
+      }
       ctx.save(); ctx.translate(x, y); ctx.rotate(ang);
       ctx.strokeStyle = "#FFFFFF"; ctx.shadowColor = "#FF1A1A"; ctx.shadowBlur = 14; ctx.lineWidth = Math.max(2, s * 0.09); ctx.lineCap = "round"; ctx.lineJoin = "round";
       var rr = s * 0.32;
@@ -195,19 +211,25 @@
       });
       ctx.globalAlpha = 1; ctx.shadowBlur = 0;
 
-      // moto atravessando a serra com um salto
+      // pista em neon e moto de velocross (placa 17) atravessando com um salto na rampa
+      var j0 = 0.32, j1 = 0.52, rampX = j0 * W;
+      ctx.save();
+      ctx.strokeStyle = "rgba(255,42,42,.55)"; ctx.lineWidth = 2; ctx.setLineDash([10, 8]); ctx.lineDashOffset = -((t || 0) * 0.05) % 18;
+      ctx.beginPath(); ctx.moveTo(0, trilhoY); ctx.lineTo(W, trilhoY); ctx.stroke(); ctx.setLineDash([]);
+      ctx.fillStyle = "#3A1A10"; ctx.strokeStyle = "#FF2A2A"; ctx.shadowColor = "#FF1A1A"; ctx.shadowBlur = 10;
+      ctx.beginPath(); ctx.moveTo(rampX - 46, trilhoY); ctx.lineTo(rampX, trilhoY - 16); ctx.lineTo(rampX + 4, trilhoY); ctx.closePath(); ctx.fill(); ctx.stroke();
+      ctx.restore();
       var cycle = 9000, ride = 6000, bt = reduceMotion ? 2400 : (t - t0) % cycle;
       if (bt < ride) {
-        var u = bt / ride, bx = -0.06 + u * 1.12;
-        var fy = function (x) { return front(x) * H - 2; };
-        var lift = 0, j0 = 0.32, j1 = 0.52;
-        if (bx > j0 && bx < j1) lift = Math.sin((bx - j0) / (j1 - j0) * Math.PI) * H * 0.14;
-        var slope = (fy(bx + 0.01) - fy(bx - 0.01)) / (0.02 * W);
-        var ang = Math.atan(slope) + (lift ? -0.3 * Math.cos((bx - j0) / (j1 - j0) * Math.PI) : 0);
-        var s = Math.min(46, Math.max(26, H * 0.06));
+        var u = bt / ride, bx = -0.08 + u * 1.16;
+        var fy = function (x) { return trilhoY + Math.sin(x * 40) * 1.2; };
+        var lift = 0;
+        if (bx > j0 && bx < j1) lift = Math.sin((bx - j0) / (j1 - j0) * Math.PI) * Math.min(H * 0.12, 95);
+        var ang = lift ? -0.32 * Math.cos((bx - j0) / (j1 - j0) * Math.PI) : 0;
+        var s = Math.min(34, Math.max(24, W * 0.022));
         if (!lift && !reduceMotion) {
-          ctx.fillStyle = "rgba(255,90,60,.5)";
-          for (var d = 0; d < 4; d++) { ctx.beginPath(); ctx.arc(bx * W - s * (0.9 + d * 0.3), fy(bx) - 3 - Math.random() * 8, 1.5 + Math.random() * 2, 0, 6.283); ctx.fill(); }
+          ctx.fillStyle = "rgba(190,120,70,.55)";
+          for (var d = 0; d < 4; d++) { ctx.beginPath(); ctx.arc(bx * W - s * (1.35 + d * 0.35), fy(bx) - 3 - Math.random() * 8, 1.5 + Math.random() * 2.5, 0, 6.283); ctx.fill(); }
         }
         bike(bx * W, fy(bx) - lift, s, ang);
       }
@@ -864,12 +886,19 @@
     }, { rootMargin: "-45% 0px -50% 0px" });
     $all("main section[id]").forEach(function (s) { io.observe(s); });
   }
-  var trackBike = $("#trackBike"), lastY = window.scrollY, wheelieT;
+  var trackBike = $("#trackBike"), lastY = window.scrollY, wheelieT, andandoT;
   function onScroll() {
     var max = document.documentElement.scrollHeight - innerHeight;
     trackBike.style.setProperty("--p", (max > 0 ? Math.min(1, window.scrollY / max) : 0).toFixed(4));
     var dy = window.scrollY - lastY; lastY = window.scrollY;
-    if (dy > 40) { trackBike.classList.add("wheelie"); clearTimeout(wheelieT); wheelieT = setTimeout(function () { trackBike.classList.remove("wheelie"); }, 250); }
+    if (!dy) return;
+    // a moto vira para o lado em que a página está indo, treme, solta poeira e empina se for rápido
+    trackBike.classList.toggle("volta", dy < 0);
+    if (!reduceMotion) {
+      trackBike.classList.add("andando"); clearTimeout(andandoT);
+      andandoT = setTimeout(function () { trackBike.classList.remove("andando"); }, 220);
+    }
+    if (Math.abs(dy) > 40) { trackBike.classList.add("wheelie"); clearTimeout(wheelieT); wheelieT = setTimeout(function () { trackBike.classList.remove("wheelie"); }, 300); }
   }
   window.addEventListener("scroll", onScroll, { passive: true });
   onScroll();
