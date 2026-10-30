@@ -48,7 +48,7 @@ window.AUTO = {
   "inscritos": 8680,
   "inscritosData": "30/10/2026",
   "videosPublicados": 834,
-  "atualizadoEm": "2026-10-30T14:44:58-03:00",
+  "atualizadoEm": "2026-10-30T20:42:16-03:00",
   "shopee": {
     "atualizado": "30/10/2026",
     "itens": [
@@ -221,5 +221,55 @@ window.AUTO = {
         "precoOriginal": 399.0
       }
     ]
-  }
+  },
+  "shorts": [
+    {
+      "id": "w7RgQERda8Y",
+      "titulo": "Treininho de 8 sem a grande moto #minimoto",
+      "data": "2026-09-02",
+      "views": 1300
+    },
+    {
+      "id": "Z9E4nDjeMqQ",
+      "titulo": "Nóis no paredão #minimoto #dianormal #paredão #velocross",
+      "data": "2026-08-30",
+      "views": 1008
+    },
+    {
+      "id": "o-V3oavSbZE",
+      "titulo": "Peteco na máquina #motor #crf #velocross #velocidade",
+      "data": "2026-08-16",
+      "views": 5397
+    },
+    {
+      "id": "b-KreP1RnjM",
+      "titulo": "Só tirar 4 segundos #velocross #voltarapida #competição #rp @Blmotosracing94",
+      "data": "2026-08-09",
+      "views": 6569
+    },
+    {
+      "id": "tVxnItXaChI",
+      "titulo": "Vamos sortear para um inscrito no canal #sorteio  #velocross #segurança #moto",
+      "data": "2026-08-08",
+      "views": 1040
+    },
+    {
+      "id": "JhVqS-3RGVE",
+      "titulo": "Welcome to the race!!!!! @Blmotosracing94 #velocross #motocross #velocidade #motooffroad",
+      "data": "2026-08-01",
+      "views": 1529
+    },
+    {
+      "id": "CE6nbcUVuwg",
+      "titulo": "Largada categoria Júnior Copa Serra Litoral #velocross #largada #acelera",
+      "data": "2026-07-28",
+      "views": 1870
+    },
+    {
+      "id": "lVauxJoec30",
+      "titulo": "Um oferecimento TRSF Racing #minimoto #manobras",
+      "data": "2026-07-27",
+      "views": 1257
+    }
+  ]
 };

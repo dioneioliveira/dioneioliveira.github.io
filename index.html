@@ -6,6 +6,19 @@
 <title>DYOLIVEIRAYT</title>
 <meta name="description" content="Canal DYOLIVEIRAYT: velocross, corridas, camping, trilhas e aventuras ao ar livre em família.">
 <meta name="theme-color" content="#070707">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="DYOLIVEIRAYT">
+<meta property="og:title" content="DYOLIVEIRAYT · Velocross, camping e aventuras">
+<meta property="og:description" content="Velocross, camping, trilhas e aventuras em família. Vídeos novos, série Rumo ao Pódio, roleta da aventura e a loja com o que a gente usa.">
+<meta property="og:url" content="https://dioneioliveira.github.io/">
+<meta property="og:image" content="https://dioneioliveira.github.io/assets/compartilhar.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Logo DYOLIVEIRAYT com as motos de velocross 17 e 12">
+<meta property="og:locale" content="pt_BR">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://dioneioliveira.github.io/assets/compartilhar.jpg">
+<link rel="canonical" href="https://dioneioliveira.github.io/">
 <link rel="icon" href="assets/avatar.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -28,6 +41,7 @@
       <a href="#roleta">Roleta</a>
       <a href="#temporada">Temporada</a>
       <a href="#videos">Vídeos</a>
+      <a href="#shorts" id="navShorts">Shorts</a>
       <a href="#series">Séries</a>
       <a href="#fotos">Fotos</a>
       <a href="#campings">Campings</a>
@@ -44,6 +58,10 @@
       <img class="m17" src="assets/moto-velocross.png" alt="" width="280" height="209">
       <img class="m12" src="assets/moto-velocross-12.png" alt="" width="280" height="243">
     </div>
+  </div>
+  <div class="novo-video" id="novoVideo" hidden>
+    <button type="button" class="novo-video-link" id="novoVideoLink"><span class="novo-tag">Vídeo novo</span><span id="novoVideoTitulo"></span><span class="novo-play" aria-hidden="true">▶ Assistir</span></button>
+    <button type="button" class="novo-video-fechar" id="novoVideoFechar" aria-label="Fechar aviso de vídeo novo">×</button>
   </div>
 </header>
 
@@ -186,6 +204,23 @@
       <div id="videoFeature"></div>
       <div class="video-grid" id="videoGrid"></div>
       <p class="more"><a class="btn btn-ghost" id="allVideos" href="#" target="_blank" rel="noopener">Ver todos os vídeos no YouTube</a></p>
+    </div>
+  </section>
+
+  <!-- SHORTS -->
+  <section class="section section-shorts" id="shorts" hidden>
+    <div class="wrap">
+      <header class="sec-head sec-head-row">
+        <div>
+          <p class="tag"><span>Shorts</span></p>
+          <h2>Rapidinhos de <em>pista</em></h2>
+        </div>
+        <div class="shorts-nav">
+          <button type="button" class="shorts-seta" id="shortsAnt" aria-label="Shorts anteriores">‹</button>
+          <button type="button" class="shorts-seta" id="shortsProx" aria-label="Próximos shorts">›</button>
+        </div>
+      </header>
+      <div class="shorts-trilho" id="shortsTrilho"></div>
     </div>
   </section>
 

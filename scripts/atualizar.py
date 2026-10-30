@@ -1,7 +1,7 @@
 """Atualização automática do site DYOLIVEIRAYT (roda a cada 2 dias).
 
 Busca no YouTube, sem chave de API:
-  - os vídeos mais recentes do canal (feed RSS público), sem os Shorts;
+  - os vídeos mais recentes do canal (feed RSS público), separando os Shorts;
   - o número de inscritos e o total de vídeos (página pública do canal);
   - os produtos da vitrine de afiliado da Shopee, com link, foto e preço.
 
@@ -68,7 +68,7 @@ def eh_short(video_id):
 
 def videos_do_feed():
     _, xml = baixar("https://www.youtube.com/feeds/videos.xml?channel_id=" + CHANNEL_ID)
-    lista = []
+    lista, shorts = [], []
     for entrada in re.findall(r"<entry>(.*?)</entry>", xml, re.S):
         vid = re.search(r"<yt:videoId>(.*?)</yt:videoId>", entrada).group(1)
         titulo = html.unescape(re.search(r"<title>(.*?)</title>", entrada, re.S).group(1)).strip()
@@ -77,10 +77,9 @@ def videos_do_feed():
         short = eh_short(vid)
         if short is None:  # sem resposta: usa as hashtags do título como pista
             short = titulo.count("#") >= 2
-        if short:
-            continue
-        lista.append({"id": vid, "titulo": titulo, "data": data, "views": int(views.group(1)) if views else None})
-    return lista
+        item = {"id": vid, "titulo": titulo, "data": data, "views": int(views.group(1)) if views else None}
+        (shorts if short else lista).append(item)
+    return lista, shorts
 
 
 def numero_br(texto):
@@ -168,9 +167,11 @@ def main():
     erros = []
 
     try:
-        lista = videos_do_feed()
+        lista, shorts = videos_do_feed()
         if lista:
             dados["videos"] = lista
+        if shorts:
+            dados["shorts"] = shorts
     except Exception as e:  # noqa: BLE001
         erros.append("vídeos: %s" % e)
 
@@ -203,7 +204,7 @@ def main():
 
     print("Inscritos:", dados.get("inscritos"), "| Vídeos publicados:", dados.get("videosPublicados"),
           "| Vídeos no feed (sem Shorts):", len(dados.get("videos", [])),
-          "| Produtos na vitrine:", len((dados.get("shopee") or {}).get("itens", [])))
+          "| Shorts:", len(dados.get("shorts", [])), "| Produtos na vitrine:", len((dados.get("shopee") or {}).get("itens", [])))
     for e in erros:
         print("AVISO:", e, file=sys.stderr)
     if erros and not antes and "videos" not in dados:

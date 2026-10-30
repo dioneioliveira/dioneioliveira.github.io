@@ -684,6 +684,48 @@
   if (hasApi && C.buscarVideosRecentes) fetchVideos();
 
   /* ------------------------------------------------------------------ */
+  /* Shorts: carrossel vertical, vindo da atualização automática           */
+  /* ------------------------------------------------------------------ */
+  var shorts = (AUTO.shorts || []).slice(0, 12);
+  function tituloShort(t) { return (t || "").replace(/#\S+/g, "").replace(/@\S+/g, "").replace(/\s+/g, " ").trim() || "Short do canal"; }
+  if (shorts.length) {
+    $("#shorts").hidden = false;
+    $("#shortsTrilho").innerHTML = shorts.map(function (v) {
+      return '<button type="button" class="short" data-short="' + esc(v.id) + '">' +
+        '<span class="short-capa"><img src="https://i.ytimg.com/vi/' + esc(v.id) + '/oardefault.jpg" alt="" loading="lazy" onload="if(this.naturalWidth<400&&!this.dataset.troca){this.dataset.troca=1;this.src=this.src.replace(\'oardefault\',\'hqdefault\')}"></span>' +
+        '<span class="short-play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7 4v16l13-8z"/></svg></span>' +
+        '<span class="short-info"><b>' + esc(tituloShort(v.titulo)) + "</b>" + (v.views != null ? "<small>" + esc(fmtViews(v.views)) + "</small>" : "") + "</span></button>";
+    }).join("");
+    $("#shortsTrilho").addEventListener("click", function (e) {
+      var b = e.target.closest("[data-short]"); if (!b) return;
+      var id = b.getAttribute("data-short"), v = shorts.filter(function (x) { return x.id === id; })[0] || {};
+      openModal('<div class="modal-media modal-vertical"><iframe src="https://www.youtube-nocookie.com/embed/' + esc(id) + '?autoplay=1&rel=0" title="' + esc(tituloShort(v.titulo)) +
+        '" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen></iframe></div><div class="modal-text"><h3 id="modalTitle">' + esc(tituloShort(v.titulo)) +
+        '</h3><p><a class="btn btn-red" href="https://www.youtube.com/shorts/' + esc(id) + '" target="_blank" rel="noopener">Ver no YouTube</a></p></div>');
+    });
+    var trilho = $("#shortsTrilho");
+    var passo = function () { return Math.max(200, trilho.clientWidth * 0.8); };
+    $("#shortsAnt").addEventListener("click", function () { trilho.scrollBy({ left: -passo(), behavior: reduceMotion ? "auto" : "smooth" }); });
+    $("#shortsProx").addEventListener("click", function () { trilho.scrollBy({ left: passo(), behavior: reduceMotion ? "auto" : "smooth" }); });
+  } else {
+    var ns = $("#navShorts"); if (ns) ns.hidden = true;
+  }
+
+  /* ------------------------------------------------------------------ */
+  /* Faixa "Vídeo novo": aparece até 7 dias depois do último vídeo         */
+  /* ------------------------------------------------------------------ */
+  (function () {
+    var v = videos[0];
+    if (!v || !v.data) return;
+    var dias = (Date.now() - new Date(v.data + "T12:00:00").getTime()) / 864e5;
+    if (dias > 7 || store("dy-novo-fechado") === v.id) return;
+    $("#novoVideoTitulo").textContent = v.titulo;
+    $("#novoVideo").hidden = false;
+    $("#novoVideoLink").addEventListener("click", function () { openVideo(v); });
+    $("#novoVideoFechar").addEventListener("click", function () { $("#novoVideo").hidden = true; store("dy-novo-fechado", v.id); });
+  })();
+
+  /* ------------------------------------------------------------------ */
   /* Playlists                                                             */
   /* ------------------------------------------------------------------ */
   $("#playlists").innerHTML = (S.playlists || []).map(function (p) {
