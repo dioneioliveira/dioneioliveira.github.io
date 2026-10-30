@@ -6,15 +6,16 @@
 
   // Ícones em linha (viewBox 24x24), usados na roda, na lista de chances e no resultado
   var ICONES = {
-    barraca: "M3 20 L12 4 L21 20 Z M12 4 V20 M9 20 L12 14 L15 20 M1.5 20 H22.5",
-    moto: "M2 17a3 3 0 1 0 6 0a3 3 0 1 0 -6 0 M16 17a3 3 0 1 0 6 0a3 3 0 1 0 -6 0 M5 17 L9 11 H14 L19 17 M9 11 L11 15 L14 11 M13 8 L16 9 L19 17",
-    praia: "M12 2.5v2 M6 5l1.4 1.4 M18 5l-1.4 1.4 M7.5 12a4.5 4.5 0 0 1 9 0 M2 16c2-1.5 4-1.5 6 0s4 1.5 6 0s4-1.5 6 0 M2 20.5c2-1.5 4-1.5 6 0s4 1.5 6 0s4-1.5 6 0",
-    cachoeira: "M3 3h18 M7 3v11 M12 3v13 M17 3v11 M2 19.5c2-1.3 4-1.3 6 0s4 1.3 6 0s4-1.3 6 0",
-    corrida: "M14.5 4a1.8 1.8 0 1 0 3.6 0a1.8 1.8 0 1 0 -3.6 0 M7 21l3.5-6 3 2.5 1 3.5 M10.5 15l1.5-5.5 3.5 2.5 3-1 M12 9.5l-3.5 1-2 3",
-    coroa: "M3 19h18 M4 19 L3 8 L8 12 L12 5 L16 12 L21 8 L20 19",
-    sono: "M4 5h6l-6 7h6 M13 11h5l-5 6h5 M3 21h18"
+    moto: "M1.5 17a3.5 3.5 0 1 0 7 0a3.5 3.5 0 1 0 -7 0 M15.5 17a3.5 3.5 0 1 0 7 0a3.5 3.5 0 1 0 -7 0 M5 17 L8.5 12 H14 L19 17 M8.5 12 L10.5 16 L14 12 M14 12 L17 9.5 L19 17 M11 5.5a1.8 1.8 0 1 0 3.6 0a1.8 1.8 0 1 0 -3.6 0 M12 7.5 L10 11 M13 8.5 L16 9.5 M1 8h3 M0.5 11h2.5",
+    barraca: "M2 20 L9.5 6 L17 20 Z M9.5 6 V20 M7 20 L9.5 15 L12 20 M18 20 l1.8-4 1.8 4 M19.8 16 q-1.2-2 0-4 q1.2 2 0 4 M1 20h22 M17.5 4.5l1 1 M20.5 2.5v1.5 M22.5 5.5h-1.2",
+    praia: "M15 6a3 3 0 1 0 6 0a3 3 0 1 0 -6 0 M18 1.2v1 M22.8 6h-1 M21.4 2.6l-.7.7 M4 18 C2 12 6 4 9.5 3 C10.5 7 9.5 14 4 18Z M5.5 15 L8.5 5.5 M1.5 21.5c2-1.5 4-1.5 6 0s4 1.5 6 0s4-1.5 6 0s2 0 3 0",
+    corrida: "M4 16 L5 10 L9 11 L11 14 L19 15 Q22 15.5 21.5 18 H4 Z M4 18 h17.5 M8 11.5 l1.2-2.2 M10 13 l1.2-2 M1 8h4 M0 11.5h3.5 M2 5h3",
+    cachoeira: "M2 4h6v6 M22 4h-6v6 M8 4h8 M9.5 4v11 M12 4v12.5 M14.5 4v11 M8 10 L5 19 M16 10 L19 19 M2 21.5c2-1.3 4-1.3 6 0s4 1.3 6 0s4-1.3 6 0",
+    coroa: "M3 17 L2 7 L7.5 11 L12 4 L16.5 11 L22 7 L21 17 Z M3 20.5h18 M12 15 c-1.6-1.2-2.6-2-2.6-3.1 a1.3 1.3 0 0 1 2.6-.4 a1.3 1.3 0 0 1 2.6 .4 c0 1.1-1 1.9-2.6 3.1Z",
+    sono: "M3 21.5V7 M21 21.5V7 M1.2 8 L3 4 L4.8 8 Z M19.2 8 L21 4 L22.8 8 Z M3 11 Q12 19.5 21 11 M3 11 Q12 15 21 11 M9.5 2.5h3l-3 3h3 M15 1h2l-2 2h2",
+    bussola: "M12 2.5a9.5 9.5 0 1 0 0.01 0 M12 2.5v2.2 M12 19.3v2.2 M2.5 12h2.2 M19.3 12h2.2 M15.6 8.4 L13.4 13.4 L8.4 15.6 L10.6 10.6 Z M11.2 12a0.8 0.8 0 1 0 1.6 0a0.8 0.8 0 1 0 -1.6 0"
   };
-  var ICONE_PADRAO = { velocross: "moto", praia: "praia", camping: "barraca", "corrida de rua": "corrida", cachoeiras: "cachoeira", "a mãe decide": "coroa", "nada?": "sono" };
+  var ICONE_PADRAO = { velocross: "moto", praia: "praia", camping: "barraca", "corrida de rua": "corrida", cachoeiras: "cachoeira", "a mãe decide": "coroa", "nada?": "sono", passeios: "bussola" };
 
   function iconeDe(op) {
     var k = op.icone || ICONE_PADRAO[(op.nome || "").toLowerCase()] || "barraca";
@@ -144,6 +145,25 @@
         '<g class="sc-coroa"><g transform="translate(0 14)"><path d="M176 92 L172 66 L186 78 L200 58 L214 78 L228 66 L224 92Z" fill="#FFD21F" stroke="#C99600" stroke-width="2"/>' +
         '<circle cx="200" cy="74" r="4" fill="#E10613"/></g></g>' + coracoes;
     },
+    passeios: function () {
+      return '<rect width="400" height="260" fill="url(#scCeuDia)"/>' +
+        '<g class="sc-sol"><circle cx="70" cy="60" r="26" fill="#FFD21F"/></g>' +
+        '<path d="M0 150 Q70 95 140 135 T280 120 T400 140 V260 H0Z" fill="#5E8C4A"/>' +
+        '<path d="M0 175 Q110 140 220 168 T400 160 V260 H0Z" fill="#3F6B35"/>' +
+        pinheiro(40, 178, 40, "#2B4A26") + pinheiro(330, 168, 50, "#2B4A26") + pinheiro(360, 170, 36, "#2B4A26") +
+        '<rect y="196" width="400" height="44" fill="#3A3A3E"/>' +
+        '<path class="sc-faixa" d="M-40 218 H440" stroke="#F2F2F2" stroke-width="3" stroke-dasharray="20 18"/>' +
+        '<g class="sc-alfinete" style="transform-origin:300px 120px"><path d="M300 150 C286 128 282 118 282 110 a18 18 0 1 1 36 0 c0 8 -4 18 -18 40Z" fill="#E10613"/><circle cx="300" cy="110" r="7" fill="#fff"/></g>' +
+        '<g class="sc-carro"><g transform="translate(0 214)">' +
+        '<rect x="-150" y="-26" width="56" height="20" rx="3" fill="#8A8A8A"/><path d="M-94 -14 H-78" stroke="#555" stroke-width="3"/>' +
+        '<circle cx="-122" cy="-4" r="8" fill="#111"/><circle cx="-122" cy="-4" r="3" fill="#888"/>' +
+        '<path d="M-78 -8 V-30 Q-78 -36 -72 -36 H-30 L-16 -52 H18 Q24 -52 26 -46 L32 -30 H40 Q46 -30 46 -24 V-8Z" fill="#E10613"/>' +
+        '<path d="M-26 -34 L-14 -48 H-2 V-34Z M2 -34 V-48 H16 L22 -34Z" fill="#BFE3F5"/>' +
+        '<rect x="-80" y="-12" width="128" height="5" fill="#222"/>' +
+        '<circle cx="-50" cy="-6" r="11" fill="#111"/><circle cx="-50" cy="-6" r="4.5" fill="#999"/>' +
+        '<circle cx="24" cy="-6" r="11" fill="#111"/><circle cx="24" cy="-6" r="4.5" fill="#999"/>' +
+        '</g></g>';
+    },
     nada: function () {
       var zs = "";
       for (var i = 0; i < 3; i++) zs += '<text class="sc-z" style="--d:' + (i * 0.7) + 's" x="240" y="120" font-family="Kanit, sans-serif" font-weight="900" font-style="italic" font-size="' + (22 + i * 6) + '" fill="#BFC7D5">Z</text>';
@@ -156,7 +176,7 @@
         zs + '<text class="sc-pergunta" x="80" y="110" font-family="Kanit, sans-serif" font-weight="900" font-style="italic" font-size="64" fill="#FFD21F">?</text>';
     }
   };
-  var CENA_PADRAO = { velocross: "velocross", praia: "praia", camping: "camping", "corrida de rua": "corrida", cachoeiras: "cachoeiras", "a mãe decide": "mae", "nada?": "nada" };
+  var CENA_PADRAO = { velocross: "velocross", praia: "praia", camping: "camping", "corrida de rua": "corrida", cachoeiras: "cachoeiras", "a mãe decide": "mae", "nada?": "nada", passeios: "passeios" };
 
   var DEFS = '<defs>' +
     '<radialGradient id="scFogo"><stop offset="0" stop-color="#FFB347" stop-opacity=".75"/><stop offset="1" stop-color="#FF6A00" stop-opacity="0"/></radialGradient>' +

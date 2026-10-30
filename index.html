@@ -114,10 +114,12 @@
           <strong id="wheelResultName">Gire a roleta!</strong>
           <p id="wheelResultMsg">Toque em GIRAR e descubra o tema do próximo vídeo.</p>
         </div>
-        <div class="wheel-odds">
-          <span class="label">Chances de cada opção</span>
-          <ul id="wheelOdds"></ul>
-        </div>
+        <details class="wheel-allow" id="wheelAllowBox">
+          <summary><span class="label">Atividades liberadas hoje</span><b id="wheelAllowCount"></b></summary>
+          <p class="wheel-allow-hint">Toque para bloquear o que não dá para fazer hoje. A roda continua igual, mas não para no que estiver bloqueado.</p>
+          <div class="wheel-allow-list" id="wheelAllow"></div>
+          <button type="button" class="link-btn" id="wheelAllowAll">Liberar todas</button>
+        </details>
         <div class="wheel-history">
           <div class="wheel-history-head">
             <span class="label">Últimos giros neste aparelho</span>

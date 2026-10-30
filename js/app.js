@@ -346,11 +346,26 @@
     var ctx = canvas.getContext("2d");
     var TAU = Math.PI * 2;
     var total = opts.reduce(function (t, o) { return t + o.peso; }, 0);
+    function aleatorio() {
+      if (window.crypto && window.crypto.getRandomValues) { var u = new Uint32Array(1); window.crypto.getRandomValues(u); return u[0] / 4294967296; }
+      return Math.random();
+    }
+    // Cada atividade entra duas vezes, em posições sorteadas e nunca lado a lado com ela mesma
+    function embaralhar() {
+      var lista = [], tent = 0, ok;
+      opts.forEach(function (o, i) { lista.push(i, i); });
+      do {
+        for (var j = lista.length - 1; j > 0; j--) { var r = Math.floor(aleatorio() * (j + 1)), x = lista[j]; lista[j] = lista[r]; lista[r] = x; }
+        ok = lista.every(function (v, k) { return v !== lista[(k + 1) % lista.length]; });
+      } while (!ok && ++tent < 500);
+      return lista;
+    }
     var acc = 0;
-    var slices = opts.map(function (o) {
-      var a0 = acc / total * TAU; acc += o.peso;
-      return { o: o, a0: a0, a1: acc / total * TAU };
+    var slices = embaralhar().map(function (i) {
+      var o = opts[i], a0 = acc / total * TAU; acc += o.peso / 2;
+      return { o: o, i: i, a0: a0, a1: acc / total * TAU };
     });
+    var bloqueadas = store("dy-roleta-off") || [];
     var rot = 0, spinning = false, girou = false, lastIdx = -1, som = store("dy-roleta-som") !== false;
     var audio = null;
     var ARTE = window.ROLETA_ARTE || null;
@@ -383,25 +398,37 @@
         ctx.beginPath(); ctx.moveTo(c, c); ctx.arc(c, c, R, a0, a1); ctx.closePath();
         ctx.fillStyle = sl.o.cor || "#E10613"; ctx.fill();
         ctx.lineWidth = 2; ctx.strokeStyle = "rgba(0,0,0,.55)"; ctx.stroke();
-        // texto
-        var mid = (a0 + a1) / 2, frac = (sl.a1 - sl.a0) / TAU;
+        var mid = (a0 + a1) / 2, ang = sl.a1 - sl.a0;
+        var corTxt = luminance(sl.o.cor || "#E10613") > 0.6 ? "#0A0A0A" : "#FFFFFF";
         ctx.save(); ctx.translate(c, c); ctx.rotate(mid);
-        ctx.textAlign = "right"; ctx.textBaseline = "middle";
-        ctx.fillStyle = luminance(sl.o.cor || "#E10613") > 0.6 ? "#0A0A0A" : "#FFFFFF";
-        var fs = Math.max(11, Math.min(size * 0.052, size * 0.33 * frac + 10));
-        ctx.font = "italic 800 " + fs + "px Kanit, 'Arial Black', sans-serif";
-        var txt = sl.o.nome.toUpperCase();
-        var maxW = R * 0.62;
-        while (ctx.measureText(txt).width > maxW && fs > 10) { fs -= 1; ctx.font = "italic 800 " + fs + "px Kanit, 'Arial Black', sans-serif"; }
-        ctx.fillText(txt, R - 14, 0);
-        if (ARTE && window.Path2D) {
-          var isz = Math.max(14, fs * 1.15), tw = ctx.measureText(txt).width, ix = R - 14 - tw - isz - 5;
-          if (ix > R * 0.24) {
-            ctx.save(); ctx.translate(ix, -isz / 2); ctx.scale(isz / 24, isz / 24);
-            ctx.lineWidth = 2.4; ctx.lineCap = "round"; ctx.lineJoin = "round"; ctx.strokeStyle = ctx.fillStyle;
-            ctx.stroke(new Path2D(ARTE.iconeDe(sl.o))); ctx.restore();
-          }
+        // selo com o ícone, perto da borda
+        var br = Math.min(R * 0.085, Math.sin(ang / 2) * R * 0.8 * 0.85), bx = R * 0.8;
+        if (ARTE && window.Path2D && br > 6) {
+          ctx.beginPath(); ctx.arc(bx, 0, br, 0, TAU);
+          ctx.fillStyle = "rgba(0,0,0,.32)"; ctx.fill();
+          ctx.lineWidth = 1.5; ctx.strokeStyle = corTxt; ctx.stroke();
+          var isz = br * 1.25;
+          ctx.save(); ctx.translate(bx, 0); ctx.rotate(Math.PI / 2); ctx.translate(-isz / 2, -isz / 2); ctx.scale(isz / 24, isz / 24);
+          ctx.lineWidth = 2; ctx.lineCap = "round"; ctx.lineJoin = "round"; ctx.strokeStyle = corTxt;
+          ctx.stroke(new Path2D(ARTE.iconeDe(sl.o))); ctx.restore();
         }
+        // nome em direção ao centro (quebra em duas linhas quando é comprido)
+        ctx.textAlign = "right"; ctx.textBaseline = "middle"; ctx.fillStyle = corTxt;
+        var fim = R * 0.8 - br - 6, comeco = R * 0.27, maxW = fim - comeco;
+        var largura = Math.sin(ang / 2) * (comeco + maxW / 2) * 2;
+        var txt = sl.o.nome.toUpperCase(), linhas = [txt];
+        var fs = Math.min(size * 0.042, largura * 0.62);
+        var fonte = function () { ctx.font = "italic 800 " + fs + "px Kanit, 'Arial Black', sans-serif"; };
+        fonte();
+        if (ctx.measureText(txt).width > maxW && txt.indexOf(" ") > 0 && largura > fs * 2.1) {
+          var meio = txt.lastIndexOf(" ", Math.ceil(txt.length / 2) + 2);
+          if (meio < 1) meio = txt.indexOf(" ");
+          linhas = [txt.slice(0, meio), txt.slice(meio + 1)];
+          fs = Math.min(fs, largura * 0.42); fonte();
+        }
+        var maior = function () { return Math.max.apply(null, linhas.map(function (l) { return ctx.measureText(l).width; })); };
+        while (maior() > maxW && fs > 8) { fs -= 0.5; fonte(); }
+        linhas.forEach(function (l, k) { ctx.fillText(l, fim, (k - (linhas.length - 1) / 2) * fs * 1.05); });
         ctx.restore();
       });
       // lâmpadas piscando no aro
@@ -426,19 +453,23 @@
         o.connect(g); g.connect(audio.destination); o.start(); o.stop(audio.currentTime + 0.05);
       } catch (e) { /* sem som, tudo bem */ }
     }
+    function liberada(o) { return bloqueadas.indexOf(o.nome) < 0; }
+    // Sorteia só entre as atividades liberadas; as bloqueadas continuam na roda, mas a roda nunca para nelas
     function sortear() {
-      var r;
-      if (window.crypto && window.crypto.getRandomValues) { var u = new Uint32Array(1); window.crypto.getRandomValues(u); r = u[0] / 4294967296; }
-      else r = Math.random();
-      var alvo = r * total, soma = 0;
-      for (var i = 0; i < opts.length; i++) { soma += opts[i].peso; if (alvo < soma) return i; }
-      return opts.length - 1;
+      var livres = opts.filter(liberada);
+      if (!livres.length) return -1;
+      var tot = livres.reduce(function (t, o) { return t + o.peso; }, 0), alvo = aleatorio() * tot, soma = 0;
+      for (var i = 0; i < livres.length; i++) { soma += livres[i].peso; if (alvo < soma) return opts.indexOf(livres[i]); }
+      return opts.indexOf(livres[livres.length - 1]);
     }
-    function renderOdds() {
-      $("#wheelOdds").innerHTML = opts.map(function (o) {
-        var pct = o.peso / total * 100;
-        return '<li><span class="dot" style="background:' + esc(o.cor) + '"></span>' + ico(o) + esc(o.nome) + "<b>" + pct.toFixed(1).replace(".0", "").replace(".", ",") + "%</b></li>";
+    function renderAllow() {
+      $("#wheelAllow").innerHTML = opts.map(function (o) {
+        var on = liberada(o);
+        return '<button type="button" class="allow-chip" aria-pressed="' + on + '" data-nome="' + esc(o.nome) + '" style="--cor:' + esc(o.cor) + '">' +
+          '<span class="allow-ico">' + ico(o) + "</span>" + esc(o.nome) + '<span class="allow-state">' + (on ? "Liberada" : "Bloqueada") + "</span></button>";
       }).join("");
+      var n = opts.filter(liberada).length;
+      $("#wheelAllowCount").textContent = n + " de " + opts.length;
     }
     function renderHistory() {
       var h = store("dy-roleta") || [];
@@ -450,7 +481,15 @@
     function spin() {
       if (spinning) return;
       if (som) { try { audio = audio || new (window.AudioContext || window.webkitAudioContext)(); audio.resume && audio.resume(); } catch (e) {} }
-      var k = sortear(), sl = slices[k], w = sl.a1 - sl.a0;
+      var k = sortear();
+      if (k < 0) {
+        $("#wheelResultName").textContent = "Tudo bloqueado";
+        $("#wheelResultMsg").textContent = "Libere pelo menos uma atividade em \"Atividades liberadas hoje\" para girar.";
+        $("#wheelAllowBox").open = true;
+        return;
+      }
+      var dela = slices.filter(function (x) { return x.i === k; });
+      var sl = dela[Math.floor(aleatorio() * dela.length)], w = sl.a1 - sl.a0;
       var dentro = sl.a0 + w * (0.15 + 0.7 * Math.random()); // nunca para em cima da linha
       var atual = ((rot % TAU) + TAU) % TAU;
       var delta = ((-dentro - atual) % TAU + TAU) % TAU;
@@ -472,7 +511,7 @@
         draw(now);
         if (p < 1) return requestAnimationFrame(frame);
         spinning = false; btn.disabled = false; btn.textContent = "Girar";
-        var o = opts[k];
+        var o = sl.o;
         $("#wheelResultName").innerHTML = ico(o) + esc(o.nome);
         if (ARTE) {
           $("#wheelSceneArt").innerHTML = ARTE.cenaSVG(o);
@@ -500,7 +539,14 @@
     var sb = $("#wheelSound");
     function syncSom() { sb.textContent = "Som: " + (som ? "ligado" : "desligado"); sb.setAttribute("aria-pressed", String(som)); }
     sb.addEventListener("click", function () { som = !som; store("dy-roleta-som", som); syncSom(); });
-    syncSom(); renderOdds(); renderHistory();
+    $("#wheelAllow").addEventListener("click", function (e) {
+      var b = e.target.closest(".allow-chip"); if (!b || spinning) return;
+      var nome = b.getAttribute("data-nome"), pos = bloqueadas.indexOf(nome);
+      if (pos < 0) bloqueadas.push(nome); else bloqueadas.splice(pos, 1);
+      store("dy-roleta-off", bloqueadas); renderAllow();
+    });
+    $("#wheelAllowAll").addEventListener("click", function () { bloqueadas = []; store("dy-roleta-off", bloqueadas); renderAllow(); });
+    syncSom(); renderAllow(); renderHistory();
     // giro "de vitrine" ocioso, bem devagar, enquanto ninguém gira
     var visivel = false;
     if ("IntersectionObserver" in window) new IntersectionObserver(function (es) { visivel = es[0].isIntersecting; }).observe(canvas);

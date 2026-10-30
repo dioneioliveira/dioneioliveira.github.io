@@ -45,6 +45,7 @@ window.SITE = {
   ],
 
   /* ROLETA DA AVENTURA: o tema do próximo vídeo.
+     Cada opção aparece duas vezes na roda, em lugares sorteados a cada visita.
      peso: tamanho da fatia e chance de sair (peso 3 sai 3x mais que peso 1).
      cor: cor da fatia · frase: mensagem quando a opção for sorteada. */
   roleta: [
@@ -54,6 +55,7 @@ window.SITE = {
     { nome: "Corrida de rua", peso: 1.5, cor: "#F2F2F2", frase: "Tênis amarrado e cronômetro ligado." },
     { nome: "Cachoeiras", peso: 1.5, cor: "#9A030C", frase: "Trilha até a queda d'água. Leva a toalha!" },
     { nome: "A mãe decide", peso: 1.5, cor: "#FF8A00", frase: "A palavra final é da Heidi. Ninguém discute!" },
+    { nome: "Passeios", peso: 1.5, cor: "#1F8A4C", frase: "TR4 abastecida, carretinha engatada e estrada pela frente." },
     { nome: "Nada?", peso: 1, cor: "#3A3A3A", frase: "Dia de descanso... ou gira de novo?" }
   ],
 
