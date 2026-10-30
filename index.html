@@ -25,6 +25,7 @@
       <img src="assets/logo-wordmark-strip.jpg" alt="DYOLIVEIRAYT" width="900" height="165">
     </a>
     <nav class="nav" aria-label="Seções">
+      <a href="#roleta">Roleta</a>
       <a href="#temporada">Temporada</a>
       <a href="#videos">Vídeos</a>
       <a href="#series">Séries</a>
@@ -94,6 +95,41 @@
         <h2>Quem <em>acelera</em> com a gente</h2>
       </header>
       <div class="crew" id="crew"></div>
+    </div>
+  </section>
+
+  <!-- ROLETA -->
+  <section class="section section-wheel" id="roleta">
+    <div class="wrap wheel-grid">
+      <div class="wheel-text">
+        <header class="sec-head">
+          <p class="tag"><span>Roleta da aventura</span></p>
+          <h2>O que vamos <em>gravar</em> hoje?</h2>
+          <p class="sec-lead">Antes de cada vídeo a gente gira a roleta e o destino decide. Velocross e camping têm fatias maiores, mas a sorte manda.</p>
+        </header>
+        <div class="wheel-result" id="wheelResult" aria-live="polite">
+          <span class="label">Resultado</span>
+          <strong id="wheelResultName">Gire a roleta!</strong>
+          <p id="wheelResultMsg">Toque em GIRAR e descubra o tema do próximo vídeo.</p>
+        </div>
+        <div class="wheel-odds">
+          <span class="label">Chances de cada opção</span>
+          <ul id="wheelOdds"></ul>
+        </div>
+        <div class="wheel-history">
+          <div class="wheel-history-head">
+            <span class="label">Últimos giros neste aparelho</span>
+            <button type="button" class="link-btn" id="wheelClear">Limpar</button>
+          </div>
+          <ol id="wheelHistory"></ol>
+        </div>
+      </div>
+      <div class="wheel-stage">
+        <div class="wheel-pointer" aria-hidden="true"></div>
+        <canvas id="wheelCanvas" width="520" height="520" aria-label="Roleta com as opções do próximo vídeo" role="img"></canvas>
+        <button type="button" class="wheel-spin" id="wheelSpin">Girar</button>
+        <button type="button" class="link-btn wheel-sound" id="wheelSound" aria-pressed="true">Som: ligado</button>
+      </div>
     </div>
   </section>
 

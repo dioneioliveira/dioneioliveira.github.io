@@ -310,6 +310,161 @@
   }).join("");
 
   /* ------------------------------------------------------------------ */
+  /* Roleta da aventura: sorteia o tema do próximo vídeo                   */
+  /* ------------------------------------------------------------------ */
+  (function () {
+    var opts = (S.roleta || []).filter(function (o) { return o.nome && o.peso > 0; });
+    var canvas = $("#wheelCanvas");
+    if (!opts.length || !canvas) { var sec = $("#roleta"); if (sec) sec.hidden = true; return; }
+    var ctx = canvas.getContext("2d");
+    var TAU = Math.PI * 2;
+    var total = opts.reduce(function (t, o) { return t + o.peso; }, 0);
+    var acc = 0;
+    var slices = opts.map(function (o) {
+      var a0 = acc / total * TAU; acc += o.peso;
+      return { o: o, a0: a0, a1: acc / total * TAU };
+    });
+    var rot = 0, spinning = false, girou = false, lastIdx = -1, som = store("dy-roleta-som") !== false;
+    var audio = null;
+
+    function luminance(hex) {
+      var h = hex.replace("#", ""); if (h.length === 3) h = h.replace(/./g, "$&$&");
+      var n = parseInt(h, 16), r = (n >> 16) & 255, g = (n >> 8) & 255, b = n & 255;
+      return (0.299 * r + 0.587 * g + 0.114 * b) / 255;
+    }
+    function idxAt(angleFromTop) {
+      var a = ((angleFromTop % TAU) + TAU) % TAU;
+      for (var i = 0; i < slices.length; i++) if (a >= slices[i].a0 && a < slices[i].a1) return i;
+      return slices.length - 1;
+    }
+    function draw(t) {
+      var dpr = Math.min(window.devicePixelRatio || 1, 2);
+      var size = canvas.clientWidth || 360;
+      if (canvas.width !== Math.round(size * dpr)) { canvas.width = Math.round(size * dpr); canvas.height = Math.round(size * dpr); }
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      var c = size / 2, R = c - 14;
+      ctx.clearRect(0, 0, size, size);
+      // aro externo com lâmpadas
+      ctx.beginPath(); ctx.arc(c, c, c - 2, 0, TAU); ctx.fillStyle = "#0B0B0B"; ctx.fill();
+      ctx.lineWidth = 4; ctx.strokeStyle = "#E10613"; ctx.shadowColor = "#FF2A2A"; ctx.shadowBlur = 16; ctx.stroke(); ctx.shadowBlur = 0;
+      // fatias
+      slices.forEach(function (sl) {
+        var a0 = -Math.PI / 2 + sl.a0 + rot, a1 = -Math.PI / 2 + sl.a1 + rot;
+        ctx.beginPath(); ctx.moveTo(c, c); ctx.arc(c, c, R, a0, a1); ctx.closePath();
+        ctx.fillStyle = sl.o.cor || "#E10613"; ctx.fill();
+        ctx.lineWidth = 2; ctx.strokeStyle = "rgba(0,0,0,.55)"; ctx.stroke();
+        // texto
+        var mid = (a0 + a1) / 2, frac = (sl.a1 - sl.a0) / TAU;
+        ctx.save(); ctx.translate(c, c); ctx.rotate(mid);
+        ctx.textAlign = "right"; ctx.textBaseline = "middle";
+        ctx.fillStyle = luminance(sl.o.cor || "#E10613") > 0.6 ? "#0A0A0A" : "#FFFFFF";
+        var fs = Math.max(11, Math.min(size * 0.052, size * 0.33 * frac + 10));
+        ctx.font = "italic 800 " + fs + "px Kanit, 'Arial Black', sans-serif";
+        var txt = sl.o.nome.toUpperCase();
+        var maxW = R * 0.62;
+        while (ctx.measureText(txt).width > maxW && fs > 10) { fs -= 1; ctx.font = "italic 800 " + fs + "px Kanit, 'Arial Black', sans-serif"; }
+        ctx.fillText(txt, R - 14, 0);
+        ctx.restore();
+      });
+      // lâmpadas piscando no aro
+      var n = 28, blink = Math.floor((t || 0) / (spinning ? 90 : 600)) % 2;
+      for (var i = 0; i < n; i++) {
+        var a = i / n * TAU, on = (i % 2) === blink;
+        ctx.beginPath(); ctx.arc(c + Math.cos(a) * (c - 8), c + Math.sin(a) * (c - 8), 3.2, 0, TAU);
+        ctx.fillStyle = on ? "#FFE680" : "#5A1A1A"; if (on) { ctx.shadowColor = "#FFD21F"; ctx.shadowBlur = 8; }
+        ctx.fill(); ctx.shadowBlur = 0;
+      }
+      // miolo
+      ctx.beginPath(); ctx.arc(c, c, R * 0.2, 0, TAU); ctx.fillStyle = "#0B0B0B"; ctx.fill();
+      ctx.lineWidth = 4; ctx.strokeStyle = "#E10613"; ctx.stroke();
+    }
+    function tick() {
+      if (!som) return;
+      try {
+        audio = audio || new (window.AudioContext || window.webkitAudioContext)();
+        var o = audio.createOscillator(), g = audio.createGain();
+        o.type = "square"; o.frequency.value = 1400;
+        g.gain.setValueAtTime(0.06, audio.currentTime); g.gain.exponentialRampToValueAtTime(0.0001, audio.currentTime + 0.04);
+        o.connect(g); g.connect(audio.destination); o.start(); o.stop(audio.currentTime + 0.05);
+      } catch (e) { /* sem som, tudo bem */ }
+    }
+    function sortear() {
+      var r;
+      if (window.crypto && window.crypto.getRandomValues) { var u = new Uint32Array(1); window.crypto.getRandomValues(u); r = u[0] / 4294967296; }
+      else r = Math.random();
+      var alvo = r * total, soma = 0;
+      for (var i = 0; i < opts.length; i++) { soma += opts[i].peso; if (alvo < soma) return i; }
+      return opts.length - 1;
+    }
+    function renderOdds() {
+      $("#wheelOdds").innerHTML = opts.map(function (o) {
+        var pct = o.peso / total * 100;
+        return '<li><span class="dot" style="background:' + esc(o.cor) + '"></span>' + esc(o.nome) + "<b>" + pct.toFixed(1).replace(".0", "").replace(".", ",") + "%</b></li>";
+      }).join("");
+    }
+    function renderHistory() {
+      var h = store("dy-roleta") || [];
+      $("#wheelHistory").innerHTML = h.length ? h.map(function (x) {
+        var d = new Date(x.quando);
+        return "<li><strong>" + esc(x.nome) + "</strong><span>" + esc(d.toLocaleDateString("pt-BR", { day: "2-digit", month: "2-digit" }) + " às " + d.toLocaleTimeString("pt-BR", { hour: "2-digit", minute: "2-digit" })) + "</span></li>";
+      }).join("") : '<li class="empty">Nenhum giro ainda.</li>';
+    }
+    function spin() {
+      if (spinning) return;
+      if (som) { try { audio = audio || new (window.AudioContext || window.webkitAudioContext)(); audio.resume && audio.resume(); } catch (e) {} }
+      var k = sortear(), sl = slices[k], w = sl.a1 - sl.a0;
+      var dentro = sl.a0 + w * (0.15 + 0.7 * Math.random()); // nunca para em cima da linha
+      var atual = ((rot % TAU) + TAU) % TAU;
+      var delta = ((-dentro - atual) % TAU + TAU) % TAU;
+      var voltas = reduceMotion ? 1 : 5 + Math.floor(Math.random() * 3);
+      var from = rot, to = rot + voltas * TAU + delta;
+      var dur = reduceMotion ? 1200 : 5200 + Math.random() * 1200, t0 = performance.now();
+      spinning = true; girou = true;
+      var btn = $("#wheelSpin"); btn.disabled = true; btn.textContent = "...";
+      $("#wheelResult").classList.remove("show");
+      $("#wheelResultName").textContent = "Girando...";
+      $("#wheelResultMsg").textContent = "Segura a emoção!";
+      (function frame(now) {
+        var p = Math.min(1, (now - t0) / dur);
+        var e = 1 - Math.pow(1 - p, 4); // desacelera no final, como uma roleta de verdade
+        rot = from + (to - from) * e;
+        var i = idxAt(-rot);
+        if (i !== lastIdx) { lastIdx = i; tick(); var pt = $(".wheel-pointer"); pt.classList.remove("hit"); void pt.offsetWidth; pt.classList.add("hit"); }
+        draw(now);
+        if (p < 1) return requestAnimationFrame(frame);
+        spinning = false; btn.disabled = false; btn.textContent = "Girar";
+        var o = opts[k];
+        $("#wheelResultName").textContent = o.nome;
+        $("#wheelResultMsg").textContent = o.frase || "";
+        $("#wheelResult").style.setProperty("--cor", o.cor || "#E10613");
+        $("#wheelResult").classList.add("show");
+        var h = store("dy-roleta") || [];
+        h.unshift({ nome: o.nome, quando: new Date().toISOString() });
+        store("dy-roleta", h.slice(0, 8)); renderHistory();
+        if (!/^nada/i.test(o.nome)) confetti();
+      })(t0);
+    }
+    $("#wheelSpin").addEventListener("click", spin);
+    canvas.addEventListener("click", spin);
+    $("#wheelClear").addEventListener("click", function () { store("dy-roleta", []); renderHistory(); });
+    var sb = $("#wheelSound");
+    function syncSom() { sb.textContent = "Som: " + (som ? "ligado" : "desligado"); sb.setAttribute("aria-pressed", String(som)); }
+    sb.addEventListener("click", function () { som = !som; store("dy-roleta-som", som); syncSom(); });
+    syncSom(); renderOdds(); renderHistory();
+    // giro "de vitrine" ocioso, bem devagar, enquanto ninguém gira
+    var visivel = false;
+    if ("IntersectionObserver" in window) new IntersectionObserver(function (es) { visivel = es[0].isIntersecting; }).observe(canvas);
+    var idle = function (now) {
+      if (!spinning && !girou && !reduceMotion && visivel && !document.hidden) { rot += 0.0015; draw(now); } // depois do giro, fica parada no resultado
+      requestAnimationFrame(idle);
+    };
+    draw(0);
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(function () { draw(0); });
+    window.addEventListener("resize", function () { draw(performance.now()); });
+    requestAnimationFrame(idle);
+  })();
+
+  /* ------------------------------------------------------------------ */
   /* Temporada: Rumo ao Pódio                                              */
   /* ------------------------------------------------------------------ */
   $("#seasonTitle").innerHTML = esc(T.titulo || "Rumo ao Pódio").replace(/(\S+)$/, "<em>$1</em>") +
