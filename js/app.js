@@ -326,6 +326,9 @@
     });
     var rot = 0, spinning = false, girou = false, lastIdx = -1, som = store("dy-roleta-som") !== false;
     var audio = null;
+    var ARTE = window.ROLETA_ARTE || null;
+    function ico(o) { return ARTE ? ARTE.iconeSVG(o) : ""; }
+    function opPorNome(n) { for (var i = 0; i < opts.length; i++) if (opts[i].nome === n) return opts[i]; return { nome: n }; }
 
     function luminance(hex) {
       var h = hex.replace("#", ""); if (h.length === 3) h = h.replace(/./g, "$&$&");
@@ -364,6 +367,14 @@
         var maxW = R * 0.62;
         while (ctx.measureText(txt).width > maxW && fs > 10) { fs -= 1; ctx.font = "italic 800 " + fs + "px Kanit, 'Arial Black', sans-serif"; }
         ctx.fillText(txt, R - 14, 0);
+        if (ARTE && window.Path2D) {
+          var isz = Math.max(14, fs * 1.15), tw = ctx.measureText(txt).width, ix = R - 14 - tw - isz - 5;
+          if (ix > R * 0.24) {
+            ctx.save(); ctx.translate(ix, -isz / 2); ctx.scale(isz / 24, isz / 24);
+            ctx.lineWidth = 2.4; ctx.lineCap = "round"; ctx.lineJoin = "round"; ctx.strokeStyle = ctx.fillStyle;
+            ctx.stroke(new Path2D(ARTE.iconeDe(sl.o))); ctx.restore();
+          }
+        }
         ctx.restore();
       });
       // lâmpadas piscando no aro
@@ -399,14 +410,14 @@
     function renderOdds() {
       $("#wheelOdds").innerHTML = opts.map(function (o) {
         var pct = o.peso / total * 100;
-        return '<li><span class="dot" style="background:' + esc(o.cor) + '"></span>' + esc(o.nome) + "<b>" + pct.toFixed(1).replace(".0", "").replace(".", ",") + "%</b></li>";
+        return '<li><span class="dot" style="background:' + esc(o.cor) + '"></span>' + ico(o) + esc(o.nome) + "<b>" + pct.toFixed(1).replace(".0", "").replace(".", ",") + "%</b></li>";
       }).join("");
     }
     function renderHistory() {
       var h = store("dy-roleta") || [];
       $("#wheelHistory").innerHTML = h.length ? h.map(function (x) {
         var d = new Date(x.quando);
-        return "<li><strong>" + esc(x.nome) + "</strong><span>" + esc(d.toLocaleDateString("pt-BR", { day: "2-digit", month: "2-digit" }) + " às " + d.toLocaleTimeString("pt-BR", { hour: "2-digit", minute: "2-digit" })) + "</span></li>";
+        return "<li>" + ico(opPorNome(x.nome)) + "<strong>" + esc(x.nome) + "</strong><span>" + esc(d.toLocaleDateString("pt-BR", { day: "2-digit", month: "2-digit" }) + " às " + d.toLocaleTimeString("pt-BR", { hour: "2-digit", minute: "2-digit" })) + "</span></li>";
       }).join("") : '<li class="empty">Nenhum giro ainda.</li>';
     }
     function spin() {
@@ -422,6 +433,7 @@
       spinning = true; girou = true;
       var btn = $("#wheelSpin"); btn.disabled = true; btn.textContent = "...";
       $("#wheelResult").classList.remove("show");
+      var cena = $("#wheelScene"); cena.hidden = true; cena.classList.remove("show"); $("#wheelSceneArt").innerHTML = "";
       $("#wheelResultName").textContent = "Girando...";
       $("#wheelResultMsg").textContent = "Segura a emoção!";
       (function frame(now) {
@@ -434,9 +446,18 @@
         if (p < 1) return requestAnimationFrame(frame);
         spinning = false; btn.disabled = false; btn.textContent = "Girar";
         var o = opts[k];
-        $("#wheelResultName").textContent = o.nome;
+        $("#wheelResultName").innerHTML = ico(o) + esc(o.nome);
+        if (ARTE) {
+          $("#wheelSceneArt").innerHTML = ARTE.cenaSVG(o);
+          $("#wheelSceneName").innerHTML = ico(o) + esc(o.nome);
+          $("#wheelSceneMsg").textContent = o.frase || "";
+          var cenaEl = $("#wheelScene"); cenaEl.style.setProperty("--cor", o.cor || "#E10613");
+          cenaEl.style.setProperty("--cor-ico", luminance(o.cor || "#E10613") < 0.3 ? "#FF2A2A" : (o.cor || "#E10613"));
+          cenaEl.hidden = false; void cenaEl.offsetWidth; cenaEl.classList.add("show");
+        }
         $("#wheelResultMsg").textContent = o.frase || "";
         $("#wheelResult").style.setProperty("--cor", o.cor || "#E10613");
+        $("#wheelResult").style.setProperty("--cor-ico", luminance(o.cor || "#E10613") < 0.3 ? "#FF2A2A" : (o.cor || "#E10613"));
         $("#wheelResult").classList.add("show");
         var h = store("dy-roleta") || [];
         h.unshift({ nome: o.nome, quando: new Date().toISOString() });
@@ -445,6 +466,8 @@
       })(t0);
     }
     $("#wheelSpin").addEventListener("click", spin);
+    $("#wheelAgain").addEventListener("click", spin);
+    $("#wheelClose").addEventListener("click", function () { var c = $("#wheelScene"); c.classList.remove("show"); c.hidden = true; });
     canvas.addEventListener("click", spin);
     $("#wheelClear").addEventListener("click", function () { store("dy-roleta", []); renderHistory(); });
     var sb = $("#wheelSound");

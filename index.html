@@ -129,6 +129,17 @@
         <canvas id="wheelCanvas" width="520" height="520" aria-label="Roleta com as opções do próximo vídeo" role="img"></canvas>
         <button type="button" class="wheel-spin" id="wheelSpin">Girar</button>
         <button type="button" class="link-btn wheel-sound" id="wheelSound" aria-pressed="true">Som: ligado</button>
+        <div class="wheel-scene" id="wheelScene" hidden>
+          <div class="wheel-scene-art" id="wheelSceneArt"></div>
+          <div class="wheel-scene-cap">
+            <strong id="wheelSceneName"></strong>
+            <span id="wheelSceneMsg"></span>
+          </div>
+          <div class="wheel-scene-actions">
+            <button type="button" class="btn btn-red btn-small" id="wheelAgain">Girar de novo</button>
+            <button type="button" class="btn btn-ghost btn-small" id="wheelClose">Ver a roleta</button>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -308,6 +319,7 @@
 
 <script src="js/config.js"></script>
 <script src="js/auto.js"></script>
+<script src="js/roleta-cenas.js"></script>
 <script src="js/app.js"></script>
 </body>
 </html>

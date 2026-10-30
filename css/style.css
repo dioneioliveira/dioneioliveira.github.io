@@ -257,6 +257,96 @@ kbd { font: 500 .85em var(--f-mono); padding: 1px 6px; border: 1px solid var(--l
   .wheel-stage { order: -1; width: min(100%, 440px); margin-block: 8px 24px; }
 }
 
+/* Roleta: ícones e cena do resultado */
+.ico { width: 1.1em; height: 1.1em; flex-shrink: 0; vertical-align: -0.15em; }
+.wheel-odds li .ico { width: 16px; height: 16px; color: var(--muted); }
+.wheel-history li .ico { width: 14px; height: 14px; color: var(--red-hot); align-self: center; }
+.wheel-result strong { display: flex; align-items: center; gap: 12px; }
+.wheel-result strong .ico { width: .85em; height: .85em; color: var(--cor-ico, var(--cor)); }
+.wheel-scene {
+  --cor: #E10613; position: absolute; inset: 0; z-index: 5; border-radius: 22px; overflow: hidden;
+  background: #070707; border: 3px solid var(--cor); box-shadow: 0 0 40px -6px var(--cor);
+  display: grid; grid-template-rows: 1fr auto auto;
+  opacity: 0; transform: scale(.6) rotate(-6deg); transition: opacity .35s ease, transform .55s cubic-bezier(.2,1.5,.4,1);
+}
+.wheel-scene.show { opacity: 1; transform: none; }
+.wheel-scene-art { position: relative; min-height: 0; }
+.wheel-scene-art svg { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+.wheel-scene-cap { padding: 12px 16px 4px; display: grid; gap: 4px; text-align: center; }
+.wheel-scene-cap strong { font: 900 italic clamp(1.4rem, 4vw, 2.1rem)/1 var(--f-display); text-transform: uppercase; color: #fff; display: flex; justify-content: center; align-items: center; gap: 10px; }
+.wheel-scene-cap strong .ico { color: var(--cor-ico, var(--cor)); }
+.wheel-scene-cap span { color: #CFCFCF; font-size: .95rem; }
+.wheel-scene-actions { display: flex; justify-content: center; gap: 10px; padding: 10px 12px 16px; flex-wrap: wrap; }
+
+/* animações das cenas (prefixo sc-) */
+.sc .sc-in { opacity: 0; animation: scEntra .6s cubic-bezier(.2,1.3,.4,1) var(--d, 0s) forwards; }
+.sc .sc-in-fixo { animation-duration: .8s; }
+@keyframes scEntra { from { opacity: 0; transform: translateY(26px); } to { opacity: 1; transform: none; } }
+.sc .sc-surge { transform: scale(0); animation: scSurge .7s cubic-bezier(.2,1.5,.4,1) .25s forwards; }
+@keyframes scSurge { to { transform: scale(1); } }
+.sc .sc-pisca { animation: scPisca 2.2s ease-in-out var(--d, 0s) infinite; }
+@keyframes scPisca { 50% { opacity: .2; } }
+.sc .sc-tremula { animation: scTremula .18s ease-in-out infinite alternate; transform-origin: 283px 200px; }
+@keyframes scTremula { to { opacity: .75; transform: scale(1.06); } }
+.sc .sc-chama { transform-origin: 283px 200px; animation: scChama .35s ease-in-out infinite alternate; }
+.sc .sc-chama2 { animation-duration: .25s; }
+@keyframes scChama { to { transform: scaleY(1.15) scaleX(.92); } }
+.sc .sc-luz { animation: scPisca 1.6s ease-in-out infinite; }
+.sc .sc-faisca { opacity: 0; animation: scFaisca 1.8s ease-out var(--d, 0s) infinite; }
+@keyframes scFaisca { 0% { opacity: 1; transform: translate(0, 0); } 100% { opacity: 0; transform: translate(var(--x, 0), -70px); } }
+.sc .sc-pilota { animation: scPilota 3.4s cubic-bezier(.45,.05,.4,1) .2s infinite; }
+@keyframes scPilota {
+  0% { transform: translate(-70px, 0); }
+  40% { transform: translate(190px, 0) rotate(0); }
+  50% { transform: translate(235px, -38px) rotate(-14deg); }
+  62% { transform: translate(285px, -42px) rotate(-4deg); }
+  74% { transform: translate(330px, 0) rotate(6deg); }
+  80% { transform: translate(350px, 0) rotate(0); }
+  100% { transform: translate(470px, 0); }
+}
+.sc .sc-poeira { opacity: 0; animation: scPoeira 3.4s ease-out var(--d, 0s) infinite; }
+@keyframes scPoeira { 0%, 8% { opacity: 0; transform: scale(.3); } 18% { opacity: .7; } 40% { opacity: 0; transform: scale(2.2) translateY(-12px); } 100% { opacity: 0; } }
+.sc .sc-bandeira { animation: scBandeira .5s ease-in-out infinite alternate; }
+@keyframes scBandeira { to { transform: skewY(-8deg) scaleX(.94); } }
+.sc .sc-sol { animation: scSol 1.4s ease-out forwards; }
+@keyframes scSol { from { transform: translateY(70px); opacity: .3; } }
+.sc .sc-ondas { animation: scOndas 2.4s linear infinite; }
+@keyframes scOndas { to { transform: translateX(80px); } }
+.sc .sc-balanca { animation: scBalanca 2.6s ease-in-out infinite alternate; }
+@keyframes scBalanca { from { transform: rotate(-3deg); } to { transform: rotate(4deg); } }
+.sc .sc-voa { animation: scVoa 6s linear infinite; }
+@keyframes scVoa { from { transform: translateX(-80px); } to { transform: translateX(420px); } }
+.sc .sc-queda { animation: scQueda .5s linear var(--d, 0s) infinite; }
+@keyframes scQueda { to { stroke-dashoffset: -24; } }
+.sc .sc-onda { transform-origin: 205px 198px; animation: scOnda 1.6s ease-out var(--d, 0s) infinite; }
+@keyframes scOnda { from { opacity: .9; transform: scale(.4); } to { opacity: 0; transform: scale(2.6); } }
+.sc .sc-nevoa { opacity: .5; animation: scNevoa 2s ease-in-out var(--d, 0s) infinite alternate; }
+@keyframes scNevoa { to { opacity: .15; transform: translateY(-10px) scale(1.3); } }
+.sc .sc-faixa { animation: scFaixa .45s linear infinite; }
+@keyframes scFaixa { to { stroke-dashoffset: 48; } }
+.sc .sc-chegada { transform: translateY(-120px); animation: scChegada .8s cubic-bezier(.2,1.3,.4,1) .3s forwards; }
+@keyframes scChegada { to { transform: none; } }
+.sc .sc-corredor { animation: scPasso .3s ease-in-out infinite alternate; }
+@keyframes scPasso { to { transform: translateY(-5px); } }
+.sc .sc-perna1 { animation: scPerna .3s ease-in-out infinite alternate; }
+.sc .sc-perna2 { animation: scPerna .3s ease-in-out infinite alternate-reverse; }
+@keyframes scPerna { from { transform: rotate(-32deg); } to { transform: rotate(32deg); } }
+.sc .sc-coroa { transform: translateY(-110px); animation: scCoroa 1s cubic-bezier(.3,1.6,.5,1) .5s forwards; }
+@keyframes scCoroa { to { transform: none; } }
+.sc .sc-holofote { animation: scPisca 2.4s ease-in-out infinite; }
+.sc .sc-coracao { opacity: 0; animation: scCoracao 2.6s ease-out var(--d, 0s) infinite; }
+@keyframes scCoracao { 0% { opacity: 0; } 15% { opacity: 1; } 100% { opacity: 0; translate: var(--x, 0) -150px; } }
+.sc .sc-z { opacity: 0; animation: scZ 2.1s ease-out var(--d, 0s) infinite; }
+@keyframes scZ { 0% { opacity: 0; transform: translate(0, 0); } 20% { opacity: 1; } 100% { opacity: 0; transform: translate(40px, -80px); } }
+.sc .sc-respira { animation: scRespira 1.8s ease-in-out infinite alternate; }
+@keyframes scRespira { to { transform: scaleY(1.06); } }
+.sc .sc-pergunta { transform-origin: 98px 90px; animation: scPergunta 1.2s ease-in-out infinite alternate; }
+@keyframes scPergunta { from { transform: rotate(-10deg) scale(.9); } to { transform: rotate(10deg) scale(1.1); } }
+@media (prefers-reduced-motion: reduce) {
+  .sc .sc-in, .sc .sc-surge, .sc .sc-chegada, .sc .sc-coroa { opacity: 1; transform: none; }
+  .wheel-scene { transition: opacity .2s; transform: none; }
+}
+
 /* Temporada */
 .section-race::before {
   content: ""; position: absolute; left: 0; right: 0; top: 0; height: 14px;
@@ -513,3 +603,6 @@ kbd { font: 500 .85em var(--f-mono); padding: 1px 6px; border: 1px solid var(--l
 #familia { padding-block: clamp(36px, 5vw, 56px); }
 #familia .sec-head { margin-bottom: 20px; }
 #familia .sec-head h2 { font-size: clamp(1.8rem, 4vw, 2.8rem); }
+.sc .sc-poeira, .sc .sc-nevoa { transform-box: fill-box; transform-origin: center; }
+.wheel-scene .btn-ghost { background: #fff; color: #0A0A0A; }
+.wheel-scene .btn-ghost:hover { background: var(--yellow); }
