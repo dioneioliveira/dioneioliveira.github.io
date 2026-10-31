@@ -47,6 +47,7 @@
     <nav class="nav" aria-label="Seções">
       <a href="#roleta">Roleta</a>
       <a href="#temporada">Temporada</a>
+      <a href="#placar" id="navPlacar" hidden>Placar</a>
       <a href="#videos">Vídeos</a>
       <a href="#shorts" id="navShorts">Shorts</a>
       <a href="#series">Séries</a>
@@ -207,6 +208,28 @@
         </div>
         <ol class="timeline" id="timeline"></ol>
       </div>
+    </div>
+  </section>
+
+  <!-- PLACAR -->
+  <section class="section section-alt" id="placar" hidden>
+    <div class="wrap">
+      <header class="sec-head sec-head-row">
+        <div>
+          <p class="tag"><span>Placar da temporada</span></p>
+          <h2>Evolução dos <em>pilotos</em></h2>
+          <p class="sec-lead">Posição e melhor volta em cada etapa de 2026.</p>
+        </div>
+        <div class="chips" id="placarModo" role="group" aria-label="O que mostrar no gráfico">
+          <button type="button" class="chip" aria-pressed="true" data-modo="posicao">Posição</button>
+          <button type="button" class="chip" aria-pressed="false" data-modo="volta">Melhor volta</button>
+        </div>
+      </header>
+      <div class="placar-grid">
+        <div class="placar-cards" id="placarCards"></div>
+        <figure class="placar-grafico"><svg id="placarSvg" role="img" aria-label="Gráfico da evolução dos pilotos por etapa"></svg><figcaption id="placarLegenda"></figcaption></figure>
+      </div>
+      <div class="table-scroll"><table class="placar-tabela" id="placarTabela"></table></div>
     </div>
   </section>
 

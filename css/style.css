@@ -743,3 +743,25 @@ body.em-telao { overflow: hidden; }
 .mapa-video img { width: 70px; aspect-ratio: 16/9; object-fit: cover; border-radius: 3px; }
 .mapa-video:hover span { color: var(--red-hot); }
 @media (max-width: 860px) { .mapa-box { grid-template-columns: minmax(0, 1fr); } .mapa-lista { grid-template-columns: repeat(auto-fill, minmax(min(100%, 220px), 1fr)); } }
+
+/* Placar da temporada */
+.placar-grid { display: grid; grid-template-columns: minmax(0, 300px) minmax(0, 1fr); gap: 18px; align-items: start; margin-bottom: 20px; }
+.placar-cards { display: grid; gap: 12px; }
+.placar-card { display: flex; gap: 14px; padding: 16px; background: var(--surface); border: 1px solid var(--line); border-left: 4px solid var(--cor); }
+.placar-card .plate { width: 64px; height: 54px; font-size: 1.8rem; flex-shrink: 0; border-color: var(--cor); }
+.placar-card h3 { font: 800 italic 1.3rem/1 var(--f-display); text-transform: uppercase; margin-bottom: 8px; }
+.placar-card dl { display: grid; grid-template-columns: 1fr 1fr; gap: 6px 14px; margin: 0; }
+.placar-card dt { font: 500 .66rem var(--f-mono); text-transform: uppercase; letter-spacing: .08em; color: var(--muted); }
+.placar-card dd { margin: 0; font: 800 italic 1.2rem var(--f-display); font-variant-numeric: tabular-nums; }
+.placar-grafico { margin: 0; background: var(--surface); border: 1px solid var(--line); padding: 12px; min-width: 0; }
+.placar-grafico svg { width: 100%; height: auto; display: block; }
+.placar-grafico figcaption { display: flex; flex-wrap: wrap; gap: 6px 16px; font-size: .85rem; padding-top: 8px; }
+.placar-grafico figcaption i { display: inline-block; width: 12px; height: 4px; margin-right: 6px; vertical-align: middle; }
+.placar-grafico figcaption .nota { margin-left: auto; color: var(--muted); font-family: var(--f-mono); font-size: .72rem; }
+.placar-tabela { width: 100%; border-collapse: collapse; font-variant-numeric: tabular-nums; min-width: 620px; }
+.placar-tabela th { text-align: left; font: 500 .72rem var(--f-mono); text-transform: uppercase; letter-spacing: .08em; color: var(--muted); padding: 10px 12px; border-bottom: 1px solid var(--line); }
+.placar-tabela td { padding: 10px 12px; border-bottom: 1px solid var(--line); }
+.table-scroll { overflow-x: auto; }
+.pos { display: inline-block; min-width: 38px; text-align: center; padding: 3px 8px; font: 800 italic 1rem var(--f-display); background: #1F1F1F; }
+.pos-1 { background: #FFD21F; color: #111; } .pos-2 { background: #C9CED6; color: #111; } .pos-3 { background: #C9824A; color: #111; }
+@media (max-width: 860px) { .placar-grid { grid-template-columns: minmax(0, 1fr); } }

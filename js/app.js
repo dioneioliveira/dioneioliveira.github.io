@@ -659,6 +659,90 @@
   requestAnimationFrame(function () { tl.scrollLeft = tl.scrollWidth; });
 
   /* ------------------------------------------------------------------ */
+  /* Placar da temporada: posições e melhores voltas por etapa             */
+  /* ------------------------------------------------------------------ */
+  (function () {
+    var linhas = (T.placar || []).filter(function (l) { return l.etapa && l.piloto; });
+    if (!linhas.length) return;
+    $("#placar").hidden = false; $("#navPlacar").hidden = false;
+    var pilotos = (S.equipe || []).filter(function (m) { return m.numero; });
+    var CORES = { "17": "#E10613", "12": "#FF8A00" };
+    function cor(n, i) { return CORES[n] || ["#E10613", "#FF8A00", "#3FA4DB", "#3FA34D"][i % 4]; }
+    function seg(t) { if (!t) return null; var p = String(t).split(":"); return p.length > 1 ? (+p[0]) * 60 + parseFloat(p[1]) : parseFloat(p[0]); }
+    function fmtSeg(x) { var m = Math.floor(x / 60), r = x - m * 60; return m + ":" + (r < 10 ? "0" : "") + r.toFixed(1); }
+    var etapas = [];
+    linhas.forEach(function (l) { if (etapas.indexOf(l.etapa) < 0) etapas.push(l.etapa); });
+    var numeros = [];
+    linhas.forEach(function (l) { var n = String(l.piloto); if (numeros.indexOf(n) < 0) numeros.push(n); });
+    function nome(n) { var p = pilotos.filter(function (x) { return x.numero === n; })[0]; return p ? p.nome : "Piloto " + n; }
+    function de(n) { return linhas.filter(function (l) { return String(l.piloto) === n; }); }
+
+    $("#placarCards").innerHTML = numeros.map(function (n, i) {
+      var ls = de(n), pos = ls.map(function (l) { return l.posicao; }).filter(Boolean);
+      var melhorPos = pos.length ? Math.min.apply(null, pos) : null;
+      var voltas = ls.map(function (l) { return seg(l.melhorVolta); }).filter(function (x) { return x; });
+      var melhorVolta = voltas.length ? Math.min.apply(null, voltas) : null;
+      var podios = pos.filter(function (x) { return x <= 3; }).length;
+      return '<div class="placar-card" style="--cor:' + cor(n, i) + '"><span class="plate">' + esc(n) + "</span><div><h3>" + esc(nome(n)) + "</h3><dl>" +
+        "<div><dt>Etapas</dt><dd>" + ls.length + "</dd></div>" +
+        "<div><dt>Melhor posição</dt><dd>" + (melhorPos ? melhorPos + "º" : "–") + "</dd></div>" +
+        "<div><dt>Pódios</dt><dd>" + podios + "</dd></div>" +
+        "<div><dt>Melhor volta</dt><dd>" + (melhorVolta ? fmtSeg(melhorVolta) : "–") + "</dd></div></dl></div></div>";
+    }).join("");
+
+    var modo = "posicao";
+    function grafico() {
+      var svg = $("#placarSvg"), W = 640, H = 300, m = { l: 52, r: 18, t: 18, b: 44 };
+      svg.setAttribute("viewBox", "0 0 " + W + " " + H);
+      var valor = function (l) { return modo === "posicao" ? l.posicao : seg(l.melhorVolta); };
+      var vals = linhas.map(valor).filter(function (x) { return x; });
+      if (!vals.length) { svg.innerHTML = '<text x="' + W / 2 + '" y="' + H / 2 + '" text-anchor="middle" fill="#A6A6A6" font-size="14">Sem dados de ' + (modo === "posicao" ? "posição" : "volta") + " ainda.</text>"; $("#placarLegenda").innerHTML = ""; return; }
+      var min = Math.min.apply(null, vals), max = Math.max.apply(null, vals);
+      if (modo === "posicao") { min = 1; max = Math.max(max, 3); } else { var folga = Math.max(0.5, (max - min) * 0.15); min -= folga; max += folga; }
+      // posição e tempo: quanto menor, melhor, então o melhor fica em cima
+      var y = function (v) { return m.t + (v - min) / (max - min || 1) * (H - m.t - m.b); };
+      var x = function (i) { return etapas.length === 1 ? (W + m.l - m.r) / 2 : m.l + i * (W - m.l - m.r) / (etapas.length - 1); };
+      var g = "";
+      var ticks = [];
+      if (modo === "posicao") { for (var p = 1; p <= max; p++) if (max <= 12 || p % 2 === 1) ticks.push(p); }
+      else { for (var k = 0; k <= 4; k++) ticks.push(min + k * (max - min) / 4); }
+      ticks.forEach(function (t) {
+        g += '<line x1="' + m.l + '" x2="' + (W - m.r) + '" y1="' + y(t) + '" y2="' + y(t) + '" stroke="#262626"/>' +
+          '<text x="' + (m.l - 8) + '" y="' + (y(t) + 4) + '" text-anchor="end" fill="#A6A6A6" font-size="11" font-family="DM Mono, monospace">' + (modo === "posicao" ? t + "º" : fmtSeg(t)) + "</text>";
+      });
+      if (modo === "posicao") g += '<rect x="' + m.l + '" y="' + (y(1) - 6) + '" width="' + (W - m.l - m.r) + '" height="' + (y(3) - y(1) + 12) + '" fill="rgba(255,210,31,.06)"/><text x="' + (W - m.r - 4) + '" y="' + (y(1) - 8 + 4) + '" text-anchor="end" fill="#FFD21F" font-size="10" font-family="DM Mono, monospace">PÓDIO</text>';
+      etapas.forEach(function (e, i) { g += '<text x="' + x(i) + '" y="' + (H - m.b + 20) + '" text-anchor="middle" fill="#A6A6A6" font-size="11" font-family="DM Mono, monospace">' + esc(e) + "</text>"; });
+      numeros.forEach(function (n, k) {
+        var pts = etapas.map(function (e, i) { var l = de(n).filter(function (z) { return z.etapa === e; })[0]; var v = l && valor(l); return v ? [x(i), y(v), v, l] : null; }).filter(Boolean);
+        if (!pts.length) return;
+        var c = cor(n, k);
+        g += '<polyline fill="none" stroke="' + c + '" stroke-width="3" stroke-linejoin="round" points="' + pts.map(function (p) { return p[0] + "," + p[1]; }).join(" ") + '"/>';
+        pts.forEach(function (p, j) {
+          var ult = j === pts.length - 1;
+          g += '<circle cx="' + p[0] + '" cy="' + p[1] + '" r="' + (ult ? 7 : 5) + '" fill="' + (ult ? c : "#070707") + '" stroke="' + c + '" stroke-width="2.5"><title>' + esc(nome(n) + " · " + p[3].etapa + ": " + (modo === "posicao" ? p[2] + "º" : fmtSeg(p[2]))) + "</title></circle>";
+          if (ult) g += '<text x="' + (p[0] + (p[0] > W - 80 ? -10 : 10)) + '" y="' + (p[1] - 10) + '" text-anchor="' + (p[0] > W - 80 ? "end" : "start") + '" fill="' + c + '" font-size="12" font-weight="800" font-family="Kanit, sans-serif" font-style="italic">' + (modo === "posicao" ? p[2] + "º" : fmtSeg(p[2])) + "</text>";
+        });
+      });
+      svg.innerHTML = g;
+      $("#placarLegenda").innerHTML = numeros.map(function (n, k) { return '<span><i style="background:' + cor(n, k) + '"></i>' + esc(n + " · " + nome(n)) + "</span>"; }).join("") +
+        '<span class="nota">' + (modo === "posicao" ? "Mais alto = melhor colocação" : "Mais alto = volta mais rápida") + "</span>";
+    }
+    $("#placarModo").addEventListener("click", function (e) {
+      var b = e.target.closest("[data-modo]"); if (!b) return;
+      modo = b.getAttribute("data-modo");
+      $all("#placarModo .chip").forEach(function (c) { c.setAttribute("aria-pressed", String(c === b)); });
+      grafico();
+    });
+    grafico();
+    $("#placarTabela").innerHTML = "<thead><tr><th>Etapa</th><th>Data</th><th>Local</th><th>Piloto</th><th>Posição</th><th>Melhor volta</th><th></th></tr></thead><tbody>" +
+      linhas.map(function (l) {
+        return "<tr><td>" + esc(l.etapa) + "</td><td>" + esc(fmtDate(l.data || "")) + "</td><td>" + esc(l.local || "") + "</td><td><b>" + esc(l.piloto) + "</b> " + esc(nome(String(l.piloto))) +
+          '</td><td><span class="pos' + (l.posicao <= 3 ? " pos-" + l.posicao : "") + '">' + (l.posicao ? l.posicao + "º" : "–") + "</span></td><td>" + esc(l.melhorVolta || "–") + "</td><td>" +
+          (l.video ? '<button type="button" class="link-btn" data-video="' + esc(l.video) + '">▶ Vídeo</button>' : "") + "</td></tr>";
+      }).join("") + "</tbody>";
+  })();
+
+  /* ------------------------------------------------------------------ */
   /* Vídeos                                                                */
   /* ------------------------------------------------------------------ */
   var videoFilter = store("dy-vfilter") || "Todos";

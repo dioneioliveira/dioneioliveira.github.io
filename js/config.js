@@ -81,6 +81,11 @@ window.SITE = {
     /* Próxima corrida: preencha nome, local e data (formato 2026-11-15T09:00:00-03:00)
        para ligar a contagem regressiva. Sem data, aparece "data a confirmar". */
     proxima: { nome: "Próxima etapa", local: "", data: "" },
+    /* PLACAR DA TEMPORADA: uma linha por piloto em cada etapa. Some até ter dados.
+       Exemplo:
+       { etapa: "1ª etapa", data: "2026-03-15", local: "CT Greipel", piloto: "17", posicao: 4, melhorVolta: "1:12.4", video: "Uc3p8jv_L3A" }
+       piloto: "17" (Vinicius) ou "12" (Gustavo) · melhorVolta: minutos:segundos.décimos */
+    placar: [],
     parceiros: [
       { nome: "BL Motos Racing", url: "https://www.youtube.com/@Blmotosracing94" },
       { nome: "TRSF Racing", url: "" },
