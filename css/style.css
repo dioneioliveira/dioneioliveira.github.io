@@ -765,3 +765,34 @@ body.em-telao { overflow: hidden; }
 .pos { display: inline-block; min-width: 38px; text-align: center; padding: 3px 8px; font: 800 italic 1rem var(--f-display); background: #1F1F1F; }
 .pos-1 { background: #FFD21F; color: #111; } .pos-2 { background: #C9CED6; color: #111; } .pos-3 { background: #C9824A; color: #111; }
 @media (max-width: 860px) { .placar-grid { grid-template-columns: minmax(0, 1fr); } }
+
+/* Formulários (mural e sorteio) */
+.form-card { display: grid; gap: 8px; background: var(--surface); border: 1px solid var(--line); border-top: 3px solid var(--red); padding: 20px; min-width: 0; }
+.form-card h3 { font: 900 italic 1.6rem/1 var(--f-display); text-transform: uppercase; margin-bottom: 6px; }
+.form-card label { font: 500 .75rem var(--f-mono); text-transform: uppercase; letter-spacing: .08em; color: var(--muted); margin-top: 4px; }
+.form-card input:not([type="checkbox"]), .form-card textarea {
+  width: 100%; font: 500 1rem var(--f-body); color: #fff; background: #0A0A0A; border: 1px solid #333; padding: 11px 12px; border-radius: 0; resize: vertical;
+}
+.form-card input:focus, .form-card textarea:focus { outline: none; border-color: var(--red); box-shadow: 0 0 0 3px rgba(225,6,19,.25); }
+.form-card .check { text-transform: none; letter-spacing: 0; font: 500 .9rem var(--f-body); color: #ddd; margin-top: 8px; }
+.form-card .btn { justify-self: start; margin-top: 6px; }
+.form-linha { display: flex; justify-content: space-between; align-items: center; gap: 10px; }
+.form-msg { min-height: 1.3em; color: var(--yellow); font-size: .92rem; }
+.form-nota { color: var(--muted); font-size: .8rem; }
+/* Mural */
+.mural-grid { display: grid; grid-template-columns: minmax(0, 380px) minmax(0, 1fr); gap: 28px; align-items: start; }
+.mural-lista { columns: 2 240px; column-gap: 14px; }
+.recado { break-inside: avoid; margin: 0 0 14px; padding: 16px 16px 12px; background: #FFF6D8; color: #1A1A1A; transform: rotate(var(--rot, 0deg)); box-shadow: 0 8px 20px -10px rgba(0,0,0,.8); position: relative; }
+.recado::before { content: ""; position: absolute; top: -8px; left: 50%; width: 46px; height: 16px; margin-left: -23px; background: rgba(225,6,19,.75); transform: rotate(-3deg); }
+.recado p { font: 500 1rem/1.45 var(--f-body); overflow-wrap: anywhere; }
+.recado footer { margin-top: 10px; font-size: .85rem; display: flex; flex-wrap: wrap; gap: 4px; align-items: baseline; }
+.recado footer span { margin-left: auto; font: 500 .72rem var(--f-mono); color: #6B6B6B; }
+.mural-vazio { color: var(--muted); padding: 20px; border: 1px dashed #333; }
+/* Sorteio */
+.sorteio-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 400px); gap: 28px; align-items: start; }
+.sorteio-prazo { font: 600 1rem var(--f-mono); color: var(--yellow); margin-bottom: 10px; }
+.sorteio-regras { margin-bottom: 14px; color: #ddd; } .sorteio-regras summary { cursor: pointer; font-weight: 700; }
+.sorteio-conta { font-size: 1.05rem; } .sorteio-conta b { font: 900 italic 2.2rem var(--f-display); color: #fff; }
+@media (max-width: 860px) { .mural-grid, .sorteio-grid { grid-template-columns: minmax(0, 1fr); } }
+.mural-vazio { column-span: all; break-inside: avoid; }
+.mural-lista:has(.mural-vazio) { columns: auto; }

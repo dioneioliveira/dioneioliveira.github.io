@@ -1093,6 +1093,91 @@
   });
 
   /* ------------------------------------------------------------------ */
+  /* Mural de recados e sorteio (Supabase via REST, sem biblioteca)        */
+  /* ------------------------------------------------------------------ */
+  (function () {
+    var URL_SB = C.supabaseUrl, KEY = C.supabaseKey;
+    var mural = $("#mural");
+    if (!URL_SB || !KEY) { mural.hidden = true; return; }
+    function api(caminho, opcoes) {
+      opcoes = opcoes || {};
+      var h = { apikey: KEY, "Content-Type": "application/json" };
+      if (opcoes.prefer) h.Prefer = opcoes.prefer;
+      return fetch(URL_SB + "/rest/v1/" + caminho, { method: opcoes.method || "GET", headers: h, body: opcoes.body ? JSON.stringify(opcoes.body) : undefined })
+        .then(function (r) {
+          if (r.ok) return r.status === 204 || r.status === 201 ? null : r.json();
+          return r.json().catch(function () { return {}; }).then(function (e) { var err = new Error(e.message || ("Erro " + r.status)); err.code = e.code; throw err; });
+        });
+    }
+    function tempo(iso) {
+      var d = (Date.now() - new Date(iso).getTime()) / 1000;
+      if (d < 3600) return "há " + Math.max(1, Math.round(d / 60)) + " min";
+      if (d < 86400) return "há " + Math.round(d / 3600) + " h";
+      return new Date(iso).toLocaleDateString("pt-BR", { day: "2-digit", month: "short" }).replace(".", "");
+    }
+
+    // Mural: lista os aprovados e envia novos (entram como não aprovados)
+    function carregarMural() {
+      api("dy_recados?select=nome,cidade,mensagem,criado_em&order=criado_em.desc&limit=30").then(function (lista) {
+        $("#muralLista").innerHTML = lista.length ? lista.map(function (r, i) {
+          return '<blockquote class="recado" style="--rot:' + ((i % 5) - 2) * 0.6 + 'deg"><p>' + esc(r.mensagem) + "</p><footer><b>" + esc(r.nome) + "</b>" +
+            (r.cidade ? " · " + esc(r.cidade) : "") + "<span>" + esc(tempo(r.criado_em)) + "</span></footer></blockquote>";
+        }).join("") : '<p class="mural-vazio">Seja o primeiro a deixar um recado para a família!</p>';
+      }).catch(function () { $("#muralLista").innerHTML = '<p class="mural-vazio">Não foi possível carregar os recados agora. Tente de novo mais tarde.</p>'; });
+    }
+    carregarMural();
+    var msg = $("#muralMsg");
+    msg.addEventListener("input", function () { $("#muralConta").textContent = msg.value.length + "/280"; });
+    $("#muralForm").addEventListener("submit", function (e) {
+      e.preventDefault();
+      var nome = $("#muralNome").value.trim(), cidade = $("#muralCidade").value.trim(), texto = msg.value.trim(), fb = $("#muralFeedback");
+      if (nome.length < 2) { fb.textContent = "Escreve teu nome (pelo menos 2 letras)."; $("#muralNome").focus(); return; }
+      if (texto.length < 3) { fb.textContent = "O recado precisa ter pelo menos 3 letras."; msg.focus(); return; }
+      if (store("dy-recado-enviado") && Date.now() - store("dy-recado-enviado") < 60000) { fb.textContent = "Calma! Espera um minutinho para mandar outro recado."; return; }
+      var btn = $("#muralEnviar"); btn.disabled = true; fb.textContent = "Enviando...";
+      api("dy_recados", { method: "POST", prefer: "return=minimal", body: { nome: nome, cidade: cidade || null, mensagem: texto } }).then(function () {
+        store("dy-recado-enviado", Date.now());
+        $("#muralForm").reset(); $("#muralConta").textContent = "0/280";
+        fb.textContent = "Recado enviado! Ele aparece aqui assim que a família ler. Valeu pelo salve!";
+      }).catch(function () { fb.textContent = "Não deu para enviar agora. Confere a internet e tenta de novo."; })
+        .then(function () { btn.disabled = false; });
+    });
+
+    // Sorteio: mostra o sorteio aberto mais recente e recebe inscrições
+    api("dy_sorteios?select=id,titulo,premio,regras,aberto,encerra_em&aberto=eq.true&order=criado_em.desc&limit=1").then(function (ls) {
+      var st = ls && ls[0];
+      if (!st || (st.encerra_em && new Date(st.encerra_em) < new Date())) return;
+      $("#sorteio").hidden = false; $("#navSorteio").hidden = false;
+      $("#sorteioTitulo").innerHTML = esc(st.titulo).replace(/(\S+)$/, "<em>$1</em>");
+      $("#sorteioPremio").textContent = "Prêmio: " + st.premio;
+      $("#sorteioPrazo").textContent = st.encerra_em ? "Inscrições até " + new Date(st.encerra_em).toLocaleString("pt-BR", { dateStyle: "long", timeStyle: "short" }) : "";
+      if (st.regras) $("#sorteioRegras").textContent = st.regras; else $("#sorteioRegrasBox").hidden = true;
+      function contar() {
+        api("rpc/dy_participantes_do_sorteio", { method: "POST", body: { p_sorteio: st.id } })
+          .then(function (l) { $("#sorteioTotal").textContent = fmtInt((l || []).length); })
+          .catch(function () { $(".sorteio-conta").hidden = true; });
+      }
+      contar();
+      var chave = "dy-sorteio-" + st.id;
+      if (store(chave)) { $("#sorteioMsg").textContent = "Você já está participando deste sorteio. Boa sorte!"; }
+      $("#sorteioForm").addEventListener("submit", function (e) {
+        e.preventDefault();
+        var nome = $("#sorteioNome").value.trim(), contato = $("#sorteioContato").value.trim(), fb = $("#sorteioMsg");
+        if (nome.length < 2) { fb.textContent = "Escreve teu nome."; return; }
+        if (contato.length < 3) { fb.textContent = "Coloca teu Instagram ou WhatsApp para a gente avisar se você ganhar."; return; }
+        if (!$("#sorteioAceite").checked) { fb.textContent = "Marca a caixinha confirmando que é inscrito e aceita as regras."; return; }
+        var btn = $("#sorteioEnviar"); btn.disabled = true; fb.textContent = "Enviando...";
+        api("dy_participantes", { method: "POST", prefer: "return=minimal", body: { sorteio_id: st.id, nome: nome, contato: contato, aceite: true } }).then(function () {
+          store(chave, true); $("#sorteioForm").reset();
+          fb.textContent = "Inscrição feita! Boa sorte! O resultado sai no canal."; confetti(); contar();
+        }).catch(function (err) {
+          fb.textContent = err.code === "23505" ? "Esse contato já está participando. Boa sorte!" : "Não deu para inscrever agora. Pode ser que o sorteio tenha encerrado. Tenta de novo mais tarde.";
+        }).then(function () { btn.disabled = false; });
+      });
+    }).catch(function () { /* sem sorteio agora */ });
+  })();
+
+  /* ------------------------------------------------------------------ */
   /* Contato                                                               */
   /* ------------------------------------------------------------------ */
   var contact = C.emailParcerias || C.handle || "";

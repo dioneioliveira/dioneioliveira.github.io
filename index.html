@@ -57,6 +57,8 @@
       <a href="#garagem">Garagem</a>
       <a href="#loja" id="navLoja" hidden>Loja</a>
       <a href="#blog">Blog</a>
+      <a href="#sorteio" id="navSorteio" hidden>Sorteio</a>
+      <a href="#mural">Mural</a>
     </nav>
     <button type="button" class="top-app" id="instalarApp" hidden>Instalar app</button>
     <a class="top-sub" id="topSub" href="#" target="_blank" rel="noopener">Inscrever-se</a>
@@ -371,6 +373,57 @@
         <h2>Diário de <em>bordo</em></h2>
       </header>
       <div class="blog-grid" id="blogGrid"></div>
+    </div>
+  </section>
+
+  <!-- SORTEIO -->
+  <section class="section section-race" id="sorteio" hidden>
+    <div class="wrap sorteio-grid">
+      <div>
+        <header class="sec-head">
+          <p class="tag"><span>Sorteio para inscritos</span></p>
+          <h2 id="sorteioTitulo">Sorteio <em>aberto</em></h2>
+          <p class="sec-lead" id="sorteioPremio"></p>
+        </header>
+        <p class="sorteio-prazo" id="sorteioPrazo"></p>
+        <details class="sorteio-regras" id="sorteioRegrasBox"><summary>Regras</summary><p id="sorteioRegras"></p></details>
+        <p class="sorteio-conta"><b id="sorteioTotal">0</b> participantes</p>
+      </div>
+      <form class="form-card" id="sorteioForm" novalidate>
+        <h3>Quero participar</h3>
+        <label for="sorteioNome">Seu nome</label>
+        <input id="sorteioNome" name="nome" maxlength="60" autocomplete="name" required>
+        <label for="sorteioContato">Instagram ou WhatsApp para contato</label>
+        <input id="sorteioContato" name="contato" maxlength="60" placeholder="@seuusuario" required>
+        <label class="check"><input type="checkbox" id="sorteioAceite" required><span>Sou inscrito no canal e aceito as regras do sorteio.</span></label>
+        <button type="submit" class="btn btn-red" id="sorteioEnviar">Participar do sorteio</button>
+        <p class="form-msg" id="sorteioMsg" role="status"></p>
+        <p class="form-nota">Seu contato só é usado para avisar quem ganhar e não aparece no site.</p>
+      </form>
+    </div>
+  </section>
+
+  <!-- MURAL -->
+  <section class="section" id="mural">
+    <div class="wrap mural-grid">
+      <div>
+        <header class="sec-head">
+          <p class="tag"><span>Mural da galera</span></p>
+          <h2>Deixa teu <em>recado</em></h2>
+          <p class="sec-lead">Manda um salve pra família! Os recados aparecem aqui depois que a gente lê.</p>
+        </header>
+        <form class="form-card" id="muralForm" novalidate>
+          <label for="muralNome">Nome</label>
+          <input id="muralNome" maxlength="40" autocomplete="given-name" required>
+          <label for="muralCidade">Cidade (opcional)</label>
+          <input id="muralCidade" maxlength="40" autocomplete="address-level2">
+          <label for="muralMsg">Recado</label>
+          <textarea id="muralMsg" maxlength="280" rows="4" required></textarea>
+          <div class="form-linha"><span class="form-nota" id="muralConta">0/280</span><button type="submit" class="btn btn-red" id="muralEnviar">Enviar recado</button></div>
+          <p class="form-msg" id="muralFeedback" role="status"></p>
+        </form>
+      </div>
+      <div class="mural-lista" id="muralLista" aria-live="polite"></div>
     </div>
   </section>
 

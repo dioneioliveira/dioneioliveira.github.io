@@ -18,6 +18,12 @@ window.SITE = {
     descricao: "Uma vida movida por desafios: velocross, corridas de rua, camping, viagens e aventuras ao ar livre. Toda semana tem vídeo novo com os bastidores, a evolução e as histórias reais de quem acredita que a melhor parte da vida acontece fora de casa.",
     emailParcerias: "", // opcional: preencha para mostrar um e-mail no lugar do Instagram
 
+    /* MURAL E SORTEIO (Supabase, projeto corridasderua). A chave abaixo é pública:
+       quem protege os dados são as regras do banco (recado só aparece depois de aprovado,
+       contato do sorteio nunca é exibido). */
+    supabaseUrl: "https://nfrafunlxkcixokpexqi.supabase.co",
+    supabaseKey: "sb_publishable_do0bEDzDndC9ww5l7pMpqQ_Im_YEYFD",
+
     /* CONTADOR DE INSCRITOS
        Sem chave da API, o site mostra o último registro abaixo.
        Com chave (veja o README), mostra o número ao vivo. */
