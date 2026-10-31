@@ -128,6 +128,13 @@
   <!-- ROLETA -->
   <section class="section section-wheel" id="roleta">
     <div class="wrap wheel-grid">
+      <div class="telao-topo" aria-hidden="true">
+        <img src="assets/logo-wordmark-strip.jpg" alt="" width="900" height="165">
+        <div class="telao-botoes">
+          <button type="button" class="btn btn-small" id="telaoVerde">Fundo verde</button>
+          <button type="button" class="btn btn-small btn-ghost" id="telaoSair">Sair (Esc)</button>
+        </div>
+      </div>
       <div class="wheel-text">
         <header class="sec-head">
           <p class="tag"><span>Roleta da aventura</span></p>
@@ -157,7 +164,10 @@
         <div class="wheel-pointer" aria-hidden="true"></div>
         <canvas id="wheelCanvas" width="520" height="520" aria-label="Roleta com as opções do próximo vídeo" role="img"></canvas>
         <button type="button" class="wheel-spin" id="wheelSpin">Girar</button>
-        <button type="button" class="link-btn wheel-sound" id="wheelSound" aria-pressed="true">Som: ligado</button>
+        <div class="wheel-tools">
+          <button type="button" class="link-btn" id="wheelTelao">Modo telão</button>
+          <button type="button" class="link-btn" id="wheelSound" aria-pressed="true">Som: ligado</button>
+        </div>
         <div class="wheel-scene" id="wheelScene" hidden>
           <div class="wheel-scene-art" id="wheelSceneArt"></div>
           <div class="wheel-scene-cap">

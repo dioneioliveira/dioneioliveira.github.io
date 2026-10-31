@@ -443,6 +443,37 @@
       ctx.beginPath(); ctx.arc(c, c, R * 0.2, 0, TAU); ctx.fillStyle = "#0B0B0B"; ctx.fill();
       ctx.lineWidth = 4; ctx.strokeStyle = "#E10613"; ctx.stroke();
     }
+    function somCtx() {
+      try { audio = audio || new (window.AudioContext || window.webkitAudioContext)(); return audio; } catch (e) { return null; }
+    }
+    // Rufar de tambor: ruído em batidas rápidas que vão diminuindo junto com a roda
+    var rufar = null;
+    function iniciarRufar(dur) {
+      var ac = som && somCtx(); if (!ac) return;
+      var len = Math.ceil(ac.sampleRate * 0.05), buf = ac.createBuffer(1, len, ac.sampleRate), d = buf.getChannelData(0);
+      for (var i = 0; i < len; i++) d[i] = (Math.random() * 2 - 1) * Math.pow(1 - i / len, 3);
+      var filtro = ac.createBiquadFilter(); filtro.type = "bandpass"; filtro.frequency.value = 1800; filtro.Q.value = 0.8;
+      var ganho = ac.createGain(); ganho.gain.value = 0.35; filtro.connect(ganho); ganho.connect(ac.destination);
+      var t = ac.currentTime, fim = t + dur / 1000;
+      while (t < fim) {
+        var p = (t - ac.currentTime) / (dur / 1000), intervalo = 0.045 + p * p * 0.12;
+        var src = ac.createBufferSource(); src.buffer = buf; var g = ac.createGain(); g.gain.value = 0.9 - p * 0.6;
+        src.connect(g); g.connect(filtro); src.start(t); t += intervalo;
+      }
+      rufar = ganho;
+    }
+    // Fanfarra do resultado: acorde de "metais" subindo
+    function fanfarra(triste) {
+      var ac = som && somCtx(); if (!ac) return;
+      var notas = triste ? [392, 349, 294] : [523, 659, 784, 1047], t = ac.currentTime + 0.05;
+      notas.forEach(function (f, k) {
+        var o = ac.createOscillator(), g = ac.createGain(), lp = ac.createBiquadFilter();
+        o.type = "sawtooth"; o.frequency.value = f; lp.type = "lowpass"; lp.frequency.value = 2400;
+        var ini = t + k * (triste ? 0.22 : 0.12), dur = k === notas.length - 1 ? 0.9 : 0.2;
+        g.gain.setValueAtTime(0.0001, ini); g.gain.exponentialRampToValueAtTime(0.12, ini + 0.03); g.gain.exponentialRampToValueAtTime(0.0001, ini + dur);
+        o.connect(lp); lp.connect(g); g.connect(ac.destination); o.start(ini); o.stop(ini + dur + 0.05);
+      });
+    }
     function tick() {
       if (!som) return;
       try {
@@ -496,6 +527,7 @@
       var voltas = reduceMotion ? 1 : 5 + Math.floor(Math.random() * 3);
       var from = rot, to = rot + voltas * TAU + delta;
       var dur = reduceMotion ? 1200 : 5200 + Math.random() * 1200, t0 = performance.now();
+      iniciarRufar(dur);
       spinning = true; girou = true;
       var btn = $("#wheelSpin"); btn.disabled = true; btn.textContent = "...";
       $("#wheelResult").classList.remove("show");
@@ -528,9 +560,35 @@
         var h = store("dy-roleta") || [];
         h.unshift({ nome: o.nome, quando: new Date().toISOString() });
         store("dy-roleta", h.slice(0, 8)); renderHistory();
+        fanfarra(/^nada/i.test(o.nome));
         if (!/^nada/i.test(o.nome)) confetti();
       })(t0);
     }
+    // Modo telão: roleta em tela cheia para gravar, com fundo verde opcional
+    var secao = $("#roleta");
+    function telao(ligar) {
+      secao.classList.toggle("telao", ligar);
+      document.body.classList.toggle("em-telao", ligar);
+      if (ligar) {
+        if (secao.requestFullscreen) secao.requestFullscreen().catch(function () {});
+      } else {
+        secao.classList.remove("verde");
+        if (document.fullscreenElement && document.exitFullscreen) document.exitFullscreen().catch(function () {});
+      }
+      setTimeout(function () { draw(performance.now()); }, 60);
+    }
+    $("#wheelTelao").addEventListener("click", function () { telao(true); });
+    $("#telaoSair").addEventListener("click", function () { telao(false); });
+    $("#telaoVerde").addEventListener("click", function () {
+      var on = secao.classList.toggle("verde");
+      this.textContent = on ? "Fundo escuro" : "Fundo verde";
+    });
+    document.addEventListener("fullscreenchange", function () { if (!document.fullscreenElement && secao.classList.contains("telao")) telao(false); });
+    document.addEventListener("keydown", function (e) {
+      if (!secao.classList.contains("telao")) return;
+      if (e.key === "Escape") telao(false);
+      if (e.key === " " || e.code === "Space") { e.preventDefault(); spin(); }
+    });
     $("#wheelSpin").addEventListener("click", spin);
     $("#wheelAgain").addEventListener("click", spin);
     $("#wheelClose").addEventListener("click", function () { var c = $("#wheelScene"); c.classList.remove("show"); c.hidden = true; });
