@@ -59,6 +59,19 @@ window.SITE = {
     { nome: "Nada?", peso: 1, cor: "#3A3A3A", frase: "Dia de descanso... ou gira de novo?" }
   ],
 
+  /* MAPA DAS AVENTURAS: um marcador por lugar.
+     lat/lng: coordenadas (no Google Maps, clique com o botão direito no lugar e copie).
+     Os atuais estão no centro da cidade; troque pela posição exata quando quiser.
+     tipo: "camping", "velocross", "trilha", "cachoeira" ou "passeio" (muda a cor do marcador). */
+  mapa: [
+    { nome: "Camping Cachoeira Paulista", local: "Doutor Pedrinho, SC", lat: -26.7164, lng: -49.4827, tipo: "camping",
+      texto: "Camping com cachoeira e trilha pelo leito do rio.", videos: ["DbRBNKvVFsU", "946ViQhSoGU"] },
+    { nome: "Rampa do Bugio", local: "Campo Alegre, SC · 1.100 m", lat: -26.1942, lng: -49.2657, tipo: "passeio",
+      texto: "Mirante a 1.100 metros de altitude.", foto: "assets/fotos/rampa-do-bugio.jpg" },
+    { nome: "Motocross radical em Piên", local: "Piên, PR", lat: -26.0989, lng: -49.4298, tipo: "velocross",
+      texto: "O maior salto de motocross do canal.", videos: ["M3KMI-Bai-M"] }
+  ],
+
   temporada: {
     titulo: "Rumo ao Pódio",
     subtitulo: "Temporada 2026",

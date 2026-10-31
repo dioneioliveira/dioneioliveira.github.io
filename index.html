@@ -29,6 +29,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,600;0,700;1,700;1,800;1,900&family=Barlow:wght@400;500;600;700&family=DM+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
 <link rel="stylesheet" href="css/style.css">
 <!-- Google AdSense -->
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7817937355678689"
@@ -50,6 +51,7 @@
       <a href="#shorts" id="navShorts">Shorts</a>
       <a href="#series">Séries</a>
       <a href="#fotos">Fotos</a>
+      <a href="#mapa">Mapa</a>
       <a href="#campings">Campings</a>
       <a href="#garagem">Garagem</a>
       <a href="#loja" id="navLoja" hidden>Loja</a>
@@ -265,6 +267,21 @@
     </div>
   </section>
 
+  <!-- MAPA -->
+  <section class="section" id="mapa">
+    <div class="wrap">
+      <header class="sec-head">
+        <p class="tag"><span>Mapa das aventuras</span></p>
+        <h2>Por onde a gente <em>já passou</em></h2>
+        <p class="sec-lead">Toque num marcador para ver o lugar e os vídeos gravados lá.</p>
+      </header>
+      <div class="mapa-box">
+        <div class="mapa" id="mapaAventuras" role="region" aria-label="Mapa com os lugares das aventuras"></div>
+        <ol class="mapa-lista" id="mapaLista"></ol>
+      </div>
+    </div>
+  </section>
+
   <!-- CAMPINGS -->
   <section class="section section-alt" id="campings">
     <div class="wrap">
@@ -375,6 +392,7 @@
 
 <script src="js/config.js"></script>
 <script src="js/auto.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
 <script src="js/roleta-cenas.js"></script>
 <script src="js/app.js"></script>
 </body>

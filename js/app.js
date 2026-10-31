@@ -832,6 +832,48 @@
   }).join("");
 
   /* ------------------------------------------------------------------ */
+  /* Mapa das aventuras (Leaflet + OpenStreetMap)                          */
+  /* ------------------------------------------------------------------ */
+  (function () {
+    var lugares = (S.mapa || []).filter(function (m) { return typeof m.lat === "number" && typeof m.lng === "number"; });
+    var el = $("#mapaAventuras");
+    if (!el) return;
+    if (!lugares.length) { $("#mapa").hidden = true; return; }
+    var CORES = { camping: "#E10613", velocross: "#FFD21F", trilha: "#3FA34D", cachoeira: "#3FA4DB", passeio: "#1F8A4C" };
+    var ICO = { camping: "barraca", velocross: "moto", trilha: "bussola", cachoeira: "cachoeira", passeio: "bussola" };
+    function svgIco(tipo) {
+      return window.ROLETA_ARTE ? window.ROLETA_ARTE.iconeSVG({ nome: "", icone: ICO[tipo] || "bussola" }, "#fff") : "";
+    }
+    $("#mapaLista").innerHTML = lugares.map(function (m, i) {
+      return '<li><button type="button" data-lugar="' + i + '"><span class="mapa-num" style="background:' + (CORES[m.tipo] || "#E10613") + '">' + svgIco(m.tipo) +
+        '</span><span><b>' + esc(m.nome) + "</b><small>" + esc(m.local || "") + "</small></span></button></li>";
+    }).join("");
+    if (!window.L) { el.innerHTML = '<p class="mapa-erro">Não foi possível carregar o mapa agora. A lista ao lado mostra os lugares.</p>'; return; }
+    var mapa = L.map(el, { scrollWheelZoom: false, attributionControl: true });
+    L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", { maxZoom: 18, attribution: '&copy; <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a>' }).addTo(mapa);
+    var marcadores = lugares.map(function (m) {
+      var icone = L.divIcon({ className: "mapa-pino", html: '<span style="--cor:' + (CORES[m.tipo] || "#E10613") + '">' + svgIco(m.tipo) + "</span>", iconSize: [38, 46], iconAnchor: [19, 44], popupAnchor: [0, -40] });
+      var vids = (m.videos || []).map(function (id) {
+        var v = findVideo(id);
+        return '<button type="button" class="mapa-video" data-video="' + esc(id) + '"><img src="' + esc(thumbUrl(id)) + '" alt=""><span>' + esc(v.titulo) + "</span></button>";
+      }).join("");
+      var foto = m.foto ? '<img class="mapa-foto" src="' + esc(asset(m.foto)) + '" alt="' + esc(m.nome) + '">' : "";
+      var html = '<div class="mapa-pop"><strong>' + esc(m.nome) + "</strong><small>" + esc(m.local || "") + "</small>" + (m.texto ? "<p>" + esc(m.texto) + "</p>" : "") + foto + vids +
+        '<a href="https://www.google.com/maps/search/?api=1&query=' + m.lat + "," + m.lng + '" target="_blank" rel="noopener">Como chegar →</a></div>';
+      return L.marker([m.lat, m.lng], { icon: icone, title: m.nome }).addTo(mapa).bindPopup(html, { maxWidth: 260 });
+    });
+    mapa.fitBounds(L.latLngBounds(lugares.map(function (m) { return [m.lat, m.lng]; })).pad(0.35), { maxZoom: 10 });
+    $("#mapaLista").addEventListener("click", function (e) {
+      var b = e.target.closest("[data-lugar]"); if (!b) return;
+      var i = +b.getAttribute("data-lugar");
+      mapa.flyTo([lugares[i].lat, lugares[i].lng], 11, { duration: reduceMotion ? 0 : 1 });
+      setTimeout(function () { marcadores[i].openPopup(); }, reduceMotion ? 0 : 1050);
+    });
+    el.addEventListener("click", function () { mapa.scrollWheelZoom.enable(); });
+    if ("IntersectionObserver" in window) new IntersectionObserver(function (es) { if (es[0].isIntersecting) mapa.invalidateSize(); }).observe(el);
+  })();
+
+  /* ------------------------------------------------------------------ */
   /* Checklist                                                             */
   /* ------------------------------------------------------------------ */
   var checks = store("dy-checklist") || {}, groups = S.checklist || {}, total = 0, wasDone = false;
