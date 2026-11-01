@@ -6,7 +6,7 @@ window.AUTO = {
       "id": "qAYhg_rZMl0",
       "titulo": "A SURPRESA DO CANAL FICOU TOP! 🔥 Só Falta a Moto! 🏁",
       "data": "2026-10-24",
-      "views": 237
+      "views": 239
     },
     {
       "id": "QCZZIPjLC6s",
@@ -18,7 +18,7 @@ window.AUTO = {
       "id": "D6YO52AXLQA",
       "titulo": "Deu ruim! Fiz o PIOR Cavalete de Moto pro Vini",
       "data": "2026-08-22",
-      "views": 2141
+      "views": 2142
     },
     {
       "id": "VktrnwkYI6Y",
@@ -36,7 +36,7 @@ window.AUTO = {
       "id": "V1_XdDOT1wc",
       "titulo": "O ERRO na Largada que Me Custou o PÓDIO no Velocross!",
       "data": "2026-07-30",
-      "views": 573
+      "views": 574
     },
     {
       "id": "m0pPSKNPGBY",
@@ -46,11 +46,11 @@ window.AUTO = {
     }
   ],
   "inscritos": 8680,
-  "inscritosData": "30/10/2026",
+  "inscritosData": "01/11/2026",
   "videosPublicados": 834,
-  "atualizadoEm": "2026-10-30T20:42:16-03:00",
+  "atualizadoEm": "2026-11-01T14:40:19-03:00",
   "shopee": {
-    "atualizado": "30/10/2026",
+    "atualizado": "01/11/2026",
     "itens": [
       {
         "id": "58265164148",
@@ -65,7 +65,7 @@ window.AUTO = {
         "nome": "LIQUIDZ® - Eletrólitos Zero Açúcares - Sabor Limonada Tropical  - Kit 1 Caixa - 14 sachês",
         "link": "https://s.shopee.com.br/2LZOo7xKK1",
         "imagem": "https://down-br.img.susercontent.com/file/br-11134207-820m1-mn0dz89j4a9t0f_tn",
-        "preco": 95.27,
+        "preco": 99.66,
         "precoOriginal": 159.0
       },
       {
@@ -73,7 +73,7 @@ window.AUTO = {
         "nome": "Isotônico Hydramaxi Display 25 Sachês Sudract Repositor Eletrólitos Corrida Cross Pedal Endurance",
         "link": "https://s.shopee.com.br/2BFybmcq6C",
         "imagem": "https://down-br.img.susercontent.com/file/sg-11134201-7rcdr-lsw07la7309bc0_tn",
-        "preco": 61.71,
+        "preco": 64.95,
         "precoOriginal": 64.95
       },
       {
@@ -81,7 +81,7 @@ window.AUTO = {
         "nome": "Gel Carb Go Recovery Atlhetica Energia Endurance Cx 10x30g",
         "link": "https://s.shopee.com.br/3qOCajDFrv",
         "imagem": "https://down-br.img.susercontent.com/file/sg-11134201-7rfge-m462yym75hvs75_tn",
-        "preco": 32.34,
+        "preco": 36.33,
         "precoOriginal": 36.33
       },
       {
@@ -217,7 +217,7 @@ window.AUTO = {
         "nome": "Barraca Camping 2/3 Pessoas  Acampamento Automatica",
         "link": "https://s.shopee.com.br/W0FiKiEnJ",
         "imagem": "https://down-br.img.susercontent.com/file/br-11134207-81z1k-mhzzw6rlwhz55a_tn",
-        "preco": 170.05,
+        "preco": 160.55,
         "precoOriginal": 399.0
       }
     ]
@@ -239,13 +239,13 @@ window.AUTO = {
       "id": "o-V3oavSbZE",
       "titulo": "Peteco na máquina #motor #crf #velocross #velocidade",
       "data": "2026-08-16",
-      "views": 5397
+      "views": 5398
     },
     {
       "id": "b-KreP1RnjM",
       "titulo": "Só tirar 4 segundos #velocross #voltarapida #competição #rp @Blmotosracing94",
       "data": "2026-08-09",
-      "views": 6569
+      "views": 6573
     },
     {
       "id": "tVxnItXaChI",
@@ -263,7 +263,7 @@ window.AUTO = {
       "id": "CE6nbcUVuwg",
       "titulo": "Largada categoria Júnior Copa Serra Litoral #velocross #largada #acelera",
       "data": "2026-07-28",
-      "views": 1870
+      "views": 1871
     },
     {
       "id": "lVauxJoec30",
