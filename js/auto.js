@@ -6,13 +6,13 @@ window.AUTO = {
       "id": "qAYhg_rZMl0",
       "titulo": "A SURPRESA DO CANAL FICOU TOP! 🔥 Só Falta a Moto! 🏁",
       "data": "2026-10-24",
-      "views": 239
+      "views": 240
     },
     {
       "id": "QCZZIPjLC6s",
       "titulo": "AINDA SEM MOTOR? 🏁 Entregamos as Últimas Peças! | Rumo ao Pódio #8",
       "data": "2026-10-15",
-      "views": 212
+      "views": 213
     },
     {
       "id": "D6YO52AXLQA",
@@ -30,7 +30,7 @@ window.AUTO = {
       "id": "QOQNJqPerm4",
       "titulo": "Depois de uma Largada Ruim... Fomos Treinar no Gate! [Série \"rumo ao pódio - T2026 #EP7]",
       "data": "2026-08-07",
-      "views": 667
+      "views": 668
     },
     {
       "id": "V1_XdDOT1wc",
@@ -42,15 +42,15 @@ window.AUTO = {
       "id": "m0pPSKNPGBY",
       "titulo": "ACAMPEI NA PISTA! Treino secreto pra Copa Serra Litoral de Velocross",
       "data": "2026-07-28",
-      "views": 207
+      "views": 208
     }
   ],
-  "inscritos": 8680,
-  "inscritosData": "01/11/2026",
-  "videosPublicados": 834,
-  "atualizadoEm": "2026-11-01T14:40:19-03:00",
+  "inscritos": 8690,
+  "inscritosData": "03/11/2026",
+  "videosPublicados": 835,
+  "atualizadoEm": "2026-11-03T16:06:23-03:00",
   "shopee": {
-    "atualizado": "01/11/2026",
+    "atualizado": "03/11/2026",
     "itens": [
       {
         "id": "58265164148",
@@ -73,7 +73,7 @@ window.AUTO = {
         "nome": "Isotônico Hydramaxi Display 25 Sachês Sudract Repositor Eletrólitos Corrida Cross Pedal Endurance",
         "link": "https://s.shopee.com.br/2BFybmcq6C",
         "imagem": "https://down-br.img.susercontent.com/file/sg-11134201-7rcdr-lsw07la7309bc0_tn",
-        "preco": 64.95,
+        "preco": 61.71,
         "precoOriginal": 64.95
       },
       {
@@ -81,7 +81,7 @@ window.AUTO = {
         "nome": "Gel Carb Go Recovery Atlhetica Energia Endurance Cx 10x30g",
         "link": "https://s.shopee.com.br/3qOCajDFrv",
         "imagem": "https://down-br.img.susercontent.com/file/sg-11134201-7rfge-m462yym75hvs75_tn",
-        "preco": 36.33,
+        "preco": 34.52,
         "precoOriginal": 36.33
       },
       {
@@ -105,7 +105,7 @@ window.AUTO = {
         "nome": "Óculos De Sol Fotocromáticos Uv400 Para Ciclismo , Corrida , Direção , Esportes Ao Ar Livre",
         "link": "https://s.shopee.com.br/8Kqbwf8wFX",
         "imagem": "https://down-br.img.susercontent.com/file/sg-11134201-82594-mubs4frbjg8x4b_tn",
-        "preco": 20.66,
+        "preco": 21.3,
         "precoOriginal": 28.0
       },
       {
@@ -121,7 +121,7 @@ window.AUTO = {
         "nome": "Óculos de Sol Polarizado para Corrida: Conforto, Estilo e Proteção para Seus Treinos!",
         "link": "https://s.shopee.com.br/9V2ZJk0Z6h",
         "imagem": "https://down-br.img.susercontent.com/file/sg-11134201-7reph-m80vsgjxza8y84_tn",
-        "preco": 26.9,
+        "preco": 24.8,
         "precoOriginal": 80.0
       },
       {
@@ -224,6 +224,12 @@ window.AUTO = {
   },
   "shorts": [
     {
+      "id": "0dNYV8zO_kE",
+      "titulo": "Quem não tem moto caça com bicicleta #manobras #bike #saltocombike",
+      "data": "2026-11-01",
+      "views": 75
+    },
+    {
       "id": "w7RgQERda8Y",
       "titulo": "Treininho de 8 sem a grande moto #minimoto",
       "data": "2026-09-02",
@@ -239,13 +245,13 @@ window.AUTO = {
       "id": "o-V3oavSbZE",
       "titulo": "Peteco na máquina #motor #crf #velocross #velocidade",
       "data": "2026-08-16",
-      "views": 5398
+      "views": 5401
     },
     {
       "id": "b-KreP1RnjM",
       "titulo": "Só tirar 4 segundos #velocross #voltarapida #competição #rp @Blmotosracing94",
       "data": "2026-08-09",
-      "views": 6573
+      "views": 6574
     },
     {
       "id": "tVxnItXaChI",
@@ -263,13 +269,7 @@ window.AUTO = {
       "id": "CE6nbcUVuwg",
       "titulo": "Largada categoria Júnior Copa Serra Litoral #velocross #largada #acelera",
       "data": "2026-07-28",
-      "views": 1871
-    },
-    {
-      "id": "lVauxJoec30",
-      "titulo": "Um oferecimento TRSF Racing #minimoto #manobras",
-      "data": "2026-07-27",
-      "views": 1257
+      "views": 1873
     }
   ]
 };
