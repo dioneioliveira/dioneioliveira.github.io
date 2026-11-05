@@ -24,7 +24,7 @@ window.AUTO = {
       "id": "VktrnwkYI6Y",
       "titulo": "Tentei Baixar de 1 Minuto e QUASE deu ruim!",
       "data": "2026-08-11",
-      "views": 63
+      "views": 64
     },
     {
       "id": "QOQNJqPerm4",
@@ -46,11 +46,11 @@ window.AUTO = {
     }
   ],
   "inscritos": 8690,
-  "inscritosData": "03/11/2026",
+  "inscritosData": "05/11/2026",
   "videosPublicados": 835,
-  "atualizadoEm": "2026-11-03T16:06:23-03:00",
+  "atualizadoEm": "2026-11-05T16:32:20-03:00",
   "shopee": {
-    "atualizado": "03/11/2026",
+    "atualizado": "05/11/2026",
     "itens": [
       {
         "id": "58265164148",
@@ -65,7 +65,7 @@ window.AUTO = {
         "nome": "LIQUIDZ® - Eletrólitos Zero Açúcares - Sabor Limonada Tropical  - Kit 1 Caixa - 14 sachês",
         "link": "https://s.shopee.com.br/2LZOo7xKK1",
         "imagem": "https://down-br.img.susercontent.com/file/br-11134207-820m1-mn0dz89j4a9t0f_tn",
-        "preco": 99.66,
+        "preco": 79.71,
         "precoOriginal": 159.0
       },
       {
@@ -121,7 +121,7 @@ window.AUTO = {
         "nome": "Óculos de Sol Polarizado para Corrida: Conforto, Estilo e Proteção para Seus Treinos!",
         "link": "https://s.shopee.com.br/9V2ZJk0Z6h",
         "imagem": "https://down-br.img.susercontent.com/file/sg-11134201-7reph-m80vsgjxza8y84_tn",
-        "preco": 24.8,
+        "preco": 27.9,
         "precoOriginal": 80.0
       },
       {
@@ -131,14 +131,6 @@ window.AUTO = {
         "imagem": "https://down-br.img.susercontent.com/file/sg-11134201-82590-mtyoa88m9xjb11_tn",
         "preco": 45.9,
         "precoOriginal": 129.9
-      },
-      {
-        "id": "40376776620",
-        "nome": "Cinto De Corrida Da Maratona Número , Cintura Do Pacote De Pano Corrida Ciclismo Caminhada Ajustável",
-        "link": "https://s.shopee.com.br/2gCFB4BfcO",
-        "imagem": "https://down-br.img.susercontent.com/file/cn-11134207-820l4-mphnelmyjax7c4_tn",
-        "preco": 15.99,
-        "precoOriginal": 15.99
       },
       {
         "id": "22899169696",
@@ -169,8 +161,8 @@ window.AUTO = {
         "nome": "Kit Impermeabilizante De Tecidos 325ml Ultra Lub",
         "link": "https://s.shopee.com.br/9fEUgDH3u5",
         "imagem": "https://down-br.img.susercontent.com/file/br-11134207-7r98o-m8nrz9gvfe9u4b_tn",
-        "preco": 32.83,
-        "precoOriginal": 41.86
+        "preco": 31.25,
+        "precoOriginal": 40.48
       },
       {
         "id": "22798668045",
@@ -201,7 +193,7 @@ window.AUTO = {
         "nome": "Camiseta + short Tactel masculino country texas promoção",
         "link": "https://s.shopee.com.br/30hs9lLxnT",
         "imagem": "https://down-br.img.susercontent.com/file/br-11134207-7r98o-m13gofeepq1qe4_tn",
-        "preco": 28.99,
+        "preco": 28.42,
         "precoOriginal": 28.99
       },
       {
@@ -227,31 +219,31 @@ window.AUTO = {
       "id": "0dNYV8zO_kE",
       "titulo": "Quem não tem moto caça com bicicleta #manobras #bike #saltocombike",
       "data": "2026-11-01",
-      "views": 75
+      "views": 76
     },
     {
       "id": "w7RgQERda8Y",
       "titulo": "Treininho de 8 sem a grande moto #minimoto",
       "data": "2026-09-02",
-      "views": 1300
+      "views": 1301
     },
     {
       "id": "Z9E4nDjeMqQ",
       "titulo": "Nóis no paredão #minimoto #dianormal #paredão #velocross",
       "data": "2026-08-30",
-      "views": 1008
+      "views": 1009
     },
     {
       "id": "o-V3oavSbZE",
       "titulo": "Peteco na máquina #motor #crf #velocross #velocidade",
       "data": "2026-08-16",
-      "views": 5401
+      "views": 5406
     },
     {
       "id": "b-KreP1RnjM",
       "titulo": "Só tirar 4 segundos #velocross #voltarapida #competição #rp @Blmotosracing94",
       "data": "2026-08-09",
-      "views": 6574
+      "views": 6580
     },
     {
       "id": "tVxnItXaChI",
