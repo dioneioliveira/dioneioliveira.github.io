@@ -6,7 +6,7 @@ window.AUTO = {
       "id": "qAYhg_rZMl0",
       "titulo": "A SURPRESA DO CANAL FICOU TOP! 🔥 Só Falta a Moto! 🏁",
       "data": "2026-10-24",
-      "views": 240
+      "views": 241
     },
     {
       "id": "QCZZIPjLC6s",
@@ -46,11 +46,11 @@ window.AUTO = {
     }
   ],
   "inscritos": 8690,
-  "inscritosData": "05/11/2026",
+  "inscritosData": "07/11/2026",
   "videosPublicados": 835,
-  "atualizadoEm": "2026-11-05T16:32:20-03:00",
+  "atualizadoEm": "2026-11-07T14:28:06-03:00",
   "shopee": {
-    "atualizado": "05/11/2026",
+    "atualizado": "07/11/2026",
     "itens": [
       {
         "id": "58265164148",
@@ -121,7 +121,7 @@ window.AUTO = {
         "nome": "Óculos de Sol Polarizado para Corrida: Conforto, Estilo e Proteção para Seus Treinos!",
         "link": "https://s.shopee.com.br/9V2ZJk0Z6h",
         "imagem": "https://down-br.img.susercontent.com/file/sg-11134201-7reph-m80vsgjxza8y84_tn",
-        "preco": 27.9,
+        "preco": 32.0,
         "precoOriginal": 80.0
       },
       {
@@ -161,8 +161,8 @@ window.AUTO = {
         "nome": "Kit Impermeabilizante De Tecidos 325ml Ultra Lub",
         "link": "https://s.shopee.com.br/9fEUgDH3u5",
         "imagem": "https://down-br.img.susercontent.com/file/br-11134207-7r98o-m8nrz9gvfe9u4b_tn",
-        "preco": 31.25,
-        "precoOriginal": 40.48
+        "preco": 33.37,
+        "precoOriginal": 41.86
       },
       {
         "id": "22798668045",
@@ -219,19 +219,19 @@ window.AUTO = {
       "id": "0dNYV8zO_kE",
       "titulo": "Quem não tem moto caça com bicicleta #manobras #bike #saltocombike",
       "data": "2026-11-01",
-      "views": 76
+      "views": 78
     },
     {
       "id": "w7RgQERda8Y",
       "titulo": "Treininho de 8 sem a grande moto #minimoto",
       "data": "2026-09-02",
-      "views": 1301
+      "views": 1302
     },
     {
       "id": "Z9E4nDjeMqQ",
       "titulo": "Nóis no paredão #minimoto #dianormal #paredão #velocross",
       "data": "2026-08-30",
-      "views": 1009
+      "views": 1010
     },
     {
       "id": "o-V3oavSbZE",
@@ -243,7 +243,7 @@ window.AUTO = {
       "id": "b-KreP1RnjM",
       "titulo": "Só tirar 4 segundos #velocross #voltarapida #competição #rp @Blmotosracing94",
       "data": "2026-08-09",
-      "views": 6580
+      "views": 6598
     },
     {
       "id": "tVxnItXaChI",
