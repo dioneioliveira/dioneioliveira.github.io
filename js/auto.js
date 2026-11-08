@@ -3,6 +3,12 @@
 window.AUTO = {
   "videos": [
     {
+      "id": "kvB96yKkHc8",
+      "titulo": "Desafio 21KM: Sobrevivi à Minha Primeira Meia Maratona \"solo\" em Itapoá",
+      "data": "2026-11-08",
+      "views": 2
+    },
+    {
       "id": "qAYhg_rZMl0",
       "titulo": "A SURPRESA DO CANAL FICOU TOP! 🔥 Só Falta a Moto! 🏁",
       "data": "2026-10-24",
@@ -24,7 +30,7 @@ window.AUTO = {
       "id": "VktrnwkYI6Y",
       "titulo": "Tentei Baixar de 1 Minuto e QUASE deu ruim!",
       "data": "2026-08-11",
-      "views": 64
+      "views": 65
     },
     {
       "id": "QOQNJqPerm4",
@@ -37,20 +43,14 @@ window.AUTO = {
       "titulo": "O ERRO na Largada que Me Custou o PÓDIO no Velocross!",
       "data": "2026-07-30",
       "views": 574
-    },
-    {
-      "id": "m0pPSKNPGBY",
-      "titulo": "ACAMPEI NA PISTA! Treino secreto pra Copa Serra Litoral de Velocross",
-      "data": "2026-07-28",
-      "views": 208
     }
   ],
-  "inscritos": 8690,
-  "inscritosData": "07/11/2026",
-  "videosPublicados": 835,
-  "atualizadoEm": "2026-11-07T14:28:06-03:00",
+  "inscritos": 8700,
+  "inscritosData": "08/11/2026",
+  "videosPublicados": 837,
+  "atualizadoEm": "2026-11-08T19:01:18-03:00",
   "shopee": {
-    "atualizado": "07/11/2026",
+    "atualizado": "08/11/2026",
     "itens": [
       {
         "id": "58265164148",
@@ -193,7 +193,7 @@ window.AUTO = {
         "nome": "Camiseta + short Tactel masculino country texas promoção",
         "link": "https://s.shopee.com.br/30hs9lLxnT",
         "imagem": "https://down-br.img.susercontent.com/file/br-11134207-7r98o-m13gofeepq1qe4_tn",
-        "preco": 28.42,
+        "preco": 28.41,
         "precoOriginal": 28.99
       },
       {
@@ -201,7 +201,7 @@ window.AUTO = {
         "nome": "Barraca Camping Automatica 3-4 Pessoas Acampamento 215*215*145cm JOYFOX FORESTDOG",
         "link": "https://s.shopee.com.br/3B10t52WVv",
         "imagem": "https://down-br.img.susercontent.com/file/br-11134207-7r98o-m7vojm6kydkydc_tn",
-        "preco": 180.5,
+        "preco": 176.7,
         "precoOriginal": 699.0
       },
       {
@@ -216,10 +216,16 @@ window.AUTO = {
   },
   "shorts": [
     {
+      "id": "aneQ9-tAx2w",
+      "titulo": "Meu filho VIROU CAPIVARA no Parque Barigui! 😱🦫 #shorts #capivara #curitiba",
+      "data": "2026-11-08",
+      "views": 1160
+    },
+    {
       "id": "0dNYV8zO_kE",
       "titulo": "Quem não tem moto caça com bicicleta #manobras #bike #saltocombike",
       "data": "2026-11-01",
-      "views": 78
+      "views": 81
     },
     {
       "id": "w7RgQERda8Y",
@@ -237,13 +243,13 @@ window.AUTO = {
       "id": "o-V3oavSbZE",
       "titulo": "Peteco na máquina #motor #crf #velocross #velocidade",
       "data": "2026-08-16",
-      "views": 5406
+      "views": 5407
     },
     {
       "id": "b-KreP1RnjM",
       "titulo": "Só tirar 4 segundos #velocross #voltarapida #competição #rp @Blmotosracing94",
       "data": "2026-08-09",
-      "views": 6598
+      "views": 6604
     },
     {
       "id": "tVxnItXaChI",
@@ -255,13 +261,7 @@ window.AUTO = {
       "id": "JhVqS-3RGVE",
       "titulo": "Welcome to the race!!!!! @Blmotosracing94 #velocross #motocross #velocidade #motooffroad",
       "data": "2026-08-01",
-      "views": 1529
-    },
-    {
-      "id": "CE6nbcUVuwg",
-      "titulo": "Largada categoria Júnior Copa Serra Litoral #velocross #largada #acelera",
-      "data": "2026-07-28",
-      "views": 1873
+      "views": 1530
     }
   ]
 };
