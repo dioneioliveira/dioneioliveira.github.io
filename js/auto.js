@@ -6,7 +6,7 @@ window.AUTO = {
       "id": "kvB96yKkHc8",
       "titulo": "Desafio 21KM: Sobrevivi à Minha Primeira Meia Maratona \"solo\" em Itapoá",
       "data": "2026-11-08",
-      "views": 2
+      "views": 18
     },
     {
       "id": "qAYhg_rZMl0",
@@ -46,11 +46,11 @@ window.AUTO = {
     }
   ],
   "inscritos": 8700,
-  "inscritosData": "08/11/2026",
+  "inscritosData": "09/11/2026",
   "videosPublicados": 837,
-  "atualizadoEm": "2026-11-08T19:01:18-03:00",
+  "atualizadoEm": "2026-11-09T18:57:25-03:00",
   "shopee": {
-    "atualizado": "08/11/2026",
+    "atualizado": "09/11/2026",
     "itens": [
       {
         "id": "58265164148",
@@ -121,7 +121,7 @@ window.AUTO = {
         "nome": "Óculos de Sol Polarizado para Corrida: Conforto, Estilo e Proteção para Seus Treinos!",
         "link": "https://s.shopee.com.br/9V2ZJk0Z6h",
         "imagem": "https://down-br.img.susercontent.com/file/sg-11134201-7reph-m80vsgjxza8y84_tn",
-        "preco": 32.0,
+        "preco": 26.9,
         "precoOriginal": 80.0
       },
       {
@@ -201,7 +201,7 @@ window.AUTO = {
         "nome": "Barraca Camping Automatica 3-4 Pessoas Acampamento 215*215*145cm JOYFOX FORESTDOG",
         "link": "https://s.shopee.com.br/3B10t52WVv",
         "imagem": "https://down-br.img.susercontent.com/file/br-11134207-7r98o-m7vojm6kydkydc_tn",
-        "preco": 176.7,
+        "preco": 180.5,
         "precoOriginal": 699.0
       },
       {
@@ -219,7 +219,7 @@ window.AUTO = {
       "id": "aneQ9-tAx2w",
       "titulo": "Meu filho VIROU CAPIVARA no Parque Barigui! 😱🦫 #shorts #capivara #curitiba",
       "data": "2026-11-08",
-      "views": 1160
+      "views": 1171
     },
     {
       "id": "0dNYV8zO_kE",
@@ -249,7 +249,7 @@ window.AUTO = {
       "id": "b-KreP1RnjM",
       "titulo": "Só tirar 4 segundos #velocross #voltarapida #competição #rp @Blmotosracing94",
       "data": "2026-08-09",
-      "views": 6604
+      "views": 6615
     },
     {
       "id": "tVxnItXaChI",
