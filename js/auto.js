@@ -6,7 +6,7 @@ window.AUTO = {
       "id": "kvB96yKkHc8",
       "titulo": "Desafio 21KM: Sobrevivi à Minha Primeira Meia Maratona \"solo\" em Itapoá",
       "data": "2026-11-08",
-      "views": 18
+      "views": 21
     },
     {
       "id": "qAYhg_rZMl0",
@@ -18,7 +18,7 @@ window.AUTO = {
       "id": "QCZZIPjLC6s",
       "titulo": "AINDA SEM MOTOR? 🏁 Entregamos as Últimas Peças! | Rumo ao Pódio #8",
       "data": "2026-10-15",
-      "views": 213
+      "views": 214
     },
     {
       "id": "D6YO52AXLQA",
@@ -46,11 +46,11 @@ window.AUTO = {
     }
   ],
   "inscritos": 8700,
-  "inscritosData": "09/11/2026",
+  "inscritosData": "10/11/2026",
   "videosPublicados": 837,
-  "atualizadoEm": "2026-11-09T18:57:25-03:00",
+  "atualizadoEm": "2026-11-10T06:56:59-03:00",
   "shopee": {
-    "atualizado": "09/11/2026",
+    "atualizado": "10/11/2026",
     "itens": [
       {
         "id": "58265164148",
@@ -65,7 +65,7 @@ window.AUTO = {
         "nome": "LIQUIDZ® - Eletrólitos Zero Açúcares - Sabor Limonada Tropical  - Kit 1 Caixa - 14 sachês",
         "link": "https://s.shopee.com.br/2LZOo7xKK1",
         "imagem": "https://down-br.img.susercontent.com/file/br-11134207-820m1-mn0dz89j4a9t0f_tn",
-        "preco": 79.71,
+        "preco": 77.81,
         "precoOriginal": 159.0
       },
       {
@@ -193,7 +193,7 @@ window.AUTO = {
         "nome": "Camiseta + short Tactel masculino country texas promoção",
         "link": "https://s.shopee.com.br/30hs9lLxnT",
         "imagem": "https://down-br.img.susercontent.com/file/br-11134207-7r98o-m13gofeepq1qe4_tn",
-        "preco": 28.41,
+        "preco": 27.54,
         "precoOriginal": 28.99
       },
       {
@@ -219,7 +219,7 @@ window.AUTO = {
       "id": "aneQ9-tAx2w",
       "titulo": "Meu filho VIROU CAPIVARA no Parque Barigui! 😱🦫 #shorts #capivara #curitiba",
       "data": "2026-11-08",
-      "views": 1171
+      "views": 1175
     },
     {
       "id": "0dNYV8zO_kE",
@@ -249,7 +249,7 @@ window.AUTO = {
       "id": "b-KreP1RnjM",
       "titulo": "Só tirar 4 segundos #velocross #voltarapida #competição #rp @Blmotosracing94",
       "data": "2026-08-09",
-      "views": 6615
+      "views": 6619
     },
     {
       "id": "tVxnItXaChI",
@@ -263,5 +263,45 @@ window.AUTO = {
       "data": "2026-08-01",
       "views": 1530
     }
-  ]
+  ],
+  "mapa": [
+    {
+      "nome": "Itapoá",
+      "lat": -26.11624,
+      "lng": -48.61802,
+      "local": "SC",
+      "tipo": "corrida",
+      "texto": "Gravado aqui: Desafio 21KM: Sobrevivi à Minha Primeira Meia Maratona \"solo\" em Itapoá",
+      "videos": [
+        "kvB96yKkHc8"
+      ],
+      "auto": true
+    }
+  ],
+  "mapaVistos": [
+    "0dNYV8zO_kE",
+    "D6YO52AXLQA",
+    "JhVqS-3RGVE",
+    "QCZZIPjLC6s",
+    "QOQNJqPerm4",
+    "V1_XdDOT1wc",
+    "VktrnwkYI6Y",
+    "Z9E4nDjeMqQ",
+    "b-KreP1RnjM",
+    "kvB96yKkHc8",
+    "o-V3oavSbZE",
+    "qAYhg_rZMl0",
+    "tVxnItXaChI",
+    "w7RgQERda8Y"
+  ],
+  "mapaCache": {
+    "Itapoá": {
+      "nome": "Itapoá",
+      "lat": -26.11624,
+      "lng": -48.61802,
+      "local": "SC"
+    },
+    "Pista: BL Motos Racing": null,
+    "Santa Catarina": null
+  }
 };

@@ -3,7 +3,8 @@
 Busca no YouTube, sem chave de API:
   - os vídeos mais recentes do canal (feed RSS público), separando os Shorts;
   - o número de inscritos e o total de vídeos (página pública do canal);
-  - os produtos da vitrine de afiliado da Shopee, com link, foto e preço.
+  - os produtos da vitrine de afiliado da Shopee, com link, foto e preço;
+  - onde cada vídeo novo foi gravado (📍 na descrição ou "em <Lugar>" no título), para o mapa.
 
 Grava tudo em js/auto.js, que o site lê por cima do js/config.js.
 Se alguma busca falhar, mantém o valor da atualização anterior.
@@ -16,6 +17,7 @@ import os
 import re
 import sys
 import urllib.error
+import urllib.parse
 import urllib.request
 import uuid
 from datetime import datetime, timedelta, timezone
@@ -66,6 +68,9 @@ def eh_short(video_id):
         return None
 
 
+DESCRICOES = {}  # id -> descrição (usada só para descobrir onde o vídeo foi gravado)
+
+
 def videos_do_feed():
     _, xml = baixar("https://www.youtube.com/feeds/videos.xml?channel_id=" + CHANNEL_ID)
     lista, shorts = [], []
@@ -74,6 +79,8 @@ def videos_do_feed():
         titulo = html.unescape(re.search(r"<title>(.*?)</title>", entrada, re.S).group(1)).strip()
         data = re.search(r"<published>(.*?)</published>", entrada).group(1)[:10]
         views = re.search(r'views="(\d+)"', entrada)
+        desc = re.search(r"<media:description>(.*?)</media:description>", entrada, re.S)
+        DESCRICOES[vid] = html.unescape(desc.group(1)) if desc else ""
         short = eh_short(vid)
         if short is None:  # sem resposta: usa as hashtags do título como pista
             short = titulo.count("#") >= 2
@@ -100,6 +107,120 @@ def estatisticas():
     videos = re.search(r'"content":"([\d.,]+)\s*vídeos?"', pagina)
     return (numero_br(inscritos.group(1)) if inscritos else None,
             numero_br(videos.group(1)) if videos else None)
+
+
+# ---------------------------------------------------------------------------
+# MAPA AUTOMÁTICO: descobre onde cada vídeo novo foi gravado e marca no mapa.
+#  1º) uma linha na descrição começando com 📍  (ex.: "📍 Parque Barigui, Curitiba - PR")
+#  2º) se não tiver, procura "em/no/na <Lugar>" no título e na descrição (ex.: "... em Itapoá")
+# O lugar é localizado no OpenStreetMap (Nominatim, gratuito, sem chave).
+# ---------------------------------------------------------------------------
+UA_MAPA = "DYOLIVEIRAYT-site/1.0 (+https://dioneioliveira.github.io)"
+UF = {"Acre": "AC", "Alagoas": "AL", "Amapá": "AP", "Amazonas": "AM", "Bahia": "BA", "Ceará": "CE", "Distrito Federal": "DF",
+      "Espírito Santo": "ES", "Goiás": "GO", "Maranhão": "MA", "Mato Grosso": "MT", "Mato Grosso do Sul": "MS", "Minas Gerais": "MG",
+      "Pará": "PA", "Paraíba": "PB", "Paraná": "PR", "Pernambuco": "PE", "Piauí": "PI", "Rio de Janeiro": "RJ", "Rio Grande do Norte": "RN",
+      "Rio Grande do Sul": "RS", "Rondônia": "RO", "Roraima": "RR", "Santa Catarina": "SC", "São Paulo": "SP", "Sergipe": "SE", "Tocantins": "TO"}
+NAO_E_LUGAR = {"velocross", "motocross", "minha", "primeira", "meia", "maratona", "pódio", "podio", "rumo", "canal", "temporada", "família",
+               "familia", "youtube", "shorts", "gate", "moto", "bike", "brasil", "casa", "pista", "trilha", "largada", "corrida", "desafio", "live", "vídeo", "video", "dyoliveirayt", "série", "serie"}
+PALAVRA = r"[A-ZÀ-Ý][\wÀ-ÿ'’-]+"
+RE_LUGAR = re.compile(r"\b(?:em|no|na)\s+((?:%s)(?:\s+(?:do|da|de|dos|das)\s+%s|\s+%s){0,3})(?:\s*(?:\(|/|,|-)\s*([A-Z]{2})\b)?" % (PALAVRA, PALAVRA, PALAVRA))
+
+
+def tipo_do_video(titulo, descricao=""):
+    """O título manda; a descrição só decide se o título não disser nada."""
+    for texto in (titulo, descricao):
+        t = _tipo(texto)
+        if t:
+            return t
+    return "passeio"
+
+
+def _tipo(texto):
+    t = texto.lower() + " "
+    for tipo, chaves in (("corrida", ("corrida de rua", "maratona", "running", "21km", "21 km", "10km", "5km", "pace")), ("velocross", ("velocross", "motocross", "moto ", "minimoto", "trilha de moto")), ("camping", ("camping", "acampa", "barraca")),
+                         ("cachoeira", ("cachoeira",)), ("trilha", ("trilha",))):
+        if any(c in t for c in chaves):
+            return tipo
+    return None
+
+
+def candidatos_de_local(titulo, descricao):
+    for linha in descricao.splitlines():
+        if linha.strip().startswith("📍"):
+            yield linha.strip().lstrip("📍").strip(" :-")
+            return
+    for texto in (titulo, descricao):
+        for m in RE_LUGAR.finditer(texto):
+            nome = m.group(1).strip()
+            if nome.split()[0].lower() in NAO_E_LUGAR or nome.lower() in NAO_E_LUGAR or nome.isupper():
+                continue
+            yield nome + (", " + m.group(2) if m.group(2) else "")
+
+
+def geocodificar(consulta, cache):
+    if consulta in cache:
+        return cache[consulta]
+    import time
+    time.sleep(1.1)  # regra de uso do Nominatim: no máximo 1 pedido por segundo
+    url = ("https://nominatim.openstreetmap.org/search?format=jsonv2&addressdetails=1&limit=1&countrycodes=br&accept-language=pt-BR&q="
+           + urllib.parse.quote(consulta))
+    req = urllib.request.Request(url, headers={"User-Agent": UA_MAPA})
+    with urllib.request.urlopen(req, timeout=30) as r:
+        res = json.loads(r.read())
+    achado = None
+    if res:
+        x = res[0]
+        ok = x.get("category") in ("place", "leisure", "natural", "tourism", "waterway") or \
+            (x.get("category") == "boundary" and x.get("addresstype") in ("city", "town", "village", "municipality"))
+        if ok:
+            a = x.get("address", {})
+            cidade = a.get("city") or a.get("town") or a.get("village") or a.get("municipality") or ""
+            uf = UF.get(a.get("state", ""), "")
+            achado = {"nome": x.get("name") or consulta.split(",")[0], "lat": round(float(x["lat"]), 5), "lng": round(float(x["lon"]), 5),
+                      "local": ", ".join(v for v in (cidade if cidade != x.get("name") else "", uf) if v) or uf}
+    cache[consulta] = achado
+    return achado
+
+
+def distancia_km(a, b):
+    import math
+    dy = (a["lat"] - b["lat"]) * 111.0
+    dx = (a["lng"] - b["lng"]) * 111.0 * math.cos(math.radians(a["lat"]))
+    return (dx * dx + dy * dy) ** 0.5
+
+
+def atualizar_mapa(dados, videos):
+    mapa = list(dados.get("mapa") or [])
+    vistos = set(dados.get("mapaVistos") or [])
+    cache = dict(dados.get("mapaCache") or {})
+    novos = []
+    for v in videos:
+        if v["id"] in vistos:
+            continue
+        vistos.add(v["id"])
+        desc = DESCRICOES.get(v["id"], "")
+        for consulta in candidatos_de_local(v["titulo"], desc):
+            try:
+                lugar = geocodificar(consulta, cache)
+            except Exception as e:  # noqa: BLE001
+                print("AVISO: não achei", consulta, "-", e, file=sys.stderr)
+                vistos.discard(v["id"])  # tenta de novo na próxima atualização
+                break
+            if not lugar:
+                continue
+            perto = next((m for m in mapa if distancia_km(m, lugar) < 3), None)
+            if perto:
+                if v["id"] not in perto["videos"]:
+                    perto["videos"].insert(0, v["id"])
+            else:
+                mapa.append({**lugar, "tipo": tipo_do_video(v["titulo"], desc),
+                             "texto": "Gravado aqui: " + v["titulo"], "videos": [v["id"]], "auto": True})
+            novos.append(lugar["nome"])
+            break
+    dados["mapa"] = mapa
+    dados["mapaVistos"] = sorted(vistos)[-300:]
+    dados["mapaCache"] = dict(list(cache.items())[-200:])
+    return novos
 
 
 QUERY_VITRINE = (
@@ -174,6 +295,14 @@ def main():
             dados["shorts"] = shorts
     except Exception as e:  # noqa: BLE001
         erros.append("vídeos: %s" % e)
+        lista, shorts = [], []
+
+    try:
+        novos = atualizar_mapa(dados, lista + shorts)
+        if novos:
+            print("Mapa: novos lugares/vídeos ->", ", ".join(novos))
+    except Exception as e:  # noqa: BLE001
+        erros.append("mapa: %s" % e)
 
     try:
         inscritos, total = estatisticas()

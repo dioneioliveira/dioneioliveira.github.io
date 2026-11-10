@@ -66,6 +66,23 @@ window.SITE = {
     { nome: "Nada?", peso: 1, cor: "#3A3A3A", frase: "Dia de descanso... ou gira de novo?" }
   ],
 
+  /* SORTEIO PARA INSCRITOS (aba "Sorteio" do site)
+     aberto: true mostra a aba; false esconde.
+     premio: o que vai ser sorteado. premioImagem: foto do prêmio (ex.: "assets/sorteio.jpg"), opcional.
+     video: ID do vídeo onde as pessoas comentam (vazio = último vídeo publicado).
+     encerra: último dia para comentar, formato "2026-12-10T23:59:00-03:00". resultado: dia do sorteio (opcional).
+     diasParaResponder: prazo para o ganhador responder ao comentário. */
+  sorteio: {
+    aberto: true,
+    titulo: "Sorteio para inscritos",
+    premio: "",
+    premioImagem: "",
+    video: "",
+    encerra: "",
+    resultado: "",
+    diasParaResponder: 7
+  },
+
   /* MAPA DAS AVENTURAS: um marcador por lugar.
      lat/lng: coordenadas (no Google Maps, clique com o botão direito no lugar e copie).
      Os atuais estão no centro da cidade; troque pela posição exata quando quiser.

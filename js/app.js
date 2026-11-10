@@ -65,6 +65,7 @@
   function findVideo(id) {
     for (var i = 0; i < videos.length; i++) if (videos[i].id === id) return videos[i];
     for (var j = 0; j < (S.videos || []).length; j++) if (S.videos[j].id === id) return S.videos[j];
+    for (var k = 0; k < (AUTO.shorts || []).length; k++) if (AUTO.shorts[k].id === id) return AUTO.shorts[k];
     return { id: id, titulo: "Vídeo no YouTube", categoria: "" };
   }
   var PLAY = '<svg viewBox="0 0 24 24"><path d="M7 4v16l13-8z"/></svg>';
@@ -920,7 +921,18 @@
   /* Mapa das aventuras (Leaflet + OpenStreetMap)                          */
   /* ------------------------------------------------------------------ */
   (function () {
-    var lugares = (S.mapa || []).filter(function (m) { return typeof m.lat === "number" && typeof m.lng === "number"; });
+    // Lugares do config.js + os que a atualização automática achou nos vídeos novos (📍 na descrição ou "em <Lugar>" no título).
+    // Se um lugar automático fica a menos de 3 km de um do config.js, os vídeos dele entram nesse marcador.
+    function km(a, b) { var dy = (a.lat - b.lat) * 111, dx = (a.lng - b.lng) * 111 * Math.cos(a.lat * Math.PI / 180); return Math.sqrt(dx * dx + dy * dy); }
+    var lugares = (S.mapa || []).filter(function (m) { return typeof m.lat === "number" && typeof m.lng === "number"; })
+      .map(function (m) { var c = {}; for (var k in m) c[k] = m[k]; c.videos = (m.videos || []).slice(); return c; });
+    (AUTO.mapa || []).forEach(function (a) {
+      if (typeof a.lat !== "number" || typeof a.lng !== "number") return;
+      var perto = null;
+      lugares.forEach(function (m) { if (!perto && km(m, a) < 3) perto = m; });
+      if (perto) (a.videos || []).forEach(function (id) { if (perto.videos.indexOf(id) < 0) perto.videos.push(id); });
+      else lugares.push(a);
+    });
     var el = $("#mapaAventuras");
     if (!el) return;
     if (!lugares.length) { $("#mapa").hidden = true; return; }
@@ -1094,7 +1106,58 @@
   });
 
   /* ------------------------------------------------------------------ */
-  /* Mural de recados e sorteio (Supabase via REST, sem biblioteca)        */
+  /* Sorteio para inscritos (dados em config.js → sorteio)                  */
+  /* Participa quem é inscrito e comenta a cidade no vídeo do sorteio.      */
+  /* ------------------------------------------------------------------ */
+  (function () {
+    var st = S.sorteio || {};
+    if (!st.aberto) return;
+    var sec = $("#sorteio"); if (!sec) return;
+    sec.hidden = false; $("#navSorteio").hidden = false;
+    var vid = st.video || (videos[0] && videos[0].id) || "";
+    var v = vid ? findVideo(vid) : null;
+    if (st.titulo) $("#sorteioTitulo").innerHTML = esc(st.titulo).replace(/(\S+)$/, "<em>$1</em>");
+    if (st.premio) $("#sorteioPremio").textContent = st.premio;
+    if (st.premioImagem) { var im = $("#sorteioPremioImg"); im.src = asset(st.premioImagem); im.alt = st.premio || "Prêmio"; im.hidden = false; }
+    var canalUrl = "https://www.youtube.com/" + (C.handle || "@dyoliveirayt");
+    $("#sorteioInscrever").href = canalUrl + "?sub_confirmation=1";
+    if (vid) {
+      $("#sorteioThumb").setAttribute("data-video", vid);
+      $("#sorteioThumbImg").src = thumbUrl(vid);
+      $("#sorteioVTitulo").textContent = v ? v.titulo : "";
+      $("#sorteioComentar").href = "https://www.youtube.com/watch?v=" + encodeURIComponent(vid);
+    } else { $(".sorteio-video").hidden = true; }
+    var fmtData = function (d) { return d.toLocaleString("pt-BR", { day: "2-digit", month: "long", year: "numeric", hour: "2-digit", minute: "2-digit", timeZone: "America/Sao_Paulo" }) + " (Brasília)"; };
+    var fim = st.encerra ? new Date(st.encerra) : null, res = st.resultado ? new Date(st.resultado) : null;
+    var prazoTxt = fim && !isNaN(fim) ? fmtData(fim) : "data a anunciar";
+    var resTxt = res && !isNaN(res) ? fmtData(res) : (fim && !isNaN(fim) ? "logo após o encerramento" : "a anunciar");
+    $("#sorteioPrazo").textContent = prazoTxt;
+    var dias = st.diasParaResponder || 7;
+    var regras = [
+      "Seja <b>inscrito no canal " + esc(C.handle || "@dyoliveirayt") + "</b> no YouTube e ative o <b>sininho 🔔 (todas as notificações)</b>, para receber o aviso se você ganhar.",
+      "Assista ao <b>vídeo do sorteio</b> e <b>comente a cidade de onde você assiste</b> (ex.: “Assisto de Joinville - SC”).",
+      "Vale <b>1 comentário por pessoa</b>. Comentários até <b>" + esc(prazoTxt) + "</b>.",
+      "O sorteio é feito entre os comentários válidos de quem é inscrito. Resultado: <b>" + esc(resTxt) + "</b>.",
+      "O ganhador é avisado <b>pelo YouTube</b>: com uma <b>resposta no próprio comentário</b> e uma <b>publicação na aba Comunidade</b> do canal.",
+      "O ganhador tem <b>" + dias + " dias</b> para responder ao comentário. Se não responder, sorteamos outro participante."
+    ].concat(st.regrasExtras || []);
+    $("#sorteioRegras").innerHTML = regras.map(function (r) { return "<li>" + r + "</li>"; }).join("");
+    if (fim && !isNaN(fim)) {
+      var box = $("#sorteioCont");
+      var tick = function () {
+        var ms = fim - Date.now();
+        if (ms <= 0) { $("#sorteioPrazoRotulo").textContent = "Comentários encerrados em"; box.hidden = true;
+          $("#sorteioComentar").textContent = "Ver o vídeo do sorteio"; $("#sorteioTitulo").innerHTML = "Sorteio <em>encerrado</em>"; return false; }
+        var d = Math.floor(ms / 864e5), h = Math.floor(ms / 36e5) % 24, m = Math.floor(ms / 6e4) % 60;
+        box.innerHTML = [[d, "dias"], [h, "horas"], [m, "min"]].map(function (x) { return "<div><b>" + x[0] + "</b><small>" + x[1] + "</small></div>"; }).join("");
+        box.hidden = false; return true;
+      };
+      if (tick()) setInterval(tick, 30000);
+    }
+  })();
+
+  /* ------------------------------------------------------------------ */
+  /* Mural de recados (Supabase via REST, sem biblioteca)        */
   /* ------------------------------------------------------------------ */
   (function () {
     var URL_SB = C.supabaseUrl, KEY = C.supabaseKey;
@@ -1144,38 +1207,6 @@
         .then(function () { btn.disabled = false; });
     });
 
-    // Sorteio: mostra o sorteio aberto mais recente e recebe inscrições
-    api("dy_sorteios?select=id,titulo,premio,regras,aberto,encerra_em&aberto=eq.true&order=criado_em.desc&limit=1").then(function (ls) {
-      var st = ls && ls[0];
-      if (!st || (st.encerra_em && new Date(st.encerra_em) < new Date())) return;
-      $("#sorteio").hidden = false; $("#navSorteio").hidden = false;
-      $("#sorteioTitulo").innerHTML = esc(st.titulo).replace(/(\S+)$/, "<em>$1</em>");
-      $("#sorteioPremio").textContent = "Prêmio: " + st.premio;
-      $("#sorteioPrazo").textContent = st.encerra_em ? "Inscrições até " + new Date(st.encerra_em).toLocaleString("pt-BR", { dateStyle: "long", timeStyle: "short" }) : "";
-      if (st.regras) $("#sorteioRegras").textContent = st.regras; else $("#sorteioRegrasBox").hidden = true;
-      function contar() {
-        api("rpc/dy_participantes_do_sorteio", { method: "POST", body: { p_sorteio: st.id } })
-          .then(function (l) { $("#sorteioTotal").textContent = fmtInt((l || []).length); })
-          .catch(function () { $(".sorteio-conta").hidden = true; });
-      }
-      contar();
-      var chave = "dy-sorteio-" + st.id;
-      if (store(chave)) { $("#sorteioMsg").textContent = "Você já está participando deste sorteio. Boa sorte!"; }
-      $("#sorteioForm").addEventListener("submit", function (e) {
-        e.preventDefault();
-        var nome = $("#sorteioNome").value.trim(), contato = $("#sorteioContato").value.trim(), fb = $("#sorteioMsg");
-        if (nome.length < 2) { fb.textContent = "Escreve teu nome."; return; }
-        if (contato.length < 3) { fb.textContent = "Coloca teu Instagram ou WhatsApp para a gente avisar se você ganhar."; return; }
-        if (!$("#sorteioAceite").checked) { fb.textContent = "Marca a caixinha confirmando que é inscrito e aceita as regras."; return; }
-        var btn = $("#sorteioEnviar"); btn.disabled = true; fb.textContent = "Enviando...";
-        api("dy_participantes", { method: "POST", prefer: "return=minimal", body: { sorteio_id: st.id, nome: nome, contato: contato, aceite: true } }).then(function () {
-          store(chave, true); $("#sorteioForm").reset();
-          fb.textContent = "Inscrição feita! Boa sorte! O resultado sai no canal."; confetti(); contar();
-        }).catch(function (err) {
-          fb.textContent = err.code === "23505" ? "Esse contato já está participando. Boa sorte!" : "Não deu para inscrever agora. Pode ser que o sorteio tenha encerrado. Tenta de novo mais tarde.";
-        }).then(function () { btn.disabled = false; });
-      });
-    }).catch(function () { /* sem sorteio agora */ });
   })();
 
   /* ------------------------------------------------------------------ */
