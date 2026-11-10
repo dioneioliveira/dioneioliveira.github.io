@@ -350,10 +350,11 @@
       if (window.crypto && window.crypto.getRandomValues) { var u = new Uint32Array(1); window.crypto.getRandomValues(u); return u[0] / 4294967296; }
       return Math.random();
     }
-    // Cada atividade entra duas vezes, em posições sorteadas e nunca lado a lado com ela mesma
+    // Cada atividade entra duas vezes (ou o número em "vezes"), em posições sorteadas e nunca lado a lado com ela mesma
+    function vezes(o) { return Math.max(1, Math.round(o.vezes || 2)); }
     function embaralhar() {
       var lista = [], tent = 0, ok;
-      opts.forEach(function (o, i) { lista.push(i, i); });
+      opts.forEach(function (o, i) { for (var n = 0; n < vezes(o); n++) lista.push(i); });
       do {
         for (var j = lista.length - 1; j > 0; j--) { var r = Math.floor(aleatorio() * (j + 1)), x = lista[j]; lista[j] = lista[r]; lista[r] = x; }
         ok = lista.every(function (v, k) { return v !== lista[(k + 1) % lista.length]; });
@@ -362,7 +363,7 @@
     }
     var acc = 0;
     var slices = embaralhar().map(function (i) {
-      var o = opts[i], a0 = acc / total * TAU; acc += o.peso / 2;
+      var o = opts[i], a0 = acc / total * TAU; acc += o.peso / vezes(o);
       return { o: o, i: i, a0: a0, a1: acc / total * TAU };
     });
     var bloqueadas = store("dy-roleta-off") || [];

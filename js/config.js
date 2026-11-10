@@ -54,11 +54,12 @@ window.SITE = {
      Cada opção aparece duas vezes na roda, em lugares sorteados a cada visita.
      peso: tamanho da fatia e chance de sair (peso 3 sai 3x mais que peso 1).
      cor: cor da fatia · frase: mensagem quando a opção for sorteada. */
+  /* peso = chance de sair; vezes = quantas fatias a atividade ocupa na roda (padrão 2) */
   roleta: [
     { nome: "Velocross", peso: 3, cor: "#E10613", frase: "Capacete na cabeça e moto na carretinha. Bora pra pista!" },
     { nome: "Praia", peso: 1.5, cor: "#FFD21F", frase: "Protetor solar, prancha e pé na areia." },
     { nome: "Camping", peso: 3, cor: "#151515", frase: "Barraca, fogueira e noite no meio do mato." },
-    { nome: "Corrida de rua", peso: 1.5, cor: "#F2F2F2", frase: "Tênis amarrado e cronômetro ligado." },
+    { nome: "Corrida de rua", peso: 2.25, vezes: 3, cor: "#F2F2F2", frase: "Tênis amarrado e cronômetro ligado." },
     { nome: "Cachoeiras", peso: 1.5, cor: "#9A030C", frase: "Trilha até a queda d'água. Leva a toalha!" },
     { nome: "A mãe decide", peso: 1.5, cor: "#FF8A00", frase: "A palavra final é da Heidi. Ninguém discute!" },
     { nome: "Passeios", peso: 1.5, cor: "#1F8A4C", frase: "TR4 abastecida, carretinha engatada e estrada pela frente." },
