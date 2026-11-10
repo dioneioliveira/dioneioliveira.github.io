@@ -924,8 +924,8 @@
     var el = $("#mapaAventuras");
     if (!el) return;
     if (!lugares.length) { $("#mapa").hidden = true; return; }
-    var CORES = { camping: "#E10613", velocross: "#FFD21F", trilha: "#3FA34D", cachoeira: "#3FA4DB", passeio: "#1F8A4C" };
-    var ICO = { camping: "barraca", velocross: "moto", trilha: "bussola", cachoeira: "cachoeira", passeio: "bussola" };
+    var CORES = { camping: "#E10613", velocross: "#FFD21F", trilha: "#3FA34D", cachoeira: "#3FA4DB", passeio: "#1F8A4C", corrida: "#FF8A00" };
+    var ICO = { camping: "barraca", velocross: "moto", trilha: "bussola", cachoeira: "cachoeira", passeio: "bussola", corrida: "corrida" };
     function svgIco(tipo) {
       return window.ROLETA_ARTE ? window.ROLETA_ARTE.iconeSVG({ nome: "", icone: ICO[tipo] || "bussola" }, "#fff") : "";
     }

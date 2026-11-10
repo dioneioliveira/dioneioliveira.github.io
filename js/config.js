@@ -56,7 +56,7 @@ window.SITE = {
      cor: cor da fatia · frase: mensagem quando a opção for sorteada. */
   /* peso = chance de sair; vezes = quantas fatias a atividade ocupa na roda (padrão 2) */
   roleta: [
-    { nome: "Velocross", peso: 3, cor: "#E10613", frase: "Capacete na cabeça e moto na carretinha. Bora pra pista!" },
+    { nome: "Velocross", peso: 4.5, vezes: 3, cor: "#E10613", frase: "Capacete na cabeça e moto na carretinha. Bora pra pista!" },
     { nome: "Praia", peso: 1.5, cor: "#FFD21F", frase: "Protetor solar, prancha e pé na areia." },
     { nome: "Camping", peso: 3, cor: "#151515", frase: "Barraca, fogueira e noite no meio do mato." },
     { nome: "Corrida de rua", peso: 2.25, vezes: 3, cor: "#F2F2F2", frase: "Tênis amarrado e cronômetro ligado." },
@@ -69,14 +69,16 @@ window.SITE = {
   /* MAPA DAS AVENTURAS: um marcador por lugar.
      lat/lng: coordenadas (no Google Maps, clique com o botão direito no lugar e copie).
      Os atuais estão no centro da cidade; troque pela posição exata quando quiser.
-     tipo: "camping", "velocross", "trilha", "cachoeira" ou "passeio" (muda a cor do marcador). */
+     tipo: "camping", "velocross", "trilha", "cachoeira", "passeio" ou "corrida" (muda a cor do marcador). */
   mapa: [
     { nome: "Camping Cachoeira Paulista", local: "Doutor Pedrinho, SC", lat: -26.7164, lng: -49.4827, tipo: "camping",
       texto: "Camping com cachoeira e trilha pelo leito do rio.", videos: ["DbRBNKvVFsU", "946ViQhSoGU"] },
     { nome: "Rampa do Bugio", local: "Campo Alegre, SC · 1.100 m", lat: -26.1942, lng: -49.2657, tipo: "passeio",
       texto: "Mirante a 1.100 metros de altitude.", foto: "assets/fotos/rampa-do-bugio.jpg" },
     { nome: "Motocross radical em Piên", local: "Piên, PR", lat: -26.0989, lng: -49.4298, tipo: "velocross",
-      texto: "O maior salto de motocross do canal.", videos: ["M3KMI-Bai-M"] }
+      texto: "O maior salto de motocross do canal.", videos: ["M3KMI-Bai-M"] },
+    { nome: "Desafio 21 km em Itapoá", local: "Itapoá, SC · beira-mar", lat: -26.1172, lng: -48.6158, tipo: "corrida",
+      texto: "Primeira meia maratona da temporada 26/27: 21 km à beira-mar em 1:52:58.", videos: ["kvB96yKkHc8"] }
   ],
 
   temporada: {
