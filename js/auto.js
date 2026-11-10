@@ -48,7 +48,7 @@ window.AUTO = {
   "inscritos": 8700,
   "inscritosData": "10/11/2026",
   "videosPublicados": 837,
-  "atualizadoEm": "2026-11-10T06:56:59-03:00",
+  "atualizadoEm": "2026-11-10T06:58:32-03:00",
   "shopee": {
     "atualizado": "10/11/2026",
     "itens": [
@@ -276,6 +276,18 @@ window.AUTO = {
         "kvB96yKkHc8"
       ],
       "auto": true
+    },
+    {
+      "nome": "Parque Barigui",
+      "lat": -25.42763,
+      "lng": -49.30984,
+      "local": "Curitiba, PR",
+      "tipo": "passeio",
+      "texto": "Gravado aqui: Meu filho VIROU CAPIVARA no Parque Barigui! 😱🦫 #shorts #capivara #curitiba",
+      "videos": [
+        "aneQ9-tAx2w"
+      ],
+      "auto": true
     }
   ],
   "mapaVistos": [
@@ -287,6 +299,7 @@ window.AUTO = {
     "V1_XdDOT1wc",
     "VktrnwkYI6Y",
     "Z9E4nDjeMqQ",
+    "aneQ9-tAx2w",
     "b-KreP1RnjM",
     "kvB96yKkHc8",
     "o-V3oavSbZE",
@@ -302,6 +315,12 @@ window.AUTO = {
       "local": "SC"
     },
     "Pista: BL Motos Racing": null,
-    "Santa Catarina": null
+    "Santa Catarina": null,
+    "Parque Barigui": {
+      "nome": "Parque Barigui",
+      "lat": -25.42763,
+      "lng": -49.30984,
+      "local": "Curitiba, PR"
+    }
   }
 };
