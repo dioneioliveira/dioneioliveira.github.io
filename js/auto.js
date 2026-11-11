@@ -6,7 +6,7 @@ window.AUTO = {
       "id": "kvB96yKkHc8",
       "titulo": "Desafio 21KM: Sobrevivi à Minha Primeira Meia Maratona \"solo\" em Itapoá",
       "data": "2026-11-08",
-      "views": 21
+      "views": 24
     },
     {
       "id": "qAYhg_rZMl0",
@@ -46,11 +46,11 @@ window.AUTO = {
     }
   ],
   "inscritos": 8700,
-  "inscritosData": "10/11/2026",
+  "inscritosData": "11/11/2026",
   "videosPublicados": 837,
-  "atualizadoEm": "2026-11-10T06:58:32-03:00",
+  "atualizadoEm": "2026-11-11T16:16:43-03:00",
   "shopee": {
-    "atualizado": "10/11/2026",
+    "atualizado": "11/11/2026",
     "itens": [
       {
         "id": "58265164148",
@@ -73,7 +73,7 @@ window.AUTO = {
         "nome": "Isotônico Hydramaxi Display 25 Sachês Sudract Repositor Eletrólitos Corrida Cross Pedal Endurance",
         "link": "https://s.shopee.com.br/2BFybmcq6C",
         "imagem": "https://down-br.img.susercontent.com/file/sg-11134201-7rcdr-lsw07la7309bc0_tn",
-        "preco": 61.71,
+        "preco": 57.9,
         "precoOriginal": 64.95
       },
       {
@@ -81,7 +81,7 @@ window.AUTO = {
         "nome": "Gel Carb Go Recovery Atlhetica Energia Endurance Cx 10x30g",
         "link": "https://s.shopee.com.br/3qOCajDFrv",
         "imagem": "https://down-br.img.susercontent.com/file/sg-11134201-7rfge-m462yym75hvs75_tn",
-        "preco": 34.52,
+        "preco": 29.79,
         "precoOriginal": 36.33
       },
       {
@@ -193,7 +193,7 @@ window.AUTO = {
         "nome": "Camiseta + short Tactel masculino country texas promoção",
         "link": "https://s.shopee.com.br/30hs9lLxnT",
         "imagem": "https://down-br.img.susercontent.com/file/br-11134207-7r98o-m13gofeepq1qe4_tn",
-        "preco": 27.54,
+        "preco": 28.42,
         "precoOriginal": 28.99
       },
       {
@@ -209,7 +209,7 @@ window.AUTO = {
         "nome": "Barraca Camping 2/3 Pessoas  Acampamento Automatica",
         "link": "https://s.shopee.com.br/W0FiKiEnJ",
         "imagem": "https://down-br.img.susercontent.com/file/br-11134207-81z1k-mhzzw6rlwhz55a_tn",
-        "preco": 160.55,
+        "preco": 151.05,
         "precoOriginal": 399.0
       }
     ]
@@ -219,7 +219,7 @@ window.AUTO = {
       "id": "aneQ9-tAx2w",
       "titulo": "Meu filho VIROU CAPIVARA no Parque Barigui! 😱🦫 #shorts #capivara #curitiba",
       "data": "2026-11-08",
-      "views": 1175
+      "views": 1194
     },
     {
       "id": "0dNYV8zO_kE",
@@ -249,13 +249,13 @@ window.AUTO = {
       "id": "b-KreP1RnjM",
       "titulo": "Só tirar 4 segundos #velocross #voltarapida #competição #rp @Blmotosracing94",
       "data": "2026-08-09",
-      "views": 6619
+      "views": 6621
     },
     {
       "id": "tVxnItXaChI",
       "titulo": "Vamos sortear para um inscrito no canal #sorteio  #velocross #segurança #moto",
       "data": "2026-08-08",
-      "views": 1040
+      "views": 1043
     },
     {
       "id": "JhVqS-3RGVE",
