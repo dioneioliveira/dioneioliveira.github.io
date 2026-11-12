@@ -1,0 +1,331 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Painel · DYOLIVEIRAYT</title>
+<link rel="icon" href="assets/app/icone-192.png">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@1,800;1,900&family=Barlow:wght@400;600;700&family=DM+Mono:wght@500&display=swap">
+<style>
+:root{--bg:#070707;--s1:#111;--s2:#181818;--ink:#F4F4F4;--mut:#A6A6A6;--line:#262626;--red:#E10613;--yel:#FFD21F;--ok:#22C55E}
+*{box-sizing:border-box}html,body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.45 Barlow,system-ui,sans-serif}
+a{color:var(--yel)}button,input,select,textarea{font:inherit}
+.top{position:sticky;top:0;z-index:5;display:flex;align-items:center;gap:12px;padding:10px 16px;background:#000;border-bottom:2px solid var(--red)}
+.top img{height:34px;border-radius:6px}.top b{font:900 italic 1.1rem Kanit,sans-serif;letter-spacing:.02em}.top .esp{flex:1}
+.wrap{max-width:980px;margin:0 auto;padding:18px 16px 120px}
+h1,h2{font:900 italic 1.6rem/1.1 Kanit,sans-serif;text-transform:uppercase;margin:0 0 10px}h2{font-size:1.25rem}
+.mut{color:var(--mut)}.card{background:var(--s1);border:1px solid var(--line);border-radius:14px;padding:16px;margin-bottom:14px}
+label{display:block;font-weight:700;margin:12px 0 6px}input[type=text],input[type=email],input[type=password],input[type=number],input[type=datetime-local],input[type=url],textarea{width:100%;padding:11px 12px;border-radius:10px;border:1px solid #333;background:#0b0b0b;color:var(--ink)}
+input:focus,textarea:focus,button:focus-visible{outline:3px solid var(--yel);outline-offset:2px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:11px 18px;border:0;border-radius:10px;background:var(--red);color:#fff;font:800 italic 1rem Kanit,sans-serif;text-transform:uppercase;cursor:pointer;text-decoration:none}
+.btn.sec{background:#fff;color:#000}.btn.peq{padding:7px 12px;font-size:.85rem}.btn.cinza{background:#2a2a2a;color:#fff}.btn:disabled{opacity:.5;cursor:default}
+.abas{display:flex;gap:6px;overflow-x:auto;padding-bottom:6px;margin:4px 0 16px;scrollbar-width:thin}
+.abas button{flex:none;padding:9px 14px;border-radius:999px;border:1px solid #333;background:var(--s2);color:var(--ink);font-weight:700;cursor:pointer;white-space:nowrap}
+.abas button[aria-selected=true]{background:var(--red);border-color:var(--red)}
+.badge{display:inline-block;min-width:20px;padding:0 6px;margin-left:6px;border-radius:999px;background:var(--yel);color:#000;font-size:.75rem;text-align:center}
+.linha{display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid var(--line)}.linha:last-child{border-bottom:0}
+.linha .t{flex:1;min-width:0}.linha .t small{display:block;color:var(--mut);font-size:.82rem;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.linha img{width:96px;aspect-ratio:16/9;object-fit:cover;border-radius:8px;flex:none;background:#222}
+.chave{position:relative;flex:none;width:58px;height:32px}.chave input{position:absolute;opacity:0;inset:0;margin:0;cursor:pointer;z-index:1}
+.chave span{position:absolute;inset:0;border-radius:999px;background:#3a3a3a;transition:.2s}.chave span::after{content:"";position:absolute;left:4px;top:4px;width:24px;height:24px;border-radius:50%;background:#fff;transition:.2s}
+.chave input:checked+span{background:var(--ok)}.chave input:checked+span::after{left:30px}.chave input:focus-visible+span{outline:3px solid var(--yel)}
+.estado{font:600 .75rem "DM Mono",monospace;text-transform:uppercase;width:64px;text-align:right;color:var(--mut)}.estado.on{color:var(--ok)}
+.grade{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:10px}
+.vid{position:relative;border:2px solid transparent;border-radius:12px;background:var(--s2);padding:6px;cursor:pointer;text-align:left;color:var(--ink)}
+.vid img{width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:8px;display:block}.vid span{display:block;font-size:.82rem;margin-top:6px;line-height:1.25}
+.vid[aria-pressed=true]{border-color:var(--yel);box-shadow:0 0 0 3px rgba(255,210,31,.25)}.vid[aria-pressed=true]::after{content:"✓ Vídeo do sorteio";position:absolute;top:10px;left:10px;background:var(--yel);color:#000;font:800 .72rem Barlow;padding:3px 8px;border-radius:999px}
+.vid em{position:absolute;top:10px;right:10px;background:#000;color:#fff;font:600 .7rem "DM Mono";padding:2px 6px;border-radius:6px;font-style:normal}
+.dois{display:grid;grid-template-columns:1fr 1fr;gap:12px}@media(max-width:620px){.dois{grid-template-columns:1fr}.linha img{width:72px}}
+.barra{position:fixed;left:0;right:0;bottom:0;z-index:6;display:flex;align-items:center;gap:12px;padding:12px 16px;background:#000;border-top:2px solid var(--red)}
+.barra .msg{flex:1;font-weight:600}.msg.ok{color:var(--ok)}.msg.erro{color:#ff6b6b}
+.recado{background:var(--s2);border-radius:12px;padding:12px;margin-bottom:10px}.recado p{margin:6px 0 10px;white-space:pre-wrap}.recado .acoes{display:flex;gap:8px;flex-wrap:wrap}
+.tag{display:inline-block;font:600 .72rem "DM Mono";padding:2px 8px;border-radius:999px;background:#333}.tag.pend{background:var(--yel);color:#000}.tag.ok{background:var(--ok);color:#000}
+.login{max-width:400px;margin:8vh auto}.login .card{padding:22px}
+[hidden]{display:none!important}
+</style>
+</head>
+<body>
+<header class="top"><img src="assets/logo-wordmark-strip.jpg" alt="DYOLIVEIRAYT"><b>Painel</b><span class="esp"></span>
+  <a class="btn peq sec" href="./" target="_blank" rel="noopener">Ver site</a><button class="btn peq cinza" id="sair" hidden>Sair</button></header>
+
+<main class="wrap">
+  <!-- LOGIN -->
+  <section class="login" id="telaLogin">
+    <div class="card">
+      <h1>Entrar</h1>
+      <p class="mut">Use o mesmo e-mail e senha do app Corridas de Rua.</p>
+      <form id="formLogin">
+        <label for="email">E-mail</label><input type="email" id="email" autocomplete="username" required>
+        <label for="senha">Senha</label><input type="password" id="senha" autocomplete="current-password" required>
+        <p class="msg" id="loginMsg" role="status"></p>
+        <button class="btn" type="submit" id="btnEntrar" style="width:100%;margin-top:6px">Entrar</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- PAINEL -->
+  <section id="telaPainel" hidden>
+    <h1>Administração do site</h1>
+    <p class="mut" id="ultimaAlteracao"></p>
+    <nav class="abas" role="tablist" id="abas">
+      <button role="tab" data-aba="sorteio" aria-selected="true">🎁 Sorteio</button>
+      <button role="tab" data-aba="secoes" aria-selected="false">👁️ O que aparece</button>
+      <button role="tab" data-aba="videos" aria-selected="false">▶️ Vídeos e Shorts</button>
+      <button role="tab" data-aba="mapa" aria-selected="false">📍 Mapa</button>
+      <button role="tab" data-aba="loja" aria-selected="false">🛒 Loja</button>
+      <button role="tab" data-aba="mural" aria-selected="false">💬 Mural<span class="badge" id="pendentes" hidden></span></button>
+    </nav>
+
+    <div data-painel="sorteio">
+      <div class="card">
+        <div class="linha"><div class="t"><b>Sorteio aberto no site</b><small>Mostra a aba Sorteio no menu e na página</small></div>
+          <label class="chave"><input type="checkbox" id="sAberto"><span></span></label></div>
+        <label for="sTitulo">Título</label><input type="text" id="sTitulo" maxlength="60" placeholder="Sorteio para inscritos">
+        <label for="sPremio">Prêmio</label><input type="text" id="sPremio" maxlength="90" placeholder="Ex.: Kit DYOLIVEIRAYT: camiseta + boné">
+        <label for="sImagem">Foto do prêmio (link da imagem, opcional)</label><input type="url" id="sImagem" placeholder="https://...">
+        <div class="dois">
+          <div><label for="sEncerra">Comentários até (horário de Brasília)</label><input type="datetime-local" id="sEncerra"></div>
+          <div><label for="sResultado">Dia do resultado (opcional)</label><input type="datetime-local" id="sResultado"></div>
+        </div>
+        <label for="sDias">Dias para o ganhador responder</label><input type="number" id="sDias" min="1" max="60" value="7" style="max-width:120px">
+      </div>
+      <div class="card">
+        <h2>Vídeo do sorteio</h2>
+        <p class="mut">Toque no vídeo onde o pessoal vai comentar a cidade. Sem escolha, o site usa o último vídeo publicado.</p>
+        <label for="sVideoLink">Ou cole o link do vídeo no YouTube</label><input type="url" id="sVideoLink" placeholder="https://youtu.be/...">
+        <p><button class="btn peq cinza" type="button" id="sVideoAuto">Usar o último vídeo (automático)</button> <span class="mut" id="sVideoAtual"></span></p>
+        <div class="grade" id="sVideos"></div>
+      </div>
+    </div>
+
+    <div data-painel="secoes" hidden>
+      <div class="card"><h2>Partes do site</h2><p class="mut">Desligue para esconder a parte do site e o link dela no menu.</p><div id="listaSecoes"></div></div>
+    </div>
+    <div data-painel="videos" hidden>
+      <div class="card"><h2>Vídeos e Shorts</h2><p class="mut">Desligue para o vídeo não aparecer em nenhum lugar do site (listas, mapa e sorteio).</p><div id="listaVideos"></div></div>
+    </div>
+    <div data-painel="mapa" hidden>
+      <div class="card"><h2>Lugares no mapa</h2><p class="mut">Inclui os lugares que entram sozinhos quando sai vídeo novo.</p><div id="listaLugares"></div></div>
+    </div>
+    <div data-painel="loja" hidden>
+      <div class="card"><h2>Produtos da vitrine</h2><p class="mut">Produtos da sua vitrine da Shopee. Desligue os que não quer mostrar no site.</p><div id="listaProdutos"></div></div>
+    </div>
+    <div data-painel="mural" hidden>
+      <div class="card"><h2>Recados do mural</h2><p class="mut">Recados novos só aparecem no site depois de aprovados. Essas ações valem na hora, sem precisar salvar.</p><div id="listaRecados"></div></div>
+    </div>
+  </section>
+</main>
+
+<div class="barra" id="barra" hidden><span class="msg" id="msg">Nada alterado.</span><button class="btn" id="salvar" disabled>Salvar e publicar</button></div>
+
+<script src="js/config.js"></script>
+<script src="js/auto.js"></script>
+<script>
+(function () {
+  "use strict";
+  var S = window.SITE || {}, C = S.canal || {}, AU = window.AUTO || {};
+  var URL_SB = (C.supabaseUrl || "").replace(/\/$/, ""), KEY = C.supabaseKey;
+  var SESS = "dy-admin-sessao";
+  var $ = function (s) { return document.querySelector(s); };
+  var esc = function (t) { return String(t == null ? "" : t).replace(/[&<>"']/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]; }); };
+  var thumb = function (id) { return "https://i.ytimg.com/vi/" + encodeURIComponent(id) + "/mqdefault.jpg"; };
+  var sessao = null, cfg = {}, original = "{}", usuario = null;
+
+  /* ---------- Supabase (REST, sem biblioteca) ---------- */
+  function guardarSessao(s) { sessao = s; try { s ? localStorage.setItem(SESS, JSON.stringify(s)) : localStorage.removeItem(SESS); } catch (e) {} }
+  function auth(tipo, corpo) {
+    return fetch(URL_SB + "/auth/v1/token?grant_type=" + tipo, { method: "POST", headers: { apikey: KEY, "Content-Type": "application/json" }, body: JSON.stringify(corpo) })
+      .then(function (r) { return r.json().then(function (j) { if (!r.ok) throw j; j.expira = Date.now() + (j.expires_in || 3600) * 1000; return j; }); });
+  }
+  function tokenValido() {
+    if (!sessao) return Promise.reject({ msg: "sem sessão" });
+    if (Date.now() < sessao.expira - 60000) return Promise.resolve(sessao.access_token);
+    return auth("refresh_token", { refresh_token: sessao.refresh_token }).then(function (s) { guardarSessao(s); return s.access_token; });
+  }
+  function api(caminho, op) {
+    op = op || {};
+    return tokenValido().then(function (tk) {
+      var h = { apikey: KEY, Authorization: "Bearer " + tk, "Content-Type": "application/json" };
+      if (op.prefer) h.Prefer = op.prefer;
+      return fetch(URL_SB + "/rest/v1/" + caminho, { method: op.method || "GET", headers: h, body: op.body ? JSON.stringify(op.body) : undefined });
+    }).then(function (r) { if (!r.ok) return r.text().then(function (t) { throw { status: r.status, msg: t }; }); return r.status === 204 ? null : r.json(); });
+  }
+
+  /* ---------- Login ---------- */
+  $("#formLogin").addEventListener("submit", function (e) {
+    e.preventDefault();
+    var b = $("#btnEntrar"), m = $("#loginMsg"); b.disabled = true; m.textContent = "Entrando..."; m.className = "msg";
+    auth("password", { email: $("#email").value.trim(), password: $("#senha").value }).then(function (s) {
+      guardarSessao(s); $("#senha").value = ""; return iniciar();
+    }).catch(function (err) {
+      m.className = "msg erro";
+      m.textContent = err && /invalid/i.test(err.error_description || err.msg || err.error || "") ? "E-mail ou senha incorretos." : "Não foi possível entrar agora. Tente de novo.";
+    }).then(function () { b.disabled = false; });
+  });
+  $("#sair").addEventListener("click", function () {
+    tokenValido().then(function (tk) { return fetch(URL_SB + "/auth/v1/logout", { method: "POST", headers: { apikey: KEY, Authorization: "Bearer " + tk } }); }).catch(function () {})
+      .then(function () { guardarSessao(null); location.reload(); });
+  });
+
+  function iniciar() {
+    return api("dy_admins?select=user_id").then(function (l) {
+      if (!l || !l.length) { guardarSessao(null); $("#loginMsg").className = "msg erro"; $("#loginMsg").textContent = "Esta conta não tem permissão de administrador do site."; throw { silencioso: true }; }
+      usuario = l[0].user_id;
+      return api("dy_site_config?chave=eq.site&select=valor,atualizado_em");
+    }).then(function (l) {
+      cfg = (l && l[0] && l[0].valor) || {};
+      original = JSON.stringify(cfg);
+      if (l && l[0] && l[0].atualizado_em && original !== "{}") $("#ultimaAlteracao").textContent = "Última alteração: " + new Date(l[0].atualizado_em).toLocaleString("pt-BR");
+      $("#telaLogin").hidden = true; $("#telaPainel").hidden = false; $("#barra").hidden = false; $("#sair").hidden = false;
+      montarTudo(); carregarRecados();
+    }).catch(function (e) {
+      if (e && e.silencioso) return;
+      guardarSessao(null); $("#telaLogin").hidden = false;
+    });
+  }
+
+  /* ---------- Abas ---------- */
+  $("#abas").addEventListener("click", function (e) {
+    var b = e.target.closest("[data-aba]"); if (!b) return;
+    document.querySelectorAll("#abas [data-aba]").forEach(function (x) { x.setAttribute("aria-selected", x === b); });
+    document.querySelectorAll("[data-painel]").forEach(function (p) { p.hidden = p.getAttribute("data-painel") !== b.getAttribute("data-aba"); });
+  });
+
+  /* ---------- Alterações e salvar ---------- */
+  function lista(nome) { if (!Array.isArray(cfg[nome])) cfg[nome] = []; return cfg[nome]; }
+  function alternar(nome, id, mostrar) {
+    var l = lista(nome), i = l.indexOf(id);
+    if (mostrar && i >= 0) l.splice(i, 1); if (!mostrar && i < 0) l.push(id);
+    mudou();
+  }
+  function mudou() {
+    var dif = JSON.stringify(cfg) !== original;
+    $("#salvar").disabled = !dif;
+    $("#msg").className = "msg"; $("#msg").textContent = dif ? "Você tem alterações não salvas." : "Nada alterado.";
+  }
+  $("#salvar").addEventListener("click", function () {
+    var b = this; b.disabled = true; $("#msg").textContent = "Salvando...";
+    api("dy_site_config?chave=eq.site", { method: "PATCH", prefer: "return=representation", body: { valor: cfg, atualizado_em: new Date().toISOString(), atualizado_por: usuario } })
+      .then(function (l) {
+        if (!l || !l.length) return api("dy_site_config", { method: "POST", prefer: "return=representation", body: { chave: "site", valor: cfg, atualizado_por: usuario } });
+        return l;
+      }).then(function () {
+        original = JSON.stringify(cfg);
+        $("#msg").className = "msg ok"; $("#msg").textContent = "Salvo! O site já mostra as mudanças (recarregue a página do site).";
+        $("#ultimaAlteracao").textContent = "Última alteração: " + new Date().toLocaleString("pt-BR");
+      }).catch(function () { $("#msg").className = "msg erro"; $("#msg").textContent = "Não foi possível salvar. Confira a internet e tente de novo."; b.disabled = false; });
+  });
+  window.addEventListener("beforeunload", function (e) { if (JSON.stringify(cfg) !== original) { e.preventDefault(); e.returnValue = ""; } });
+
+  function chave(id, ligado, rotulo) {
+    return '<span class="estado' + (ligado ? " on" : "") + '">' + (ligado ? "aparece" : "oculto") + '</span><label class="chave"><input type="checkbox" data-id="' + esc(id) + '"' + (ligado ? " checked" : "") +
+      ' aria-label="' + esc(rotulo) + '"><span></span></label>';
+  }
+  function ligarChaves(sel, nome) {
+    $(sel).addEventListener("change", function (e) {
+      var c = e.target; if (!c.matches("input[data-id]")) return;
+      alternar(nome, c.getAttribute("data-id"), c.checked);
+      var est = c.closest(".linha").querySelector(".estado"); est.textContent = c.checked ? "aparece" : "oculto"; est.classList.toggle("on", c.checked);
+    });
+  }
+
+  /* ---------- Montagem das abas ---------- */
+  var SECOES = [["familia", "Família (quem somos)"], ["roleta", "Roleta"], ["temporada", "Temporada"], ["placar", "Placar"], ["videos", "Vídeos"], ["shorts", "Shorts"],
+    ["series", "Séries"], ["fotos", "Fotos"], ["mapa", "Mapa das aventuras"], ["campings", "Campings"], ["garagem", "Garagem"], ["loja", "Loja"], ["blog", "Blog"],
+    ["sorteio", "Sorteio"], ["mural", "Mural de recados"], ["contato", "Contato"]];
+  function todosVideos() {
+    var vistos = {}, out = [];
+    function add(v, tipo) { if (v && v.id && !vistos[v.id]) { vistos[v.id] = 1; out.push({ id: v.id, titulo: v.titulo, data: v.data, tipo: tipo }); } }
+    (AU.videos || []).forEach(function (v) { add(v, "vídeo"); }); (S.videos || []).forEach(function (v) { add(v, "vídeo"); }); (AU.shorts || []).forEach(function (v) { add(v, "short"); });
+    return out;
+  }
+  function montarTudo() {
+    var st = Object.assign({}, S.sorteio || {}, cfg.sorteio || {});
+    cfg.sorteio = st;
+    $("#sAberto").checked = st.aberto !== false; st.aberto = $("#sAberto").checked;
+    $("#sTitulo").value = st.titulo || ""; $("#sPremio").value = st.premio || ""; $("#sImagem").value = st.premioImagem || "";
+    $("#sEncerra").value = paraCampo(st.encerra); $("#sResultado").value = paraCampo(st.resultado); $("#sDias").value = st.diasParaResponder || 7;
+    [["#sTitulo", "titulo"], ["#sPremio", "premio"], ["#sImagem", "premioImagem"]].forEach(function (p) { $(p[0]).addEventListener("input", function () { st[p[1]] = this.value.trim(); mudou(); }); });
+    $("#sAberto").addEventListener("change", function () { st.aberto = this.checked; mudou(); });
+    $("#sEncerra").addEventListener("change", function () { st.encerra = doCampo(this.value); mudou(); });
+    $("#sResultado").addEventListener("change", function () { st.resultado = doCampo(this.value); mudou(); });
+    $("#sDias").addEventListener("input", function () { st.diasParaResponder = Math.max(1, Math.min(60, +this.value || 7)); mudou(); });
+    var vids = todosVideos();
+    function marcar() {
+      document.querySelectorAll("#sVideos .vid").forEach(function (b) { b.setAttribute("aria-pressed", b.getAttribute("data-id") === st.video); });
+      var v = vids.filter(function (x) { return x.id === st.video; })[0];
+      $("#sVideoAtual").textContent = st.video ? "Escolhido: " + (v ? v.titulo : st.video) : "Agora: último vídeo publicado (" + ((AU.videos && AU.videos[0] && AU.videos[0].titulo) || "automático") + ")";
+    }
+    $("#sVideos").innerHTML = vids.map(function (v) {
+      return '<button type="button" class="vid" data-id="' + esc(v.id) + '"><img src="' + thumb(v.id) + '" alt="" loading="lazy"><em>' + esc(v.tipo) + "</em><span>" + esc(v.titulo) + "</span></button>";
+    }).join("");
+    $("#sVideos").addEventListener("click", function (e) { var b = e.target.closest(".vid"); if (!b) return; st.video = b.getAttribute("data-id"); $("#sVideoLink").value = ""; marcar(); mudou(); });
+    $("#sVideoAuto").addEventListener("click", function () { st.video = ""; $("#sVideoLink").value = ""; marcar(); mudou(); });
+    $("#sVideoLink").addEventListener("input", function () {
+      var m = this.value.match(/(?:youtu\.be\/|v=|shorts\/|embed\/)([\w-]{11})/) || this.value.trim().match(/^([\w-]{11})$/);
+      if (m) { st.video = m[1]; marcar(); mudou(); }
+    });
+    marcar();
+
+    var semSec = lista("ocultarSecoes");
+    $("#listaSecoes").innerHTML = SECOES.map(function (s) {
+      return '<div class="linha"><div class="t"><b>' + esc(s[1]) + '</b><small>#' + s[0] + "</small></div>" + chave(s[0], semSec.indexOf(s[0]) < 0, s[1]) + "</div>";
+    }).join("");
+    ligarChaves("#listaSecoes", "ocultarSecoes");
+
+    var semV = lista("ocultarVideos");
+    $("#listaVideos").innerHTML = vids.map(function (v) {
+      return '<div class="linha"><img src="' + thumb(v.id) + '" alt="" loading="lazy"><div class="t"><b>' + esc(v.titulo) + "</b><small>" + esc(v.tipo + (v.data ? " · " + v.data.split("-").reverse().join("/") : "")) + "</small></div>" + chave(v.id, semV.indexOf(v.id) < 0, v.titulo) + "</div>";
+    }).join("") || '<p class="mut">Nenhum vídeo carregado.</p>';
+    ligarChaves("#listaVideos", "ocultarVideos");
+
+    var semL = lista("ocultarLugares"), lugares = (S.mapa || []).concat(AU.mapa || []), nomes = {};
+    lugares = lugares.filter(function (m) { if (nomes[m.nome]) return false; nomes[m.nome] = 1; return true; });
+    $("#listaLugares").innerHTML = lugares.map(function (m) {
+      return '<div class="linha"><div class="t"><b>' + esc(m.nome) + "</b><small>" + esc((m.local || "") + (m.auto ? " · entrou sozinho pelo vídeo" : "")) + "</small></div>" + chave(m.nome, semL.indexOf(m.nome) < 0, m.nome) + "</div>";
+    }).join("") || '<p class="mut">Nenhum lugar no mapa.</p>';
+    ligarChaves("#listaLugares", "ocultarLugares");
+
+    var semP = lista("ocultarProdutos"), itens = (AU.shopee && AU.shopee.itens) || [];
+    $("#listaProdutos").innerHTML = itens.map(function (it) {
+      return '<div class="linha"><img src="' + esc(it.imagem) + '" alt="" loading="lazy" style="aspect-ratio:1"><div class="t"><b>' + esc(it.nome) + "</b><small>" + (it.preco ? "R$ " + Number(it.preco).toFixed(2).replace(".", ",") : "") + "</small></div>" + chave(String(it.id), semP.indexOf(String(it.id)) < 0, it.nome) + "</div>";
+    }).join("") || '<p class="mut">A vitrine ainda não foi carregada.</p>';
+    ligarChaves("#listaProdutos", "ocultarProdutos");
+    original = JSON.stringify(cfg); // ponto de partida = o que está salvo (completado com o config.js)
+    mudou();
+  }
+  // datetime-local <-> texto com fuso de Brasília
+  function paraCampo(v) { return v ? String(v).slice(0, 16) : ""; }
+  function doCampo(v) { return v ? v + ":00-03:00" : ""; }
+
+  /* ---------- Mural ---------- */
+  function carregarRecados() {
+    api("dy_recados?select=id,nome,cidade,mensagem,aprovado,criado_em&order=criado_em.desc&limit=200").then(function (l) {
+      l = l || [];
+      var pend = l.filter(function (r) { return !r.aprovado; }).length;
+      $("#pendentes").hidden = !pend; $("#pendentes").textContent = pend;
+      $("#listaRecados").innerHTML = l.map(function (r) {
+        return '<div class="recado" data-id="' + r.id + '"><span class="tag ' + (r.aprovado ? "ok" : "pend") + '">' + (r.aprovado ? "no site" : "aguardando") + "</span> <b>" + esc(r.nome) + "</b>" +
+          (r.cidade ? ' <span class="mut">· ' + esc(r.cidade) + "</span>" : "") + ' <small class="mut">' + new Date(r.criado_em).toLocaleString("pt-BR") + "</small><p>" + esc(r.mensagem) + '</p><div class="acoes">' +
+          (r.aprovado ? '<button class="btn peq cinza" data-acao="ocultar">Tirar do site</button>' : '<button class="btn peq" data-acao="aprovar">Aprovar</button>') +
+          '<button class="btn peq cinza" data-acao="apagar">Apagar</button></div></div>';
+      }).join("") || '<p class="mut">Nenhum recado ainda.</p>';
+    }).catch(function () { $("#listaRecados").innerHTML = '<p class="mut">Não foi possível carregar os recados.</p>'; });
+  }
+  $("#listaRecados").addEventListener("click", function (e) {
+    var b = e.target.closest("[data-acao]"); if (!b) return;
+    var id = b.closest(".recado").getAttribute("data-id"), a = b.getAttribute("data-acao");
+    if (a === "apagar" && !confirm("Apagar este recado de vez?")) return;
+    b.disabled = true;
+    var op = a === "apagar" ? { method: "DELETE" } : { method: "PATCH", body: { aprovado: a === "aprovar" } };
+    api("dy_recados?id=eq." + encodeURIComponent(id), op).then(carregarRecados).catch(function () { b.disabled = false; alert("Não deu certo. Tente de novo."); });
+  });
+
+  /* ---------- Início ---------- */
+  try { sessao = JSON.parse(localStorage.getItem(SESS) || "null"); } catch (e) { sessao = null; }
+  if (sessao) { $("#telaLogin").hidden = true; iniciar(); }
+})();
+</script>
+</body>
+</html>

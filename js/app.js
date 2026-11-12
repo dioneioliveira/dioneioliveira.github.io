@@ -3,6 +3,30 @@
 
   var S = window.SITE || {};
   var C = S.canal || {};
+
+  // Escolhas do painel de administração (admin.html), carregadas por js/carregar.js
+  (function aplicarPainel() {
+    var A = window.SITE_ADMIN || {}, AU = window.AUTO || (window.AUTO = {});
+    function lista(x) { return Array.isArray(x) ? x : []; }
+    var semVideo = {}; lista(A.ocultarVideos).forEach(function (id) { semVideo[id] = true; });
+    var fora = function (v) { return v && !semVideo[v.id]; };
+    if (S.videos) S.videos = S.videos.filter(fora);
+    if (AU.videos) AU.videos = AU.videos.filter(fora);
+    if (AU.shorts) AU.shorts = AU.shorts.filter(fora);
+    var semLugar = {}; lista(A.ocultarLugares).forEach(function (n) { semLugar[n] = true; });
+    var lugarOk = function (m) { if (semLugar[m.nome]) return false; if (m.videos) m.videos = m.videos.filter(function (id) { return !semVideo[id]; }); return true; };
+    if (S.mapa) S.mapa = S.mapa.filter(lugarOk);
+    if (AU.mapa) AU.mapa = AU.mapa.filter(lugarOk);
+    var semProduto = {}; lista(A.ocultarProdutos).forEach(function (id) { semProduto[String(id)] = true; });
+    if (AU.shopee && AU.shopee.itens) AU.shopee.itens = AU.shopee.itens.filter(function (it) { return !semProduto[String(it.id)]; });
+    if (A.sorteio && typeof A.sorteio === "object") S.sorteio = Object.assign({}, S.sorteio || {}, A.sorteio);
+    var secoes = lista(A.ocultarSecoes).filter(function (id) { return /^[a-z0-9-]+$/.test(id); });
+    if (secoes.length) {
+      var st = document.createElement("style");
+      st.textContent = secoes.map(function (id) { return "#" + id + ',a[href="#' + id + '"]{display:none!important}'; }).join("");
+      document.head.appendChild(st);
+    }
+  })();
   var T = S.temporada || {};
   var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 

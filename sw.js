@@ -1,8 +1,8 @@
 /* Service worker do site DYOLIVEIRAYT: permite instalar como app e abrir com sinal fraco.
    Páginas, scripts e estilos: busca sempre a versão nova e usa a guardada só sem internet.
    Imagens do próprio site: usa a guardada na hora e atualiza em segundo plano. */
-var CACHE = "dy-v1";
-var BASE = ["./", "index.html", "css/style.css", "js/config.js", "js/auto.js", "js/roleta-cenas.js", "js/app.js",
+var CACHE = "dy-v2";
+var BASE = ["./", "index.html", "css/style.css", "js/config.js", "js/auto.js", "js/roleta-cenas.js", "js/carregar.js", "js/app.js",
   "assets/logo-neon.jpg", "assets/logo-wordmark-strip.jpg", "assets/moto-velocross.png", "assets/app/icone-192.png"];
 
 self.addEventListener("install", function (e) {
