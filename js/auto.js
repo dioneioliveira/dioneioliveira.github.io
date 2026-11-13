@@ -3,10 +3,16 @@
 window.AUTO = {
   "videos": [
     {
+      "id": "seGkceVtZT8",
+      "titulo": "QUASE NÃO CONSEGUI! 5KM DE PURA SUBIDA EM ARAUCÁRIA",
+      "data": "2026-11-13",
+      "views": 0
+    },
+    {
       "id": "kvB96yKkHc8",
-      "titulo": "Desafio 21KM: Sobrevivi à Minha Primeira Meia Maratona \"solo\" em Itapoá",
+      "titulo": "Minha meia maratona sem prova, sem público e sem desculpa (1:52:58)",
       "data": "2026-11-08",
-      "views": 24
+      "views": 28
     },
     {
       "id": "qAYhg_rZMl0",
@@ -18,13 +24,13 @@ window.AUTO = {
       "id": "QCZZIPjLC6s",
       "titulo": "AINDA SEM MOTOR? 🏁 Entregamos as Últimas Peças! | Rumo ao Pódio #8",
       "data": "2026-10-15",
-      "views": 214
+      "views": 215
     },
     {
       "id": "D6YO52AXLQA",
       "titulo": "Deu ruim! Fiz o PIOR Cavalete de Moto pro Vini",
       "data": "2026-08-22",
-      "views": 2142
+      "views": 2144
     },
     {
       "id": "VktrnwkYI6Y",
@@ -36,21 +42,15 @@ window.AUTO = {
       "id": "QOQNJqPerm4",
       "titulo": "Depois de uma Largada Ruim... Fomos Treinar no Gate! [Série \"rumo ao pódio - T2026 #EP7]",
       "data": "2026-08-07",
-      "views": 668
-    },
-    {
-      "id": "V1_XdDOT1wc",
-      "titulo": "O ERRO na Largada que Me Custou o PÓDIO no Velocross!",
-      "data": "2026-07-30",
-      "views": 574
+      "views": 669
     }
   ],
   "inscritos": 8700,
-  "inscritosData": "11/11/2026",
-  "videosPublicados": 837,
-  "atualizadoEm": "2026-11-11T16:16:43-03:00",
+  "inscritosData": "13/11/2026",
+  "videosPublicados": 838,
+  "atualizadoEm": "2026-11-13T16:14:46-03:00",
   "shopee": {
-    "atualizado": "11/11/2026",
+    "atualizado": "13/11/2026",
     "itens": [
       {
         "id": "58265164148",
@@ -65,7 +65,7 @@ window.AUTO = {
         "nome": "LIQUIDZ® - Eletrólitos Zero Açúcares - Sabor Limonada Tropical  - Kit 1 Caixa - 14 sachês",
         "link": "https://s.shopee.com.br/2LZOo7xKK1",
         "imagem": "https://down-br.img.susercontent.com/file/br-11134207-820m1-mn0dz89j4a9t0f_tn",
-        "preco": 77.81,
+        "preco": 79.71,
         "precoOriginal": 159.0
       },
       {
@@ -73,7 +73,7 @@ window.AUTO = {
         "nome": "Isotônico Hydramaxi Display 25 Sachês Sudract Repositor Eletrólitos Corrida Cross Pedal Endurance",
         "link": "https://s.shopee.com.br/2BFybmcq6C",
         "imagem": "https://down-br.img.susercontent.com/file/sg-11134201-7rcdr-lsw07la7309bc0_tn",
-        "preco": 57.9,
+        "preco": 61.71,
         "precoOriginal": 64.95
       },
       {
@@ -81,7 +81,7 @@ window.AUTO = {
         "nome": "Gel Carb Go Recovery Atlhetica Energia Endurance Cx 10x30g",
         "link": "https://s.shopee.com.br/3qOCajDFrv",
         "imagem": "https://down-br.img.susercontent.com/file/sg-11134201-7rfge-m462yym75hvs75_tn",
-        "preco": 29.79,
+        "preco": 34.52,
         "precoOriginal": 36.33
       },
       {
@@ -105,7 +105,7 @@ window.AUTO = {
         "nome": "Óculos De Sol Fotocromáticos Uv400 Para Ciclismo , Corrida , Direção , Esportes Ao Ar Livre",
         "link": "https://s.shopee.com.br/8Kqbwf8wFX",
         "imagem": "https://down-br.img.susercontent.com/file/sg-11134201-82594-mubs4frbjg8x4b_tn",
-        "preco": 21.3,
+        "preco": 20.78,
         "precoOriginal": 28.0
       },
       {
@@ -209,7 +209,7 @@ window.AUTO = {
         "nome": "Barraca Camping 2/3 Pessoas  Acampamento Automatica",
         "link": "https://s.shopee.com.br/W0FiKiEnJ",
         "imagem": "https://down-br.img.susercontent.com/file/br-11134207-81z1k-mhzzw6rlwhz55a_tn",
-        "preco": 151.05,
+        "preco": 170.05,
         "precoOriginal": 399.0
       }
     ]
@@ -219,7 +219,7 @@ window.AUTO = {
       "id": "aneQ9-tAx2w",
       "titulo": "Meu filho VIROU CAPIVARA no Parque Barigui! 😱🦫 #shorts #capivara #curitiba",
       "data": "2026-11-08",
-      "views": 1194
+      "views": 1198
     },
     {
       "id": "0dNYV8zO_kE",
@@ -231,7 +231,7 @@ window.AUTO = {
       "id": "w7RgQERda8Y",
       "titulo": "Treininho de 8 sem a grande moto #minimoto",
       "data": "2026-09-02",
-      "views": 1302
+      "views": 1305
     },
     {
       "id": "Z9E4nDjeMqQ",
@@ -243,13 +243,13 @@ window.AUTO = {
       "id": "o-V3oavSbZE",
       "titulo": "Peteco na máquina #motor #crf #velocross #velocidade",
       "data": "2026-08-16",
-      "views": 5407
+      "views": 5408
     },
     {
       "id": "b-KreP1RnjM",
       "titulo": "Só tirar 4 segundos #velocross #voltarapida #competição #rp @Blmotosracing94",
       "data": "2026-08-09",
-      "views": 6621
+      "views": 6625
     },
     {
       "id": "tVxnItXaChI",
@@ -261,7 +261,7 @@ window.AUTO = {
       "id": "JhVqS-3RGVE",
       "titulo": "Welcome to the race!!!!! @Blmotosracing94 #velocross #motocross #velocidade #motooffroad",
       "data": "2026-08-01",
-      "views": 1530
+      "views": 1532
     }
   ],
   "mapa": [
@@ -288,6 +288,18 @@ window.AUTO = {
         "aneQ9-tAx2w"
       ],
       "auto": true
+    },
+    {
+      "nome": "Araucária",
+      "lat": -25.58611,
+      "lng": -49.40512,
+      "local": "PR",
+      "tipo": "corrida",
+      "texto": "Gravado aqui: QUASE NÃO CONSEGUI! 5KM DE PURA SUBIDA EM ARAUCÁRIA",
+      "videos": [
+        "seGkceVtZT8"
+      ],
+      "auto": true
     }
   ],
   "mapaVistos": [
@@ -304,6 +316,7 @@ window.AUTO = {
     "kvB96yKkHc8",
     "o-V3oavSbZE",
     "qAYhg_rZMl0",
+    "seGkceVtZT8",
     "tVxnItXaChI",
     "w7RgQERda8Y"
   ],
@@ -321,6 +334,12 @@ window.AUTO = {
       "lat": -25.42763,
       "lng": -49.30984,
       "local": "Curitiba, PR"
+    },
+    "Araucária": {
+      "nome": "Araucária",
+      "lat": -25.58611,
+      "lng": -49.40512,
+      "local": "PR"
     }
   }
 };
