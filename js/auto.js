@@ -6,7 +6,7 @@ window.AUTO = {
       "id": "seGkceVtZT8",
       "titulo": "QUASE NÃO CONSEGUI! 5KM DE PURA SUBIDA EM ARAUCÁRIA",
       "data": "2026-11-13",
-      "views": 0
+      "views": 5
     },
     {
       "id": "kvB96yKkHc8",
@@ -46,11 +46,11 @@ window.AUTO = {
     }
   ],
   "inscritos": 8700,
-  "inscritosData": "13/11/2026",
+  "inscritosData": "15/11/2026",
   "videosPublicados": 838,
-  "atualizadoEm": "2026-11-13T16:14:46-03:00",
+  "atualizadoEm": "2026-11-15T15:30:13-03:00",
   "shopee": {
-    "atualizado": "13/11/2026",
+    "atualizado": "15/11/2026",
     "itens": [
       {
         "id": "58265164148",
@@ -219,49 +219,49 @@ window.AUTO = {
       "id": "aneQ9-tAx2w",
       "titulo": "Meu filho VIROU CAPIVARA no Parque Barigui! 😱🦫 #shorts #capivara #curitiba",
       "data": "2026-11-08",
-      "views": 1198
+      "views": 1201
     },
     {
       "id": "0dNYV8zO_kE",
       "titulo": "Quem não tem moto caça com bicicleta #manobras #bike #saltocombike",
       "data": "2026-11-01",
-      "views": 81
+      "views": 85
     },
     {
       "id": "w7RgQERda8Y",
       "titulo": "Treininho de 8 sem a grande moto #minimoto",
       "data": "2026-09-02",
-      "views": 1305
+      "views": 1306
     },
     {
       "id": "Z9E4nDjeMqQ",
       "titulo": "Nóis no paredão #minimoto #dianormal #paredão #velocross",
       "data": "2026-08-30",
-      "views": 1010
+      "views": 1011
     },
     {
       "id": "o-V3oavSbZE",
       "titulo": "Peteco na máquina #motor #crf #velocross #velocidade",
       "data": "2026-08-16",
-      "views": 5408
+      "views": 5410
     },
     {
       "id": "b-KreP1RnjM",
       "titulo": "Só tirar 4 segundos #velocross #voltarapida #competição #rp @Blmotosracing94",
       "data": "2026-08-09",
-      "views": 6625
+      "views": 6636
     },
     {
       "id": "tVxnItXaChI",
       "titulo": "Vamos sortear para um inscrito no canal #sorteio  #velocross #segurança #moto",
       "data": "2026-08-08",
-      "views": 1043
+      "views": 1047
     },
     {
       "id": "JhVqS-3RGVE",
       "titulo": "Welcome to the race!!!!! @Blmotosracing94 #velocross #motocross #velocidade #motooffroad",
       "data": "2026-08-01",
-      "views": 1532
+      "views": 1533
     }
   ],
   "mapa": [
