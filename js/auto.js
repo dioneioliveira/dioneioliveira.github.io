@@ -6,13 +6,13 @@ window.AUTO = {
       "id": "seGkceVtZT8",
       "titulo": "QUASE NÃO CONSEGUI! 5KM DE PURA SUBIDA EM ARAUCÁRIA",
       "data": "2026-11-13",
-      "views": 5
+      "views": 8
     },
     {
       "id": "kvB96yKkHc8",
       "titulo": "Minha meia maratona sem prova, sem público e sem desculpa (1:52:58)",
       "data": "2026-11-08",
-      "views": 28
+      "views": 30
     },
     {
       "id": "qAYhg_rZMl0",
@@ -37,20 +37,14 @@ window.AUTO = {
       "titulo": "Tentei Baixar de 1 Minuto e QUASE deu ruim!",
       "data": "2026-08-11",
       "views": 65
-    },
-    {
-      "id": "QOQNJqPerm4",
-      "titulo": "Depois de uma Largada Ruim... Fomos Treinar no Gate! [Série \"rumo ao pódio - T2026 #EP7]",
-      "data": "2026-08-07",
-      "views": 669
     }
   ],
   "inscritos": 8700,
-  "inscritosData": "15/11/2026",
-  "videosPublicados": 838,
-  "atualizadoEm": "2026-11-15T15:30:13-03:00",
+  "inscritosData": "17/11/2026",
+  "videosPublicados": 840,
+  "atualizadoEm": "2026-11-17T17:29:27-03:00",
   "shopee": {
-    "atualizado": "15/11/2026",
+    "atualizado": "17/11/2026",
     "itens": [
       {
         "id": "58265164148",
@@ -65,7 +59,7 @@ window.AUTO = {
         "nome": "LIQUIDZ® - Eletrólitos Zero Açúcares - Sabor Limonada Tropical  - Kit 1 Caixa - 14 sachês",
         "link": "https://s.shopee.com.br/2LZOo7xKK1",
         "imagem": "https://down-br.img.susercontent.com/file/br-11134207-820m1-mn0dz89j4a9t0f_tn",
-        "preco": 79.71,
+        "preco": 99.66,
         "precoOriginal": 159.0
       },
       {
@@ -121,7 +115,7 @@ window.AUTO = {
         "nome": "Óculos de Sol Polarizado para Corrida: Conforto, Estilo e Proteção para Seus Treinos!",
         "link": "https://s.shopee.com.br/9V2ZJk0Z6h",
         "imagem": "https://down-br.img.susercontent.com/file/sg-11134201-7reph-m80vsgjxza8y84_tn",
-        "preco": 26.9,
+        "preco": 24.9,
         "precoOriginal": 80.0
       },
       {
@@ -173,14 +167,6 @@ window.AUTO = {
         "precoOriginal": 399.0
       },
       {
-        "id": "43668802381",
-        "nome": "kit 2 Lâmpada Led Iluminação Para Acampamento Camping Pescaria Usb Lampião",
-        "link": "https://s.shopee.com.br/4LCyH8vdKw",
-        "imagem": "https://down-br.img.susercontent.com/file/cn-11134207-820l4-mflzul7o29e728_tn",
-        "preco": 47.9,
-        "precoOriginal": 52.9
-      },
-      {
         "id": "58256286551",
         "nome": "MODOFO Colchão Inflável Premium Com Bomba Elétrica Recarregável Casal inflável | Solteiro Queen King",
         "link": "https://s.shopee.com.br/111JfFjp6f",
@@ -193,7 +179,7 @@ window.AUTO = {
         "nome": "Camiseta + short Tactel masculino country texas promoção",
         "link": "https://s.shopee.com.br/30hs9lLxnT",
         "imagem": "https://down-br.img.susercontent.com/file/br-11134207-7r98o-m13gofeepq1qe4_tn",
-        "preco": 28.42,
+        "preco": 27.84,
         "precoOriginal": 28.99
       },
       {
@@ -216,6 +202,18 @@ window.AUTO = {
   },
   "shorts": [
     {
+      "id": "6egvCdLNIvs",
+      "titulo": "Valendo uma bota de velocross #desafio #basketball #esportes",
+      "data": "2026-11-16",
+      "views": 1677
+    },
+    {
+      "id": "x5HAlbPCw-Q",
+      "titulo": "Hoje foi dia de esportes diferentes #beachtennislife #ecoparquesamae #saobentodosul #esportes",
+      "data": "2026-11-15",
+      "views": 1206
+    },
+    {
       "id": "aneQ9-tAx2w",
       "titulo": "Meu filho VIROU CAPIVARA no Parque Barigui! 😱🦫 #shorts #capivara #curitiba",
       "data": "2026-11-08",
@@ -237,31 +235,25 @@ window.AUTO = {
       "id": "Z9E4nDjeMqQ",
       "titulo": "Nóis no paredão #minimoto #dianormal #paredão #velocross",
       "data": "2026-08-30",
-      "views": 1011
+      "views": 1013
     },
     {
       "id": "o-V3oavSbZE",
       "titulo": "Peteco na máquina #motor #crf #velocross #velocidade",
       "data": "2026-08-16",
-      "views": 5410
+      "views": 5412
     },
     {
       "id": "b-KreP1RnjM",
       "titulo": "Só tirar 4 segundos #velocross #voltarapida #competição #rp @Blmotosracing94",
       "data": "2026-08-09",
-      "views": 6636
+      "views": 6644
     },
     {
       "id": "tVxnItXaChI",
       "titulo": "Vamos sortear para um inscrito no canal #sorteio  #velocross #segurança #moto",
       "data": "2026-08-08",
       "views": 1047
-    },
-    {
-      "id": "JhVqS-3RGVE",
-      "titulo": "Welcome to the race!!!!! @Blmotosracing94 #velocross #motocross #velocidade #motooffroad",
-      "data": "2026-08-01",
-      "views": 1533
     }
   ],
   "mapa": [
@@ -304,6 +296,7 @@ window.AUTO = {
   ],
   "mapaVistos": [
     "0dNYV8zO_kE",
+    "6egvCdLNIvs",
     "D6YO52AXLQA",
     "JhVqS-3RGVE",
     "QCZZIPjLC6s",
@@ -318,7 +311,8 @@ window.AUTO = {
     "qAYhg_rZMl0",
     "seGkceVtZT8",
     "tVxnItXaChI",
-    "w7RgQERda8Y"
+    "w7RgQERda8Y",
+    "x5HAlbPCw-Q"
   ],
   "mapaCache": {
     "Itapoá": {
