@@ -6,7 +6,7 @@ window.AUTO = {
       "id": "seGkceVtZT8",
       "titulo": "QUASE NÃO CONSEGUI! 5KM DE PURA SUBIDA EM ARAUCÁRIA",
       "data": "2026-11-13",
-      "views": 8
+      "views": 11
     },
     {
       "id": "kvB96yKkHc8",
@@ -40,11 +40,11 @@ window.AUTO = {
     }
   ],
   "inscritos": 8700,
-  "inscritosData": "17/11/2026",
+  "inscritosData": "19/11/2026",
   "videosPublicados": 840,
-  "atualizadoEm": "2026-11-17T17:29:27-03:00",
+  "atualizadoEm": "2026-11-19T16:58:42-03:00",
   "shopee": {
-    "atualizado": "17/11/2026",
+    "atualizado": "19/11/2026",
     "itens": [
       {
         "id": "58265164148",
@@ -179,7 +179,7 @@ window.AUTO = {
         "nome": "Camiseta + short Tactel masculino country texas promoção",
         "link": "https://s.shopee.com.br/30hs9lLxnT",
         "imagem": "https://down-br.img.susercontent.com/file/br-11134207-7r98o-m13gofeepq1qe4_tn",
-        "preco": 27.84,
+        "preco": 27.54,
         "precoOriginal": 28.99
       },
       {
@@ -205,43 +205,43 @@ window.AUTO = {
       "id": "6egvCdLNIvs",
       "titulo": "Valendo uma bota de velocross #desafio #basketball #esportes",
       "data": "2026-11-16",
-      "views": 1677
+      "views": 1769
     },
     {
       "id": "x5HAlbPCw-Q",
       "titulo": "Hoje foi dia de esportes diferentes #beachtennislife #ecoparquesamae #saobentodosul #esportes",
       "data": "2026-11-15",
-      "views": 1206
+      "views": 1208
     },
     {
       "id": "aneQ9-tAx2w",
       "titulo": "Meu filho VIROU CAPIVARA no Parque Barigui! 😱🦫 #shorts #capivara #curitiba",
       "data": "2026-11-08",
-      "views": 1201
+      "views": 1203
     },
     {
       "id": "0dNYV8zO_kE",
       "titulo": "Quem não tem moto caça com bicicleta #manobras #bike #saltocombike",
       "data": "2026-11-01",
-      "views": 85
+      "views": 88
     },
     {
       "id": "w7RgQERda8Y",
       "titulo": "Treininho de 8 sem a grande moto #minimoto",
       "data": "2026-09-02",
-      "views": 1306
+      "views": 1308
     },
     {
       "id": "Z9E4nDjeMqQ",
       "titulo": "Nóis no paredão #minimoto #dianormal #paredão #velocross",
       "data": "2026-08-30",
-      "views": 1013
+      "views": 1015
     },
     {
       "id": "o-V3oavSbZE",
       "titulo": "Peteco na máquina #motor #crf #velocross #velocidade",
       "data": "2026-08-16",
-      "views": 5412
+      "views": 5414
     },
     {
       "id": "b-KreP1RnjM",
