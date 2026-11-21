@@ -6,7 +6,7 @@ window.AUTO = {
       "id": "seGkceVtZT8",
       "titulo": "QUASE NÃO CONSEGUI! 5KM DE PURA SUBIDA EM ARAUCÁRIA",
       "data": "2026-11-13",
-      "views": 11
+      "views": 15
     },
     {
       "id": "kvB96yKkHc8",
@@ -36,15 +36,15 @@ window.AUTO = {
       "id": "VktrnwkYI6Y",
       "titulo": "Tentei Baixar de 1 Minuto e QUASE deu ruim!",
       "data": "2026-08-11",
-      "views": 65
+      "views": 67
     }
   ],
-  "inscritos": 8700,
-  "inscritosData": "19/11/2026",
+  "inscritos": 8710,
+  "inscritosData": "21/11/2026",
   "videosPublicados": 840,
-  "atualizadoEm": "2026-11-19T16:58:42-03:00",
+  "atualizadoEm": "2026-11-21T15:43:35-03:00",
   "shopee": {
-    "atualizado": "19/11/2026",
+    "atualizado": "21/11/2026",
     "itens": [
       {
         "id": "58265164148",
@@ -205,25 +205,25 @@ window.AUTO = {
       "id": "6egvCdLNIvs",
       "titulo": "Valendo uma bota de velocross #desafio #basketball #esportes",
       "data": "2026-11-16",
-      "views": 1769
+      "views": 1799
     },
     {
       "id": "x5HAlbPCw-Q",
       "titulo": "Hoje foi dia de esportes diferentes #beachtennislife #ecoparquesamae #saobentodosul #esportes",
       "data": "2026-11-15",
-      "views": 1208
+      "views": 1211
     },
     {
       "id": "aneQ9-tAx2w",
       "titulo": "Meu filho VIROU CAPIVARA no Parque Barigui! 😱🦫 #shorts #capivara #curitiba",
       "data": "2026-11-08",
-      "views": 1203
+      "views": 1208
     },
     {
       "id": "0dNYV8zO_kE",
       "titulo": "Quem não tem moto caça com bicicleta #manobras #bike #saltocombike",
       "data": "2026-11-01",
-      "views": 88
+      "views": 92
     },
     {
       "id": "w7RgQERda8Y",
@@ -247,7 +247,7 @@ window.AUTO = {
       "id": "b-KreP1RnjM",
       "titulo": "Só tirar 4 segundos #velocross #voltarapida #competição #rp @Blmotosracing94",
       "data": "2026-08-09",
-      "views": 6644
+      "views": 6649
     },
     {
       "id": "tVxnItXaChI",
