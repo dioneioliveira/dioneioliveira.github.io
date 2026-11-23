@@ -3,6 +3,12 @@
 window.AUTO = {
   "videos": [
     {
+      "id": "oVGQoarIWKU",
+      "titulo": "Quem quer fazer tudo não é bom em nada! Parque da Samae",
+      "data": "2026-11-21",
+      "views": 9
+    },
+    {
       "id": "seGkceVtZT8",
       "titulo": "QUASE NÃO CONSEGUI! 5KM DE PURA SUBIDA EM ARAUCÁRIA",
       "data": "2026-11-13",
@@ -24,13 +30,13 @@ window.AUTO = {
       "id": "QCZZIPjLC6s",
       "titulo": "AINDA SEM MOTOR? 🏁 Entregamos as Últimas Peças! | Rumo ao Pódio #8",
       "data": "2026-10-15",
-      "views": 215
+      "views": 216
     },
     {
       "id": "D6YO52AXLQA",
       "titulo": "Deu ruim! Fiz o PIOR Cavalete de Moto pro Vini",
       "data": "2026-08-22",
-      "views": 2144
+      "views": 2145
     },
     {
       "id": "VktrnwkYI6Y",
@@ -39,12 +45,12 @@ window.AUTO = {
       "views": 67
     }
   ],
-  "inscritos": 8710,
-  "inscritosData": "21/11/2026",
-  "videosPublicados": 840,
-  "atualizadoEm": "2026-11-21T15:43:35-03:00",
+  "inscritos": 8720,
+  "inscritosData": "23/11/2026",
+  "videosPublicados": 842,
+  "atualizadoEm": "2026-11-23T20:25:02-03:00",
   "shopee": {
-    "atualizado": "21/11/2026",
+    "atualizado": "23/11/2026",
     "itens": [
       {
         "id": "58265164148",
@@ -59,7 +65,7 @@ window.AUTO = {
         "nome": "LIQUIDZ® - Eletrólitos Zero Açúcares - Sabor Limonada Tropical  - Kit 1 Caixa - 14 sachês",
         "link": "https://s.shopee.com.br/2LZOo7xKK1",
         "imagem": "https://down-br.img.susercontent.com/file/br-11134207-820m1-mn0dz89j4a9t0f_tn",
-        "preco": 99.66,
+        "preco": 77.81,
         "precoOriginal": 159.0
       },
       {
@@ -179,7 +185,7 @@ window.AUTO = {
         "nome": "Camiseta + short Tactel masculino country texas promoção",
         "link": "https://s.shopee.com.br/30hs9lLxnT",
         "imagem": "https://down-br.img.susercontent.com/file/br-11134207-7r98o-m13gofeepq1qe4_tn",
-        "preco": 27.54,
+        "preco": 27.84,
         "precoOriginal": 28.99
       },
       {
@@ -202,16 +208,22 @@ window.AUTO = {
   },
   "shorts": [
     {
+      "id": "rNraUs5IWTo",
+      "titulo": "E a motoca ta de volta ao canal #motopreprada #preparação #velocross @Blmotosracing94",
+      "data": "2026-11-22",
+      "views": 1675
+    },
+    {
       "id": "6egvCdLNIvs",
       "titulo": "Valendo uma bota de velocross #desafio #basketball #esportes",
       "data": "2026-11-16",
-      "views": 1799
+      "views": 1804
     },
     {
       "id": "x5HAlbPCw-Q",
       "titulo": "Hoje foi dia de esportes diferentes #beachtennislife #ecoparquesamae #saobentodosul #esportes",
       "data": "2026-11-15",
-      "views": 1211
+      "views": 1213
     },
     {
       "id": "aneQ9-tAx2w",
@@ -223,37 +235,25 @@ window.AUTO = {
       "id": "0dNYV8zO_kE",
       "titulo": "Quem não tem moto caça com bicicleta #manobras #bike #saltocombike",
       "data": "2026-11-01",
-      "views": 92
+      "views": 95
     },
     {
       "id": "w7RgQERda8Y",
       "titulo": "Treininho de 8 sem a grande moto #minimoto",
       "data": "2026-09-02",
-      "views": 1308
+      "views": 1312
     },
     {
       "id": "Z9E4nDjeMqQ",
       "titulo": "Nóis no paredão #minimoto #dianormal #paredão #velocross",
       "data": "2026-08-30",
-      "views": 1015
+      "views": 1016
     },
     {
       "id": "o-V3oavSbZE",
       "titulo": "Peteco na máquina #motor #crf #velocross #velocidade",
       "data": "2026-08-16",
-      "views": 5414
-    },
-    {
-      "id": "b-KreP1RnjM",
-      "titulo": "Só tirar 4 segundos #velocross #voltarapida #competição #rp @Blmotosracing94",
-      "data": "2026-08-09",
-      "views": 6649
-    },
-    {
-      "id": "tVxnItXaChI",
-      "titulo": "Vamos sortear para um inscrito no canal #sorteio  #velocross #segurança #moto",
-      "data": "2026-08-08",
-      "views": 1047
+      "views": 5420
     }
   ],
   "mapa": [
@@ -308,7 +308,9 @@ window.AUTO = {
     "b-KreP1RnjM",
     "kvB96yKkHc8",
     "o-V3oavSbZE",
+    "oVGQoarIWKU",
     "qAYhg_rZMl0",
+    "rNraUs5IWTo",
     "seGkceVtZT8",
     "tVxnItXaChI",
     "w7RgQERda8Y",
@@ -334,6 +336,7 @@ window.AUTO = {
       "lat": -25.58611,
       "lng": -49.40512,
       "local": "PR"
-    }
+    },
+    "Local: Parque da Samae, São Bento do Sul, Santa Catarina": null
   }
 };
