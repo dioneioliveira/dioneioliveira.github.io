@@ -6,13 +6,13 @@ window.AUTO = {
       "id": "oVGQoarIWKU",
       "titulo": "Quem quer fazer tudo não é bom em nada! Parque da Samae",
       "data": "2026-11-21",
-      "views": 9
+      "views": 14
     },
     {
       "id": "seGkceVtZT8",
       "titulo": "QUASE NÃO CONSEGUI! 5KM DE PURA SUBIDA EM ARAUCÁRIA",
       "data": "2026-11-13",
-      "views": 15
+      "views": 16
     },
     {
       "id": "kvB96yKkHc8",
@@ -24,7 +24,7 @@ window.AUTO = {
       "id": "qAYhg_rZMl0",
       "titulo": "A SURPRESA DO CANAL FICOU TOP! 🔥 Só Falta a Moto! 🏁",
       "data": "2026-10-24",
-      "views": 241
+      "views": 242
     },
     {
       "id": "QCZZIPjLC6s",
@@ -45,12 +45,12 @@ window.AUTO = {
       "views": 67
     }
   ],
-  "inscritos": 8720,
-  "inscritosData": "23/11/2026",
+  "inscritos": 8710,
+  "inscritosData": "25/11/2026",
   "videosPublicados": 842,
-  "atualizadoEm": "2026-11-23T20:25:02-03:00",
+  "atualizadoEm": "2026-11-25T18:06:10-03:00",
   "shopee": {
-    "atualizado": "23/11/2026",
+    "atualizado": "25/11/2026",
     "itens": [
       {
         "id": "58265164148",
@@ -113,7 +113,7 @@ window.AUTO = {
         "nome": "Kit 4/8/12 Bottons Número de Peito | Clip Corrida de Rua | Maratona | Boton de Corrida | Acessório |",
         "link": "https://s.shopee.com.br/8AXBjXhRPp",
         "imagem": "https://down-br.img.susercontent.com/file/br-11134207-820lr-mtslho23mm0w0d_tn",
-        "preco": 16.9,
+        "preco": 14.35,
         "precoOriginal": 26.8
       },
       {
@@ -185,7 +185,7 @@ window.AUTO = {
         "nome": "Camiseta + short Tactel masculino country texas promoção",
         "link": "https://s.shopee.com.br/30hs9lLxnT",
         "imagem": "https://down-br.img.susercontent.com/file/br-11134207-7r98o-m13gofeepq1qe4_tn",
-        "preco": 27.84,
+        "preco": 27.83,
         "precoOriginal": 28.99
       },
       {
@@ -211,19 +211,19 @@ window.AUTO = {
       "id": "rNraUs5IWTo",
       "titulo": "E a motoca ta de volta ao canal #motopreprada #preparação #velocross @Blmotosracing94",
       "data": "2026-11-22",
-      "views": 1675
+      "views": 2140
     },
     {
       "id": "6egvCdLNIvs",
       "titulo": "Valendo uma bota de velocross #desafio #basketball #esportes",
       "data": "2026-11-16",
-      "views": 1804
+      "views": 1808
     },
     {
       "id": "x5HAlbPCw-Q",
       "titulo": "Hoje foi dia de esportes diferentes #beachtennislife #ecoparquesamae #saobentodosul #esportes",
       "data": "2026-11-15",
-      "views": 1213
+      "views": 1216
     },
     {
       "id": "aneQ9-tAx2w",
@@ -235,7 +235,7 @@ window.AUTO = {
       "id": "0dNYV8zO_kE",
       "titulo": "Quem não tem moto caça com bicicleta #manobras #bike #saltocombike",
       "data": "2026-11-01",
-      "views": 95
+      "views": 96
     },
     {
       "id": "w7RgQERda8Y",
