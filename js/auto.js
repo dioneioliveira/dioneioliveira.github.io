@@ -6,19 +6,19 @@ window.AUTO = {
       "id": "oVGQoarIWKU",
       "titulo": "Quem quer fazer tudo não é bom em nada! Parque da Samae",
       "data": "2026-11-21",
-      "views": 14
+      "views": 17
     },
     {
       "id": "seGkceVtZT8",
       "titulo": "QUASE NÃO CONSEGUI! 5KM DE PURA SUBIDA EM ARAUCÁRIA",
       "data": "2026-11-13",
-      "views": 16
+      "views": 20
     },
     {
       "id": "kvB96yKkHc8",
       "titulo": "Minha meia maratona sem prova, sem público e sem desculpa (1:52:58)",
       "data": "2026-11-08",
-      "views": 30
+      "views": 31
     },
     {
       "id": "qAYhg_rZMl0",
@@ -30,7 +30,7 @@ window.AUTO = {
       "id": "QCZZIPjLC6s",
       "titulo": "AINDA SEM MOTOR? 🏁 Entregamos as Últimas Peças! | Rumo ao Pódio #8",
       "data": "2026-10-15",
-      "views": 216
+      "views": 218
     },
     {
       "id": "D6YO52AXLQA",
@@ -42,15 +42,15 @@ window.AUTO = {
       "id": "VktrnwkYI6Y",
       "titulo": "Tentei Baixar de 1 Minuto e QUASE deu ruim!",
       "data": "2026-08-11",
-      "views": 67
+      "views": 69
     }
   ],
   "inscritos": 8710,
-  "inscritosData": "25/11/2026",
+  "inscritosData": "27/11/2026",
   "videosPublicados": 842,
-  "atualizadoEm": "2026-11-25T18:06:10-03:00",
+  "atualizadoEm": "2026-11-27T17:42:42-03:00",
   "shopee": {
-    "atualizado": "25/11/2026",
+    "atualizado": "27/11/2026",
     "itens": [
       {
         "id": "58265164148",
@@ -65,7 +65,7 @@ window.AUTO = {
         "nome": "LIQUIDZ® - Eletrólitos Zero Açúcares - Sabor Limonada Tropical  - Kit 1 Caixa - 14 sachês",
         "link": "https://s.shopee.com.br/2LZOo7xKK1",
         "imagem": "https://down-br.img.susercontent.com/file/br-11134207-820m1-mn0dz89j4a9t0f_tn",
-        "preco": 77.81,
+        "preco": 78.68,
         "precoOriginal": 159.0
       },
       {
@@ -201,7 +201,7 @@ window.AUTO = {
         "nome": "Barraca Camping 2/3 Pessoas  Acampamento Automatica",
         "link": "https://s.shopee.com.br/W0FiKiEnJ",
         "imagem": "https://down-br.img.susercontent.com/file/br-11134207-81z1k-mhzzw6rlwhz55a_tn",
-        "preco": 170.05,
+        "preco": 151.05,
         "precoOriginal": 399.0
       }
     ]
@@ -211,7 +211,7 @@ window.AUTO = {
       "id": "rNraUs5IWTo",
       "titulo": "E a motoca ta de volta ao canal #motopreprada #preparação #velocross @Blmotosracing94",
       "data": "2026-11-22",
-      "views": 2140
+      "views": 2268
     },
     {
       "id": "6egvCdLNIvs",
@@ -223,37 +223,37 @@ window.AUTO = {
       "id": "x5HAlbPCw-Q",
       "titulo": "Hoje foi dia de esportes diferentes #beachtennislife #ecoparquesamae #saobentodosul #esportes",
       "data": "2026-11-15",
-      "views": 1216
+      "views": 1217
     },
     {
       "id": "aneQ9-tAx2w",
       "titulo": "Meu filho VIROU CAPIVARA no Parque Barigui! 😱🦫 #shorts #capivara #curitiba",
       "data": "2026-11-08",
-      "views": 1208
+      "views": 1209
     },
     {
       "id": "0dNYV8zO_kE",
       "titulo": "Quem não tem moto caça com bicicleta #manobras #bike #saltocombike",
       "data": "2026-11-01",
-      "views": 96
+      "views": 97
     },
     {
       "id": "w7RgQERda8Y",
       "titulo": "Treininho de 8 sem a grande moto #minimoto",
       "data": "2026-09-02",
-      "views": 1312
+      "views": 1313
     },
     {
       "id": "Z9E4nDjeMqQ",
       "titulo": "Nóis no paredão #minimoto #dianormal #paredão #velocross",
       "data": "2026-08-30",
-      "views": 1016
+      "views": 1017
     },
     {
       "id": "o-V3oavSbZE",
       "titulo": "Peteco na máquina #motor #crf #velocross #velocidade",
       "data": "2026-08-16",
-      "views": 5420
+      "views": 5421
     }
   ],
   "mapa": [
